@@ -1,0 +1,176 @@
+/* 
+ * Release Therapies - Booking Page Stylesheet
+ * This stylesheet contains styles specific to the booking page
+ */
+
+/* ===== BOOKING SECTION ===== */
+.booking-section {
+    padding: var(--spacing-xl) 0;
+}
+
+.booking-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+.booking-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-xl);
+}
+
+.booking-form-container {
+    background-color: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.form-section {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.form-section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.form-section h3 {
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-color);
+}
+
+.form-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.booking-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.sidebar-section {
+    background-color: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.sidebar-section h3 {
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-color);
+}
+
+.benefits-list {
+    list-style-type: none;
+}
+
+.benefits-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.benefits-list i {
+    color: var(--success-color);
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-md);
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
+}
+
+.info-item i {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--spacing-md);
+    color: white;
+    font-size: 1rem;
+}
+
+.info-item h4 {
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.125rem;
+}
+
+.info-item p {
+    margin-bottom: 0;
+    color: var(--text-light);
+}
+
+.cancellation-policy {
+    background-color: var(--bg-light);
+    border-left: 3px solid var(--primary-color);
+}
+
+.insurance-details {
+    background-color: var(--bg-light);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    margin-top: var(--spacing-sm);
+}
+
+.terms-link {
+    text-decoration: underline;
+}
+
+/* Responsive styles for booking page */
+@media (max-width: 991.98px) {
+    .booking-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .booking-sidebar {
+        order: -1;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .form-actions .btn {
+        width: 100%;
+    }
+    
+    .sidebar-section {
+        padding: var(--spacing-md);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .booking-form-container {
+        padding: var(--spacing-lg);
+    }
+    
+    .info-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .info-item i {
+        margin-right: 0;
+        margin-bottom: var(--spacing-sm);
+    }
+}

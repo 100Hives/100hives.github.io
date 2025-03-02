@@ -1,0 +1,283 @@
+/* 
+ * Release Therapies - Responsive Stylesheet
+ * This stylesheet contains responsive styles for the Release Therapies website
+ */
+
+/* ===== MEDIA QUERIES ===== */
+
+/* Large Devices (Desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .about-grid {
+        gap: var(--spacing-lg);
+    }
+}
+
+/* Medium Devices (Tablets, less than 992px) */
+@media (max-width: 991.98px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    html {
+        font-size: 15px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.25rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.125rem;
+    }
+    
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-image {
+        order: -1;
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .about-image img {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .contact-info {
+        padding-right: 0;
+    }
+    
+    .insurance-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+}
+
+/* Small Devices (Landscape Phones, less than 768px) */
+@media (max-width: 767.98px) {
+    .container {
+        max-width: 540px;
+    }
+    
+    html {
+        font-size: 14px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    .nav-links, .nav-btn {
+        display: none;
+    }
+    
+    .mobile-menu {
+        display: block;
+    }
+    
+    .mobile-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--bg-color);
+        z-index: 1001;
+        padding: var(--spacing-lg);
+        transform: translateX(100%);
+        transition: transform var(--transition-normal);
+    }
+    
+    .mobile-nav.active {
+        transform: translateX(0);
+    }
+    
+    .mobile-nav-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .close-menu {
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    
+    .mobile-nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .mobile-nav-links a {
+        font-size: 1.25rem;
+        padding: var(--spacing-sm) 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .mobile-nav-btn {
+        margin-top: var(--spacing-lg);
+        width: 100%;
+    }
+    
+    .hero-section {
+        padding: 5rem 0;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+    }
+    
+    .section {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .section-header {
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .services-grid, .testimonials-slider, .team-grid, .packages-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .footer-col {
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .action-buttons .btn {
+        width: 100%;
+    }
+}
+
+/* Extra Small Devices (Portrait Phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .container {
+        width: 100%;
+        padding: 0 var(--spacing-md);
+    }
+    
+    html {
+        font-size: 13px;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.75rem;
+    }
+    
+    .service-image {
+        height: 180px;
+    }
+    
+    .contact-method {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .method-icon {
+        margin-right: 0;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .approach-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .mission-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .thank-you-content {
+        padding: var(--spacing-lg);
+    }
+    
+    .next-steps {
+        padding: var(--spacing-md);
+    }
+}
+
+/* Mobile Navigation Animation */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+.slide-in {
+    animation: slideIn 0.3s forwards;
+}
+
+.slide-out {
+    animation: slideOut 0.3s forwards;
+}
