@@ -51,13 +51,13 @@
             
             <div class="booking-container">
                 <div class="booking-form-container">
-                    <form id="bookingForm" action="php/booking-handler.php" method="post">
+                    <form id="booking-form" action="php/booking-handler.php" method="post">
                         <div class="form-section">
                             <h3>Personal Information</h3>
                             
                             <div class="form-group">
-                                <label for="fullName">Full Name*</label>
-                                <input type="text" id="fullName" name="fullName" class="form-control" required>
+                                <label for="name">Full Name*</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
                             </div>
                             
                             <div class="form-row">
@@ -90,7 +90,7 @@
                             </div>
                         </div>
                         
-                        <div class="form-section">
+                        <div class="form-section custom-date-time-ui">
                             <h3>Appointment Details</h3>
                             
                             <div class="form-group">
@@ -117,30 +117,50 @@
                                 </select>
                             </div>
                             
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="appointmentDate">Preferred Date*</label>
-                                    <input type="date" id="appointmentDate" name="appointmentDate" class="form-control" required>
+                            <!-- Hidden fields for date and time selection -->
+                            <input type="hidden" id="appointment-date" name="appointmentDate">
+                            <input type="hidden" id="appointment-time" name="appointmentTime">
+                            
+                            <!-- Custom Date Selection -->
+                            <div class="form-group">
+                                <label>Select Date*</label>
+                                <div class="calendar-container">
+                                    <div class="calendar-header">
+                                        <button type="button" class="calendar-nav-btn" id="prevMonthBtn" disabled>&lt;</button>
+                                        <span class="calendar-month-text" id="currentMonth">July 2025</span>
+                                        <button type="button" class="calendar-nav-btn" id="nextMonthBtn">&gt;</button>
+                                    </div>
+                                    <div class="calendar-grid">
+                                        <div class="calendar-day-header">Sun</div>
+                                        <div class="calendar-day-header">Mon</div>
+                                        <div class="calendar-day-header">Tue</div>
+                                        <div class="calendar-day-header">Wed</div>
+                                        <div class="calendar-day-header">Thu</div>
+                                        <div class="calendar-day-header">Fri</div>
+                                        <div class="calendar-day-header">Sat</div>
+                                    </div>
+                                    <div id="calendarDays" class="calendar-days-grid"></div>
                                 </div>
-                                
-                                <div class="form-group">
-                                    <label for="appointmentTime">Preferred Time*</label>
-                                    <select id="appointmentTime" name="appointmentTime" class="form-control" required>
-                                        <option value="">Select a time</option>
-                                        <option value="7:00 AM">7:00 AM</option>
-                                        <option value="8:00 AM">8:00 AM</option>
-                                        <option value="9:00 AM">9:00 AM</option>
-                                        <option value="10:00 AM">10:00 AM</option>
-                                        <option value="11:00 AM">11:00 AM</option>
-                                        <option value="12:00 PM">12:00 PM</option>
-                                        <option value="1:00 PM">1:00 PM</option>
-                                        <option value="2:00 PM">2:00 PM</option>
-                                        <option value="3:00 PM">3:00 PM</option>
-                                        <option value="4:00 PM">4:00 PM</option>
-                                        <option value="5:00 PM">5:00 PM</option>
-                                        <option value="6:00 PM">6:00 PM</option>
-                                    </select>
+                            </div>
+                            
+                            <!-- Custom Time Selection -->
+                            <div class="form-group">
+                                <label>Select Time (1-hour slots)*</label>
+                                <div class="time-slots-container">
+                                    <div class="time-slots-grid" id="timeSlots">
+                                        <!-- Time slots will be generated by JavaScript -->
+                                    </div>
                                 </div>
+                            </div>
+                            
+                            <!-- Dynamic Pricing Information -->
+                            <div class="dynamic-pricing">
+                                <h3>Dynamic Pricing</h3>
+                                <p class="discount">Monday-Tuesday: £34 (15% discount)</p>
+                                <p>Wednesday-Thursday: £40 (standard rate)</p>
+                                <p class="premium">Friday: £46 (15% premium)</p>
+                                <p class="premium">Saturday: £52 (30% premium)</p>
+                                <p class="premium">Sunday: £60 (50% premium)</p>
                             </div>
                             
                             <div class="form-group">
@@ -217,7 +237,7 @@
                         </div>
                         
                         <div class="form-actions">
-                            <button type="submit" class="btn">Book Appointment</button>
+                            <button type="submit" class="btn btn-primary">Book Appointment</button>
                             <button type="reset" class="btn btn-outline">Reset Form</button>
                         </div>
                     </form>
@@ -323,6 +343,12 @@
         <div class="footer-pattern"></div>
     </footer>
 
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Processing your booking...</div>
+    </div>
+
     <!-- Font Awesome for icons -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     <!-- Main JavaScript -->
@@ -331,32 +357,5 @@
     <script src="js/booking.js"></script>
     <!-- Form Validation -->
     <script src="js/validation.js"></script>
-    
-    <script>
-        // Check URL parameters for form status messages
-        document.addEventListener('DOMContentLoaded', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const status = urlParams.get('status');
-            const message = urlParams.get('message');
-            
-            if (status && message) {
-                const statusDiv = document.getElementById('formStatus');
-                statusDiv.classList.add(status === 'error' ? 'error' : 'success');
-                statusDiv.textContent = decodeURIComponent(message);
-                statusDiv.style.display = 'block';
-                
-                // Scroll to status message
-                statusDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-            
-            // Show/hide insurance details based on checkbox
-            const insuranceCheckbox = document.getElementById('insurance');
-            const insuranceDetails = document.getElementById('insuranceDetails');
-            
-            insuranceCheckbox.addEventListener('change', function() {
-                insuranceDetails.style.display = this.checked ? 'block' : 'none';
-            });
-        });
-    </script>
 </body>
 </html>
