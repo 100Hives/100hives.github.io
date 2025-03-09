@@ -3,7 +3,7 @@
  * This stylesheet contains the core styles for the Release Therapies website
  */
 
-/* ===== RESET & BASE STYLES ===== */
+/* ===== RESET & BASE STYLES 1===== */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
