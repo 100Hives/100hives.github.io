@@ -865,14 +865,31 @@
 /* Enhance mobile experience */
 @media (max-width: 576px) {
     .calendar-day {
-        height: 32px;
-        width: 32px;
+        height: 40px;
+        width: 40px;
         font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2px;
+        border-radius: 50%;
+        transition: all 0.2s ease;
+    }
+    
+    .calendar-day:active {
+        transform: scale(0.95);
     }
     
     .time-slot {
-        padding: 8px;
+        padding: 12px 8px;
         font-size: 14px;
+        margin-bottom: 8px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+    }
+    
+    .time-slot:active {
+        transform: scale(0.98);
     }
     
     .form-row {
@@ -881,5 +898,99 @@
     
     .form-row .form-group {
         width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    /* Improve calendar navigation for touch */
+    .calendar-nav-btn {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--light-gray);
+        border-radius: 50%;
+    }
+    
+    /* Improve form section spacing */
+    .form-section {
+        padding: 20px 15px;
+        margin-bottom: 20px;
+    }
+    
+    /* Make buttons more touch-friendly */
+    .form-actions .btn {
+        padding: 12px 20px;
+        font-size: 16px;
+        min-height: 48px;
+    }
+    
+    /* Improve calendar header */
+    .calendar-header {
+        padding: 10px;
+    }
+    
+    .calendar-month-text {
+        font-size: 16px;
+    }
+    
+    /* Improve time slots container */
+    .time-slots-container {
+        margin-top: 20px;
+    }
+    
+    /* Improve form inputs */
+    .form-control {
+        font-size: 16px;
+        padding: 12px 15px;
+        height: auto;
+    }
+    
+    /* Improve select dropdowns */
+    select.form-control {
+        background-position: right 15px center;
+        padding-right: 40px;
+    }
+}
+
+/* Fix for iOS inputs */
+@supports (-webkit-touch-callout: none) {
+    input, select, textarea, button {
+        font-size: 16px !important;
+    }
+    
+    /* Fix for iOS 100vh issue */
+    .booking-section {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Improve touch experience */
+@media (hover: none) {
+    .calendar-day, .time-slot, .btn, .form-control {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Larger touch targets */
+    .form-group label {
+        padding: 5px 0;
+        display: block;
+    }
+    
+    /* Improve checkbox and radio inputs */
+    input[type="checkbox"], input[type="radio"] {
+        width: 20px;
+        height: 20px;
+    }
+    
+    /* Improve calendar day selection */
+    .calendar-day.selected {
+        transform: scale(1.05);
+    }
+    
+    /* Improve time slot selection */
+    .time-slot.selected {
+        transform: scale(1.02);
     }
 }

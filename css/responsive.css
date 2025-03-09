@@ -65,6 +65,17 @@
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
     }
+    
+    /* Improved tablet layout for services */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    /* Improved testimonials for tablets */
+    .testimonial-card {
+        padding: var(--spacing-md);
+    }
 }
 
 /* Small Devices (Landscape Phones, less than 768px) */
@@ -93,6 +104,7 @@
         display: block;
     }
     
+    /* Enhanced mobile navigation */
     .mobile-nav {
         position: fixed;
         top: 0;
@@ -104,6 +116,9 @@
         padding: var(--spacing-lg);
         transform: translateX(100%);
         transition: transform var(--transition-normal);
+        overflow-y: auto; /* Allow scrolling for tall menus */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
     }
     
     .mobile-nav.active {
@@ -115,11 +130,25 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: var(--spacing-lg);
+        padding-bottom: var(--spacing-md);
+        border-bottom: 1px solid var(--border-color);
     }
     
     .close-menu {
         font-size: 1.5rem;
         cursor: pointer;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: var(--light-gray);
+        transition: background-color var(--transition-fast);
+    }
+    
+    .close-menu:hover {
+        background-color: var(--border-color);
     }
     
     .mobile-nav-links {
@@ -130,13 +159,27 @@
     
     .mobile-nav-links a {
         font-size: 1.25rem;
-        padding: var(--spacing-sm) 0;
+        padding: var(--spacing-md) 0;
         border-bottom: 1px solid var(--border-color);
+        display: block;
+        transition: color var(--transition-fast), padding-left var(--transition-fast);
+    }
+    
+    .mobile-nav-links a:hover, .mobile-nav-links a.active {
+        color: var(--accent-color);
+        padding-left: var(--spacing-sm);
     }
     
     .mobile-nav-btn {
         margin-top: var(--spacing-lg);
         width: 100%;
+        padding: var(--spacing-md);
+        font-size: 1.1rem;
+    }
+    
+    /* When mobile menu is active, prevent body scrolling */
+    body.menu-active {
+        overflow: hidden;
     }
     
     .hero-section {
@@ -168,23 +211,43 @@
         margin-bottom: var(--spacing-lg);
     }
     
+    /* Improved service cards for mobile */
     .services-grid, .testimonials-slider, .team-grid, .packages-grid {
         grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
     }
     
+    .service-card {
+        box-shadow: var(--shadow-md);
+        transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        will-change: transform;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .service-card:active {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+    
+    /* Improved form layout for mobile */
     .form-row {
         grid-template-columns: 1fr;
+        gap: var(--spacing-md);
     }
     
+    /* Improved CTA buttons for mobile */
     .cta-buttons {
         flex-direction: column;
-        gap: var(--spacing-sm);
+        gap: var(--spacing-md);
     }
     
     .cta-buttons .btn {
         width: 100%;
+        padding: var(--spacing-md);
+        font-size: 1.1rem;
     }
     
+    /* Improved footer for mobile */
     .footer-grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
@@ -198,13 +261,32 @@
         justify-content: center;
     }
     
+    /* Improved action buttons for mobile */
     .action-buttons {
         flex-direction: column;
-        gap: var(--spacing-sm);
+        gap: var(--spacing-md);
     }
     
     .action-buttons .btn {
         width: 100%;
+        padding: var(--spacing-md);
+    }
+    
+    /* Improved testimonial cards for mobile */
+    .testimonial-card {
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .client-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .client-img {
+        margin-bottom: var(--spacing-sm);
+        margin-right: 0;
     }
 }
 
@@ -223,21 +305,43 @@
         font-size: 1.75rem;
     }
     
+    /* Improved service images for small phones */
     .service-image {
         height: 180px;
     }
     
+    .service-image img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+    
+    /* Improved contact methods for small phones */
     .contact-method {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+        background-color: var(--light-color);
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-sm);
     }
     
     .method-icon {
         margin-right: 0;
         margin-bottom: var(--spacing-sm);
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 50%;
     }
     
+    /* Improved grid layouts for small phones */
     .approach-grid {
         grid-template-columns: 1fr;
     }
@@ -250,12 +354,32 @@
         padding: var(--spacing-lg);
     }
     
-    .next-steps {
-        padding: var(--spacing-md);
+    /* Improved form inputs for small phones */
+    input, select, textarea {
+        font-size: 16px !important; /* Prevents iOS zoom on focus */
+    }
+    
+    /* Improved buttons for small phones */
+    .btn {
+        padding: var(--spacing-md) var(--spacing-lg);
+        min-height: 44px; /* Minimum touch target size */
+    }
+    
+    /* Improved page headers for small phones */
+    .page-header {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .page-header h1 {
+        font-size: 1.75rem;
+    }
+    
+    /* Touch-friendly navigation */
+    .breadcrumbs a {
+        padding: var(--spacing-xs) var(--spacing-sm);
     }
 }
 
-/* Mobile Navigation Animation */
 @keyframes slideIn {
     from {
         transform: translateX(100%);
@@ -280,4 +404,141 @@
 
 .slide-out {
     animation: slideOut 0.3s forwards;
+}
+
+/* Additional responsive styles for services page */
+@media (max-width: 1200px) {
+    .service-video {
+        height: 300px;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .service-benefits {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-benefits li {
+        padding: var(--spacing-md);
+    }
+    
+    .premium-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-video {
+        height: 250px;
+    }
+    
+    .video-overlay {
+        padding: var(--spacing-md);
+    }
+    
+    .play-icon {
+        font-size: 3rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.75rem;
+    }
+    
+    .service-card {
+        margin-bottom: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 576px) {
+    .service-video {
+        height: 200px;
+    }
+    
+    .service-benefits {
+        padding: var(--spacing-md);
+    }
+    
+    .service-cta {
+        flex-direction: column;
+        padding: var(--spacing-md);
+    }
+    
+    .service-cta .btn {
+        width: 100%;
+        margin-top: var(--spacing-sm);
+    }
+}
+
+/* Improved navigation for tablets and mobile */
+@media (max-width: 992px) {
+    .nav-hidden {
+        transform: translateY(-100%);
+    }
+    
+    .nav-scrolled {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: var(--bg-color);
+        box-shadow: var(--shadow-md);
+    }
+}
+
+/* Animation classes */
+.loaded {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Animation preferences */
+@media (prefers-reduced-motion: no-preference) {
+    .service-card {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    
+    .service-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) {
+    /* Styles for touch devices */
+    .btn, .nav-links a, .service-card, .testimonial-card, .team-member, .social-link {
+        transition: transform 0.2s ease;
+    }
+    
+    .btn:active, .nav-links a:active, .service-card:active, .testimonial-card:active, .team-member:active, .social-link:active {
+        transform: scale(0.98);
+    }
+    
+    /* Larger touch targets */
+    .nav-links a, .footer-links a, .social-link {
+        padding: var(--spacing-sm) var(--spacing-md);
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+}
+
+/* Fix for iOS form elements */
+@supports (-webkit-touch-callout: none) {
+    input, select, textarea, button {
+        font-size: 16px !important;
+    }
+    
+    /* Fix for iOS 100vh issue */
+    .mobile-nav {
+        height: -webkit-fill-available;
+    }
 }

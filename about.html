@@ -88,6 +88,70 @@
         </div>
     </section>
 
+    <!-- New Facilities Section -->
+    <section class="facilities-section section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Facilities</h2>
+                <p>We've created a tranquil environment designed to promote healing and relaxation.</p>
+            </div>
+            
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="images/massage-table-room.jpg" alt="Professional Treatment Room" loading="lazy">
+                    </div>
+                    <div class="facility-content">
+                        <h3>Professional Treatment Rooms</h3>
+                        <p>Our treatment rooms are equipped with premium Master Massage equipment, ensuring your comfort during every session. The calm, private environment helps you relax fully while receiving treatment.</p>
+                        <ul class="facility-features">
+                            <li><i class="fas fa-check-circle"></i> Professional-grade massage tables</li>
+                            <li><i class="fas fa-check-circle"></i> Climate-controlled rooms</li>
+                            <li><i class="fas fa-check-circle"></i> Sound-insulated for privacy</li>
+                            <li><i class="fas fa-check-circle"></i> Adjustable lighting for comfort</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- New Treatments Showcase Section -->
+    <section class="treatments-showcase section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Therapeutic Approaches</h2>
+                <p>We offer a range of evidence-based treatments to address your specific needs.</p>
+            </div>
+            
+            <div class="treatments-grid">
+                <div class="treatment-card">
+                    <div class="treatment-content">
+                        <h3>Cupping Therapy</h3>
+                        <p>Cupping therapy is an ancient form of alternative medicine where special cups are placed on the skin to create suction. This practice helps with pain, inflammation, blood flow, relaxation, and well-being.</p>
+                        <ul class="treatment-benefits">
+                            <li><i class="fas fa-check-circle"></i> Relieves muscle tension and pain</li>
+                            <li><i class="fas fa-check-circle"></i> Promotes blood circulation</li>
+                            <li><i class="fas fa-check-circle"></i> Aids in relaxation and well-being</li>
+                            <li><i class="fas fa-check-circle"></i> Helps with inflammatory conditions</li>
+                        </ul>
+                        <a href="services.html#cupping" class="btn btn-outline">Learn More</a>
+                    </div>
+                    <div class="treatment-video-container">
+                        <video class="treatment-video" autoplay loop muted playsinline>
+                            <source src="videos/cupping-demo.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-overlay">
+                            <span class="play-icon"><i class="fas fa-play"></i></span>
+                            <span class="unmute-text">Click to unmute</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="team-section section">
         <div class="container">
             <div class="section-header">
@@ -428,6 +492,35 @@
                     });
                 });
             });
+            
+            // Video Interaction Handling
+            const video = document.querySelector('.treatment-video');
+            if (video) {
+                const overlay = video.parentElement.querySelector('.video-overlay');
+                
+                // Handle click to play/pause
+                overlay.addEventListener('click', () => {
+                    if (video.paused) {
+                        video.play();
+                        video.muted = false;
+                        overlay.style.opacity = '0';
+                    } else {
+                        video.pause();
+                        video.muted = true;
+                        overlay.style.opacity = '1';
+                    }
+                });
+                
+                // Show overlay when video is paused
+                video.addEventListener('pause', () => {
+                    overlay.style.opacity = '1';
+                });
+                
+                // Hide overlay when video is playing
+                video.addEventListener('play', () => {
+                    overlay.style.opacity = '0';
+                });
+            }
         });
     </script>
 </body>

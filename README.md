@@ -45,6 +45,7 @@ The website requires the following images:
 ## Website Structure
 
 The website consists of the following pages:
+
 - Homepage (index.html)
 - Services page (services.html)
 - About Us page (about.html)
@@ -62,6 +63,7 @@ The website consists of the following pages:
 ## Form Handling
 
 The website includes two forms:
+
 - Contact form (processed by `php/contact-handler.php`)
 - Booking form (processed by `php/booking-handler.php`)
 

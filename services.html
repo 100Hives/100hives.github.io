@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Explore our range of therapy services including massage therapy, physical therapy, and specialized treatments at Release Therapies.">
     <title>Our Services | Release Therapies</title>
     <link rel="stylesheet" href="css/style.css">
@@ -24,7 +24,7 @@
                     <a href="contact.html">Contact</a>
                 </div>
                 <a href="booking.html" class="btn nav-btn">Book Appointment</a>
-                <div class="mobile-menu" id="mobileMenu">☰</div>
+                <div class="mobile-menu" id="mobileMenu" role="button" tabindex="0" aria-label="Open menu">☰</div>
             </nav>
         </div>
     </header>
@@ -43,6 +43,15 @@
             <div class="section-header">
                 <h2>Comprehensive Therapy Services</h2>
                 <p>At Release Therapies, we offer a wide range of therapeutic services designed to address your specific needs. Our experienced therapists are dedicated to helping you achieve optimal health and wellness through personalized care.</p>
+            </div>
+            
+            <!-- Featured Treatment Room Image -->
+            <div class="treatment-room-showcase">
+                <img src="images/massage-table-room.jpg" alt="Our Professional Treatment Room" class="treatment-room-img">
+                <div class="treatment-room-content">
+                    <h3>Professional Treatment Environment</h3>
+                    <p>We provide a calm, comfortable space with professional-grade equipment to ensure you receive the highest quality care during your therapy sessions.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -167,24 +176,43 @@
             <div class="category">
                 <h2>Specialized Treatments</h2>
                 <div class="services-grid">
-                    <div class="service-card">
+                    <div class="service-card featured" id="cupping">
                         <div class="service-image">
-                            <img src="images/service-2.jpg" alt="Cupping Therapy">
+                            <video class="service-video" autoplay loop muted playsinline>
+                                <source src="videos/cupping-demo.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="video-overlay">
+                                <span class="play-icon"><i class="fas fa-play"></i></span>
+                                <span class="unmute-text">Click to unmute</span>
+                            </div>
                         </div>
                         <div class="service-content">
                             <h3>Cupping Therapy</h3>
-                            <p>An ancient form of alternative medicine where cups are placed on the skin to create suction. This mobilizes blood flow to promote healing, helps with pain, inflammation, blood flow, relaxation and well-being.</p>
+                            <p class="premium-text">Experience the ancient healing art of cupping therapy, now with modern therapeutic techniques. Our expert practitioners use this time-tested method to promote healing, reduce pain, and enhance overall wellness.</p>
+                            <div class="service-benefits">
+                                <h4>Benefits Include:</h4>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Improved blood circulation</li>
+                                    <li><i class="fas fa-check"></i> Reduced muscle tension</li>
+                                    <li><i class="fas fa-check"></i> Enhanced recovery time</li>
+                                    <li><i class="fas fa-check"></i> Deep tissue healing</li>
+                                </ul>
+                            </div>
                             <div class="service-details">
                                 <div class="detail">
                                     <span class="label">Duration:</span>
-                                    <span class="value">30 minutes</span>
+                                    <span class="value">30-45 minutes</span>
                                 </div>
                                 <div class="detail">
                                     <span class="label">Price:</span>
-                                    <span class="value">£45</span>
+                                    <span class="value">£65</span>
                                 </div>
                             </div>
-                            <a href="booking.html?service=Cupping%20Therapy" class="btn btn-sm">Book Now</a>
+                            <div class="service-cta">
+                                <a href="booking.html?service=Cupping%20Therapy" class="btn btn-primary">Book Your Session</a>
+                                <a href="#" class="btn btn-outline video-modal-trigger">Watch Full Demo</a>
+                            </div>
                         </div>
                     </div>
                     
@@ -376,5 +404,45 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     <!-- Main JavaScript -->
     <script src="js/main.js"></script>
+    <!-- Form Validation -->
+    <script src="js/validation.js"></script>
+    
+    <!-- Add touch detection script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Detect touch devices
+            if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+                document.body.classList.add('touch-device');
+            }
+            
+            // Add touch feedback to service cards
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                card.addEventListener('touchstart', function() {
+                    this.classList.add('touch-active');
+                }, { passive: true });
+                
+                card.addEventListener('touchend', function() {
+                    this.classList.remove('touch-active');
+                    
+                    // Small delay before navigating to allow visual feedback
+                    const bookBtn = this.querySelector('.btn');
+                    if (bookBtn && event.target === bookBtn) {
+                        event.preventDefault();
+                        setTimeout(() => {
+                            window.location.href = bookBtn.getAttribute('href');
+                        }, 150);
+                    }
+                }, { passive: false });
+            });
+            
+            // Improve scrolling performance
+            const scrollingElements = document.querySelectorAll('.services-grid, .category');
+            scrollingElements.forEach(element => {
+                element.style.willChange = 'transform';
+            });
+        });
+    </script>
 </body>
 </html>
+

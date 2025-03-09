@@ -15,6 +15,72 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize any sliders if they exist
     initializeSliders();
+    
+    // Video Interaction Handling
+    const videos = document.querySelectorAll('.service-video');
+    const modalTriggers = document.querySelectorAll('.video-modal-trigger');
+    
+    videos.forEach(video => {
+        const overlay = video.parentElement.querySelector('.video-overlay');
+        
+        // Handle click to play/pause
+        overlay.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                video.muted = false;
+                overlay.style.opacity = '0';
+            } else {
+                video.pause();
+                video.muted = true;
+                overlay.style.opacity = '1';
+            }
+        });
+        
+        // Show overlay when video is paused
+        video.addEventListener('pause', () => {
+            overlay.style.opacity = '1';
+        });
+        
+        // Hide overlay when video is playing
+        video.addEventListener('play', () => {
+            overlay.style.opacity = '0';
+        });
+    });
+    
+    // Premium Animations
+    const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.service-card, .section-header, .cta-content');
+        
+        elements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementBottom = element.getBoundingClientRect().bottom;
+            
+            if (elementTop < window.innerHeight && elementBottom > 0) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    };
+    
+    // Initial check for elements in viewport
+    animateOnScroll();
+    
+    // Check on scroll
+    window.addEventListener('scroll', animateOnScroll);
+    
+    // Smooth Scroll for Navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
 });
 
 /**
@@ -27,6 +93,21 @@ function setupMobileNavigation() {
     
     // Check if mobile nav already exists, if not create it
     let mobileNav = document.querySelector('.mobile-nav');
+    
+    // Function to close the mobile menu
+    const closeMobileMenu = () => {
+        mobileNav.classList.remove('active');
+        mobileNav.classList.remove('slide-in');
+        mobileNav.classList.add('slide-out');
+        
+        // Enable body scrolling
+        document.body.classList.remove('menu-active');
+        
+        // Remove the slide-out class after animation completes
+        setTimeout(() => {
+            mobileNav.classList.remove('slide-out');
+        }, 300);
+    };
     
     if (!mobileNav) {
         // Create mobile navigation
@@ -44,6 +125,9 @@ function setupMobileNavigation() {
         const closeBtn = document.createElement('div');
         closeBtn.className = 'close-menu';
         closeBtn.innerHTML = '&times;';
+        closeBtn.setAttribute('aria-label', 'Close menu');
+        closeBtn.setAttribute('role', 'button');
+        closeBtn.setAttribute('tabindex', '0');
         
         mobileNavHeader.appendChild(logo);
         mobileNavHeader.appendChild(closeBtn);
@@ -56,6 +140,8 @@ function setupMobileNavigation() {
         const navLinks = document.querySelectorAll('.nav-links a');
         navLinks.forEach(link => {
             const newLink = link.cloneNode(true);
+            // Add event listener to close menu when link is clicked
+            newLink.addEventListener('click', closeMobileMenu);
             mobileNavLinks.appendChild(newLink);
         });
         
@@ -64,67 +150,113 @@ function setupMobileNavigation() {
         if (navBtn) {
             const mobileNavBtn = navBtn.cloneNode(true);
             mobileNavBtn.className = 'btn mobile-nav-btn';
-            mobileNav.appendChild(mobileNavHeader);
-            mobileNav.appendChild(mobileNavLinks);
-            mobileNav.appendChild(mobileNavBtn);
-        } else {
-            mobileNav.appendChild(mobileNavHeader);
-            mobileNav.appendChild(mobileNavLinks);
+            // Add event listener to close menu when button is clicked
+            mobileNavBtn.addEventListener('click', closeMobileMenu);
+            mobileNavLinks.appendChild(mobileNavBtn);
         }
         
+        // Append elements to mobile nav
+        mobileNav.appendChild(mobileNavHeader);
+        mobileNav.appendChild(mobileNavLinks);
+        
+        // Append mobile nav to body
         document.body.appendChild(mobileNav);
         
         // Add event listener to close button
-        closeBtn.addEventListener('click', function() {
-            mobileNav.classList.remove('active');
-            mobileNav.classList.add('slide-out');
-            
-            // Enable body scrolling
-            document.body.style.overflow = '';
-            
-            setTimeout(() => {
-                mobileNav.classList.remove('slide-out');
-            }, 300);
+        closeBtn.addEventListener('click', closeMobileMenu);
+        
+        // Add keyboard support for close button
+        closeBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                closeMobileMenu();
+            }
+        });
+        
+        // Close menu when clicking outside
+        mobileNav.addEventListener('click', (e) => {
+            if (e.target === mobileNav) {
+                closeMobileMenu();
+            }
+        });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                closeMobileMenu();
+            }
         });
     }
     
     // Add event listener to mobile menu button
-    mobileMenuBtn.addEventListener('click', function() {
-        mobileNav.classList.add('active', 'slide-in');
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileNav.classList.add('active');
+        mobileNav.classList.add('slide-in');
         
-        // Disable body scrolling when menu is open
-        document.body.style.overflow = 'hidden';
+        // Disable body scrolling
+        document.body.classList.add('menu-active');
+        
+        // Focus on the close button for accessibility
+        setTimeout(() => {
+            mobileNav.querySelector('.close-menu').focus();
+        }, 300);
     });
+    
+    // Add keyboard support for mobile menu button
+    mobileMenuBtn.setAttribute('role', 'button');
+    mobileMenuBtn.setAttribute('tabindex', '0');
+    mobileMenuBtn.setAttribute('aria-label', 'Open menu');
+    
+    mobileMenuBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            mobileMenuBtn.click();
+        }
+    });
+    
+    // Handle touch events for better mobile experience
+    if ('ontouchstart' in window) {
+        const touchElements = document.querySelectorAll('.btn, .nav-links a, .service-card, .testimonial-card');
+        
+        touchElements.forEach(element => {
+            element.addEventListener('touchstart', () => {
+                element.classList.add('touch-active');
+            }, { passive: true });
+            
+            element.addEventListener('touchend', () => {
+                element.classList.remove('touch-active');
+            }, { passive: true });
+        });
+    }
 }
 
 /**
  * Sets up smooth scrolling for anchor links
  */
 function setupSmoothScrolling() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
             const targetId = this.getAttribute('href');
-            
-            // Skip if it's just "#" or empty
-            if (targetId === '#' || targetId === '') return;
-            
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
-                e.preventDefault();
-                
-                // Close mobile menu if it's open
+                // Close mobile menu if open
                 const mobileNav = document.querySelector('.mobile-nav');
                 if (mobileNav && mobileNav.classList.contains('active')) {
                     mobileNav.classList.remove('active');
-                    document.body.style.overflow = '';
+                    document.body.classList.remove('menu-active');
                 }
                 
-                // Scroll to the target element
+                // Scroll to target
                 targetElement.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
+                
+                // Update URL hash without scrolling
+                history.pushState(null, null, targetId);
             }
         });
     });
@@ -135,132 +267,94 @@ function setupSmoothScrolling() {
  */
 function setupStickyHeader() {
     const header = document.querySelector('header');
-    let lastScrollTop = 0;
-    
     if (!header) return;
     
-    window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    let lastScrollTop = 0;
+    const scrollThreshold = 50;
+    
+    window.addEventListener('scroll', () => {
+        const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        // Add box shadow when scrolled
-        if (scrollTop > 0) {
-            header.classList.add('scrolled');
+        // Add scrolled class when scrolled down
+        if (currentScrollTop > scrollThreshold) {
+            header.classList.add('nav-scrolled');
         } else {
-            header.classList.remove('scrolled');
+            header.classList.remove('nav-scrolled');
         }
         
         // Hide header when scrolling down, show when scrolling up
-        if (scrollTop > lastScrollTop && scrollTop > 200) {
-            header.style.transform = 'translateY(-100%)';
+        if (currentScrollTop > lastScrollTop && currentScrollTop > 200) {
+            // Scrolling down
+            header.classList.add('nav-hidden');
         } else {
-            header.style.transform = 'translateY(0)';
+            // Scrolling up
+            header.classList.remove('nav-hidden');
         }
         
-        lastScrollTop = scrollTop;
+        lastScrollTop = currentScrollTop;
     });
 }
 
 /**
- * Initializes sliders if they exist on the page
+ * Initializes sliders on the page
  */
 function initializeSliders() {
-    // Testimonials slider - simple version without dependencies
-    const testimonialsSlider = document.querySelector('.testimonials-slider');
-    
-    if (testimonialsSlider) {
-        const testimonials = testimonialsSlider.querySelectorAll('.testimonial');
-        
-        // If there are more than 3 testimonials, set up a simple slider
-        if (testimonials.length > 3) {
+    // Testimonials slider
+    const testimonialSlider = document.querySelector('.testimonials-slider');
+    if (testimonialSlider) {
+        // Simple auto-scrolling for testimonials on mobile
+        if (window.innerWidth < 768) {
+            const testimonials = testimonialSlider.querySelectorAll('.testimonial-card');
             let currentIndex = 0;
-            const visibleCount = window.innerWidth < 768 ? 1 : 3;
             
-            // Hide all testimonials except the first visibleCount
-            testimonials.forEach((testimonial, index) => {
-                if (index >= visibleCount) {
+            // Function to show next testimonial
+            const showNextTestimonial = () => {
+                testimonials.forEach(testimonial => {
                     testimonial.style.display = 'none';
-                }
-            });
-            
-            // Create navigation buttons
-            const sliderNav = document.createElement('div');
-            sliderNav.className = 'slider-nav';
-            
-            const prevBtn = document.createElement('button');
-            prevBtn.className = 'slider-prev';
-            prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
-            
-            const nextBtn = document.createElement('button');
-            nextBtn.className = 'slider-next';
-            nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
-            
-            sliderNav.appendChild(prevBtn);
-            sliderNav.appendChild(nextBtn);
-            
-            testimonialsSlider.parentNode.appendChild(sliderNav);
-            
-            // Add event listeners to buttons
-            prevBtn.addEventListener('click', function() {
-                currentIndex = Math.max(0, currentIndex - 1);
-                updateSlider();
-            });
-            
-            nextBtn.addEventListener('click', function() {
-                currentIndex = Math.min(testimonials.length - visibleCount, currentIndex + 1);
-                updateSlider();
-            });
-            
-            // Update slider function
-            function updateSlider() {
-                testimonials.forEach((testimonial, index) => {
-                    if (index >= currentIndex && index < currentIndex + visibleCount) {
-                        testimonial.style.display = 'block';
-                    } else {
-                        testimonial.style.display = 'none';
-                    }
                 });
                 
-                // Update button states
-                prevBtn.disabled = currentIndex === 0;
-                nextBtn.disabled = currentIndex === testimonials.length - visibleCount;
-            }
+                testimonials[currentIndex].style.display = 'block';
+                currentIndex = (currentIndex + 1) % testimonials.length;
+            };
             
-            // Initial update
-            updateSlider();
+            // Initialize
+            showNextTestimonial();
             
-            // Update on window resize
-            window.addEventListener('resize', function() {
-                const newVisibleCount = window.innerWidth < 768 ? 1 : 3;
+            // Auto-scroll every 5 seconds
+            setInterval(showNextTestimonial, 5000);
+            
+            // Add swipe functionality for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            testimonialSlider.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            testimonialSlider.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+            
+            const handleSwipe = () => {
+                const swipeThreshold = 50;
                 
-                if (newVisibleCount !== visibleCount) {
-                    currentIndex = 0;
-                    updateSlider();
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    // Swipe left - next
+                    showNextTestimonial();
+                } else if (touchEndX > touchStartX + swipeThreshold) {
+                    // Swipe right - previous
+                    currentIndex = (currentIndex - 2 + testimonials.length) % testimonials.length;
+                    showNextTestimonial();
                 }
-            });
+            };
         }
     }
 }
 
-/**
- * Adds a class to an element after a delay
- * @param {HTMLElement} element - The element to add the class to
- * @param {string} className - The class to add
- * @param {number} delay - The delay in milliseconds
- */
-function addClassWithDelay(element, className, delay) {
-    setTimeout(() => {
-        element.classList.add(className);
-    }, delay);
-}
-
-/**
- * Removes a class from an element after a delay
- * @param {HTMLElement} element - The element to remove the class from
- * @param {string} className - The class to remove
- * @param {number} delay - The delay in milliseconds
- */
-function removeClassWithDelay(element, className, delay) {
-    setTimeout(() => {
-        element.classList.remove(className);
-    }, delay);
-}
+// Detect touch devices
+document.addEventListener('DOMContentLoaded', function() {
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        document.body.classList.add('touch-device');
+    }
+});

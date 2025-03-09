@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Release Therapies - Professional therapy services to help you recover, rebuild strength, and return to your active lifestyle.">
     <title>Release Therapies</title>
     <link rel="stylesheet" href="css/style.css">
@@ -24,7 +24,7 @@
                     <a href="contact.html">Contact</a>
                 </div>
                 <a href="booking.html" class="btn nav-btn">Book Appointment</a>
-                <div class="mobile-menu" id="mobileMenu">☰</div>
+                <div class="mobile-menu" id="mobileMenu" role="button" tabindex="0" aria-label="Open menu">☰</div>
             </nav>
         </div>
     </header>
@@ -50,9 +50,9 @@
                 <img src="images/logo-circle.png" alt="Release Therapies Logo" class="logo-circle">
             </div>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card" tabindex="0">
                     <div class="service-img">
-                        <img src="images/service-sports.jpg" alt="Sports Rehabilitation">
+                        <img src="images/service-sports.jpg" alt="Sports Rehabilitation" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3>Sports Rehabilitation</h3>
@@ -60,9 +60,9 @@
                         <a href="booking.html?service=sports" class="btn btn-outline">Book Now</a>
                     </div>
                 </div>
-                <div class="service-card">
+                <div class="service-card" tabindex="0">
                     <div class="service-img">
-                        <img src="images/service-orthopedic.jpg" alt="Orthopedic Therapy">
+                        <img src="images/service-orthopedic.jpg" alt="Orthopedic Therapy" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3>Orthopedic Therapy</h3>
@@ -70,9 +70,9 @@
                         <a href="booking.html?service=orthopedic" class="btn btn-outline">Book Now</a>
                     </div>
                 </div>
-                <div class="service-card">
+                <div class="service-card" tabindex="0">
                     <div class="service-img">
-                        <img src="images/service-recovery.jpg" alt="Post-Surgery Recovery">
+                        <img src="images/service-recovery.jpg" alt="Post-Surgery Recovery" loading="lazy">
                     </div>
                     <div class="service-content">
                         <h3>Post-Surgery Recovery</h3>
@@ -106,7 +106,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="booking-image">
-                            <img src="images/booking-preview.jpg" alt="Book your therapy session">
+                            <img src="images/booking-preview.jpg" alt="Book your therapy session" loading="lazy">
                             <div class="dot-pattern"></div>
                         </div>
                     </div>
@@ -122,14 +122,14 @@
                 <p>Hear from clients who have experienced the <span class="highlight">release</span> from pain and limitations</p>
                 <img src="images/logo-circle.png" alt="Release Therapies Logo" class="logo-circle">
             </div>
-            <div class="testimonials-slider">
-                <div class="testimonial-card">
+            <div class="testimonials-slider" role="region" aria-label="Client testimonials">
+                <div class="testimonial-card" tabindex="0">
                     <div class="testimonial-content">
                         <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
                         <p>After months of shoulder pain limiting my tennis game, the team at <strong>Release Therapies</strong> helped me regain full mobility. I'm now back on the court and playing better than ever!</p>
                         <div class="client-info">
                             <div class="client-img">
-                                <img src="images/client-1.jpg" alt="Sarah M.">
+                                <img src="images/client-1.jpg" alt="Sarah M." loading="lazy">
                             </div>
                             <div class="client-details">
                                 <h4>Sarah M.</h4>
@@ -138,13 +138,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
+                <div class="testimonial-card" tabindex="0">
                     <div class="testimonial-content">
                         <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
                         <p>Following knee surgery, I was worried about returning to my active lifestyle. The personalized recovery plan from <strong>Release Therapies</strong> helped me build strength and confidence. I'm now pain-free and back to hiking!</p>
                         <div class="client-info">
                             <div class="client-img">
-                                <img src="images/client-2.jpg" alt="David K.">
+                                <img src="images/client-2.jpg" alt="David K." loading="lazy">
                             </div>
                             <div class="client-details">
                                 <h4>David K.</h4>
@@ -153,13 +153,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
+                <div class="testimonial-card" tabindex="0">
                     <div class="testimonial-content">
                         <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
                         <p>Chronic back pain was affecting every aspect of my life. The therapists at <strong>Release Therapies</strong> identified the root cause and created a treatment plan that has given me back my quality of life. I can't thank them enough!</p>
                         <div class="client-info">
                             <div class="client-img">
-                                <img src="images/client-3.jpg" alt="Emma T.">
+                                <img src="images/client-3.jpg" alt="Emma T." loading="lazy">
                             </div>
                             <div class="client-details">
                                 <h4>Emma T.</h4>
@@ -167,6 +167,16 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <!-- Mobile testimonial navigation -->
+                <div class="testimonial-nav">
+                    <button class="testimonial-nav-btn prev" aria-label="Previous testimonial"><i class="fas fa-chevron-left"></i></button>
+                    <div class="testimonial-dots">
+                        <span class="testimonial-dot active" data-index="0"></span>
+                        <span class="testimonial-dot" data-index="1"></span>
+                        <span class="testimonial-dot" data-index="2"></span>
+                    </div>
+                    <button class="testimonial-nav-btn next" aria-label="Next testimonial"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
@@ -220,11 +230,121 @@
         <div class="footer-pattern"></div>
     </footer>
 
+    <!-- Back to top button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <!-- Font Awesome for icons -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     <!-- Main JavaScript -->
     <script src="js/main.js"></script>
     <!-- Form Validation -->
     <script src="js/validation.js"></script>
+    
+    <!-- Add testimonial slider script for mobile -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Testimonial slider for mobile
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+            const dots = document.querySelectorAll('.testimonial-dot');
+            const prevBtn = document.querySelector('.testimonial-nav-btn.prev');
+            const nextBtn = document.querySelector('.testimonial-nav-btn.next');
+            let currentIndex = 0;
+            
+            // Only initialize on mobile
+            if (window.innerWidth < 768) {
+                // Hide all testimonials except the first one
+                testimonialCards.forEach((card, index) => {
+                    if (index !== 0) {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Show testimonial at current index
+                function showTestimonial(index) {
+                    testimonialCards.forEach(card => card.style.display = 'none');
+                    testimonialCards[index].style.display = 'block';
+                    
+                    // Update dots
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    dots[index].classList.add('active');
+                }
+                
+                // Next testimonial
+                function nextTestimonial() {
+                    currentIndex = (currentIndex + 1) % testimonialCards.length;
+                    showTestimonial(currentIndex);
+                }
+                
+                // Previous testimonial
+                function prevTestimonial() {
+                    currentIndex = (currentIndex - 1 + testimonialCards.length) % testimonialCards.length;
+                    showTestimonial(currentIndex);
+                }
+                
+                // Event listeners
+                if (nextBtn) nextBtn.addEventListener('click', nextTestimonial);
+                if (prevBtn) prevBtn.addEventListener('click', prevTestimonial);
+                
+                // Dot navigation
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        currentIndex = index;
+                        showTestimonial(currentIndex);
+                    });
+                });
+                
+                // Swipe functionality
+                let touchStartX = 0;
+                let touchEndX = 0;
+                
+                const testimonialSlider = document.querySelector('.testimonials-slider');
+                if (testimonialSlider) {
+                    testimonialSlider.addEventListener('touchstart', (e) => {
+                        touchStartX = e.changedTouches[0].screenX;
+                    }, { passive: true });
+                    
+                    testimonialSlider.addEventListener('touchend', (e) => {
+                        touchEndX = e.changedTouches[0].screenX;
+                        handleSwipe();
+                    }, { passive: true });
+                }
+                
+                function handleSwipe() {
+                    const swipeThreshold = 50;
+                    
+                    if (touchEndX < touchStartX - swipeThreshold) {
+                        // Swipe left - next
+                        nextTestimonial();
+                    } else if (touchEndX > touchStartX + swipeThreshold) {
+                        // Swipe right - previous
+                        prevTestimonial();
+                    }
+                }
+            }
+            
+            // Back to top button
+            const backToTopBtn = document.getElementById('backToTop');
+            if (backToTopBtn) {
+                // Show button when scrolled down
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset > 300) {
+                        backToTopBtn.classList.add('visible');
+                    } else {
+                        backToTopBtn.classList.remove('visible');
+                    }
+                });
+                
+                // Scroll to top when clicked
+                backToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
