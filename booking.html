@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book your appointment with Release Therapies. Schedule a session with our expert therapists and start your journey to recovery.">
+    <title>Book an Appointment - Release Therapies</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/booking.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Release Therapies Logo" width="180" height="auto">
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <a href="booking.html" class="btn nav-btn active">Book Appointment</a>
+                <div class="mobile-menu" id="mobileMenu">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-header">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Release Therapies Logo" width="180" height="auto">
+            </a>
+            <button class="close-menu" aria-label="Close menu">&times;</button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <a href="booking.html" class="mobile-nav-btn active">Book Appointment</a>
+    </div>
+    <div class="mobile-nav-overlay"></div>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Book an Appointment</h1>
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a> > Book an Appointment
+            </div>
+        </div>
+    </section>
+
+    <section class="booking-section">
+        <div class="container">
+            <div class="booking-intro">
+                <h2>Schedule Your Session</h2>
+                <p>Book your appointment with Release Therapies. Please fill out the form below with your details and preferred appointment time. We'll confirm your booking via email or phone as soon as possible.</p>
+            </div>
+            
+            <!-- Form status message (hidden by default) -->
+            <div class="form-status" id="formStatus"></div>
+            
+            <div class="booking-container">
+                <div class="booking-form-container">
+                    <form id="booking-form" action="php/booking-handler.php" method="post">
+                        <div class="form-section">
+                            <h3>Personal Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="name">Full Name*</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address*</label>
+                                    <input type="email" id="email" name="email" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone">Phone Number*</label>
+                                    <input type="tel" id="phone" name="phone" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" id="address" name="address" class="form-control">
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" name="city" class="form-control">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="zipCode">Zip Code</label>
+                                    <input type="text" id="zipCode" name="zipCode" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section custom-date-time-ui">
+                            <h3>Appointment Details</h3>
+                            
+                            <div class="form-group">
+                                <label for="serviceType">Service Type*</label>
+                                <select id="serviceType" name="serviceType" class="form-control" required>
+                                    <option value="">Select a service</option>
+                                    <option value="Deep Tissue Massage">Deep Tissue Massage</option>
+                                    <option value="Swedish Massage">Swedish Massage</option>
+                                    <option value="Sports Massage">Sports Massage</option>
+                                    <option value="Physical Therapy">Physical Therapy</option>
+                                    <option value="Cupping Therapy">Cupping Therapy</option>
+                                    <option value="Myofascial Release">Myofascial Release</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="therapist">Preferred Therapist</label>
+                                <select id="therapist" name="therapist" class="form-control">
+                                    <option value="">No preference</option>
+                                    <option value="John Smith">John Smith</option>
+                                    <option value="Sarah Johnson">Sarah Johnson</option>
+                                    <option value="Michael Brown">Michael Brown</option>
+                                    <option value="Emily Davis">Emily Davis</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Hidden fields for date and time selection -->
+                            <input type="hidden" id="appointment-date" name="appointmentDate">
+                            <input type="hidden" id="appointment-time" name="appointmentTime">
+                            
+                            <!-- Custom Date Selection -->
+                            <div class="form-group">
+                                <label>Select Date*</label>
+                                <div class="calendar-container">
+                                    <div class="calendar-header">
+                                        <button type="button" class="calendar-nav-btn" id="prevMonthBtn" disabled>&lt;</button>
+                                        <span class="calendar-month-text" id="currentMonth">July 2025</span>
+                                        <button type="button" class="calendar-nav-btn" id="nextMonthBtn">&gt;</button>
+                                    </div>
+                                    <div class="calendar-grid">
+                                        <div class="calendar-day-header">Sun</div>
+                                        <div class="calendar-day-header">Mon</div>
+                                        <div class="calendar-day-header">Tue</div>
+                                        <div class="calendar-day-header">Wed</div>
+                                        <div class="calendar-day-header">Thu</div>
+                                        <div class="calendar-day-header">Fri</div>
+                                        <div class="calendar-day-header">Sat</div>
+                                    </div>
+                                    <div id="calendarDays" class="calendar-days-grid"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Custom Time Selection -->
+                            <div class="form-group">
+                                <label>Select Time (1-hour slots)*</label>
+                                <div class="time-slots-container">
+                                    <div class="time-slots-grid" id="timeSlots">
+                                        <!-- Time slots will be generated by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Dynamic Pricing Information -->
+                            <div class="dynamic-pricing">
+                                <h3>Dynamic Pricing</h3>
+                                <p class="discount">Monday-Tuesday: £34 (15% discount)</p>
+                                <p>Wednesday-Thursday: £40 (standard rate)</p>
+                                <p class="premium">Friday: £46 (15% premium)</p>
+                                <p class="premium">Saturday: £52 (30% premium)</p>
+                                <p class="premium">Sunday: £60 (50% premium)</p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="alternateDate">Alternate Date (Optional)</label>
+                                <input type="date" id="alternateDate" name="alternateDate" class="form-control">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="duration">Session Duration*</label>
+                                <select id="duration" name="duration" class="form-control" required>
+                                    <option value="">Select duration</option>
+                                    <option value="30 minutes">30 minutes</option>
+                                    <option value="60 minutes">60 minutes</option>
+                                    <option value="90 minutes">90 minutes</option>
+                                    <option value="120 minutes">120 minutes</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Health Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="healthConcerns">Do you have any health concerns or conditions we should be aware of?</label>
+                                <textarea id="healthConcerns" name="healthConcerns" class="form-control" rows="3"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="injuries">Any recent injuries or surgeries?</label>
+                                <textarea id="injuries" name="injuries" class="form-control" rows="2"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="allergies">Do you have any allergies?</label>
+                                <input type="text" id="allergies" name="allergies" class="form-control">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="goals">What are your goals for this session?</label>
+                                <textarea id="goals" name="goals" class="form-control" rows="2"></textarea>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="firstVisit" name="firstVisit" value="yes">
+                                <label for="firstVisit">This is my first visit</label>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="insurance" name="insurance" value="yes">
+                                <label for="insurance">I plan to use insurance</label>
+                            </div>
+                            
+                            <div class="form-group insurance-details" id="insuranceDetails" style="display: none;">
+                                <label for="insuranceProvider">Insurance Provider</label>
+                                <input type="text" id="insuranceProvider" name="insuranceProvider" class="form-control">
+                                
+                                <label for="policyNumber">Policy Number</label>
+                                <input type="text" id="policyNumber" name="policyNumber" class="form-control">
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Additional Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="additionalNotes">Any additional notes or requests?</label>
+                                <textarea id="additionalNotes" name="additionalNotes" class="form-control" rows="3"></textarea>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="termsAgree" name="termsAgree" value="yes" required>
+                                <label for="termsAgree">I agree to the <a href="#" class="terms-link">terms and conditions</a>*</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Book Appointment</button>
+                            <button type="reset" class="btn btn-outline">Reset Form</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="booking-sidebar">
+                    <div class="sidebar-section">
+                        <h3>Why Choose Us</h3>
+                        <ul class="benefits-list">
+                            <li><i class="fas fa-check-circle"></i> Experienced, licensed therapists</li>
+                            <li><i class="fas fa-check-circle"></i> Personalized treatment plans</li>
+                            <li><i class="fas fa-check-circle"></i> Comfortable, private treatment rooms</li>
+                            <li><i class="fas fa-check-circle"></i> Flexible scheduling options</li>
+                            <li><i class="fas fa-check-circle"></i> Insurance accepted for many services</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3>Booking Information</h3>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Hours of Operation</h4>
+                                <p>Monday - Friday: 9:00 AM - 7:00 PM<br>
+                                Saturday: 10:00 AM - 5:00 PM<br>
+                                Sunday: 10:00 AM - 3:00 PM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <h4>Phone Booking</h4>
+                                <p>If you prefer to book by phone, please call us at 
+                                <a href="tel:+447123456789">+44 7123 456789</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Feltham ASDA<br>Tilley Rd, Feltham TW13 4BH</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-section cancellation-policy">
+                        <h3>Cancellation Policy</h3>
+                        <p>We understand that sometimes schedule adjustments are necessary. We respectfully request at least 24 hours notice for cancellations or rescheduling.</p>
+                        <p>Appointments cancelled with less than 24 hours notice may be subject to a cancellation fee of 50% of the service price.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="Release Therapies Logo">
+                    <p>Expert therapy to help you recover, rebuild strength, and find freedom from pain.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="booking.html">Book Now</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li class="address">Feltham ASDA, Tilley Rd<br>Feltham TW13 4BH</li>
+                        <li class="phone"><a href="tel:+447123456789">+44 7123 456789</a></li>
+                        <li class="email"><a href="mailto:info@releasetherapies.co.uk">info@releasetherapies.co.uk</a></li>
+                    </ul>
+                </div>
+                <div class="footer-hours">
+                    <h3>Hours</h3>
+                    <ul class="hours-list">
+                        <li><span>Monday - Friday:</span> 9:00 AM - 7:00 PM</li>
+                        <li><span>Saturday:</span> 10:00 AM - 5:00 PM</li>
+                        <li><span>Sunday:</span> 10:00 AM - 3:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <a href="https://www.facebook.com/" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/release.therapies/" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2025 Release Therapies. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-pattern"></div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Processing your booking...</div>
+    </div>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <!-- Main JavaScript -->
+    <script src="js/main.js"></script>
+    <!-- Booking JavaScript -->
+    <script src="js/booking.js"></script>
+    <!-- Form Validation -->
+    <script src="js/validation.js"></script>
+</body>
+</html>
