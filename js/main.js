@@ -115,22 +115,47 @@ function setupMobileNavigation() {
         console.error('Mobile navigation elements not found');
         return;
     }
+
+    // Ensure mobile nav and overlay are in the correct initial state
+    mobileNav.style.display = 'flex';
+    mobileNav.style.right = '-100%';
+    mobileNav.style.visibility = 'hidden';
+    overlay.style.display = 'block';
+    overlay.style.opacity = '0';
+    overlay.style.visibility = 'hidden';
     
     // Function to close the mobile menu
     const closeMobileMenu = (e) => {
         if (e && e.target.classList.contains('mobile-nav-overlay')) {
             e.preventDefault();
         }
-        mobileNav.classList.remove('active');
+        mobileNav.style.right = '-100%';
+        mobileNav.style.visibility = 'hidden';
         document.body.classList.remove('menu-active');
-        overlay.style.visibility = 'hidden';
         overlay.style.opacity = '0';
+        overlay.style.visibility = 'hidden';
+        
+        // Small delay to ensure transitions complete before hiding elements
+        setTimeout(() => {
+            if (!mobileNav.classList.contains('active')) {
+                mobileNav.style.display = 'none';
+                overlay.style.display = 'none';
+            }
+        }, 400); // Match this with your CSS transition duration
     };
     
     // Function to open the mobile menu
     const openMobileMenu = (e) => {
         if (e) e.preventDefault();
+        mobileNav.style.display = 'flex';
+        overlay.style.display = 'block';
+        
+        // Force a reflow to ensure the display change takes effect
+        mobileNav.offsetHeight;
+        
         mobileNav.classList.add('active');
+        mobileNav.style.right = '0';
+        mobileNav.style.visibility = 'visible';
         document.body.classList.add('menu-active');
         overlay.style.visibility = 'visible';
         overlay.style.opacity = '1';
@@ -146,11 +171,12 @@ function setupMobileNavigation() {
     const mobileLinks = mobileNav.querySelectorAll('a');
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
-            // Close the menu but don't prevent navigation
-            mobileNav.classList.remove('active');
+            // Don't prevent default navigation
+            mobileNav.style.right = '-100%';
+            mobileNav.style.visibility = 'hidden';
             document.body.classList.remove('menu-active');
-            overlay.style.visibility = 'hidden';
             overlay.style.opacity = '0';
+            overlay.style.visibility = 'hidden';
         });
     });
     
@@ -169,6 +195,24 @@ function setupMobileNavigation() {
             closeMobileMenu();
         });
     }
+    
+    // Handle page visibility changes
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            closeMobileMenu();
+        }
+    });
+    
+    // Handle window resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            if (window.innerWidth > 768) {
+                closeMobileMenu();
+            }
+        }, 250);
+    });
 }
 
 /**
