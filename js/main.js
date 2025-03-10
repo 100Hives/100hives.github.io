@@ -17,45 +17,32 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSliders();
     
     // Video Interaction Handling
-    const videos = document.querySelectorAll('.service-video');
-    const modalTriggers = document.querySelectorAll('.video-modal-trigger');
-    
-    videos.forEach(video => {
-        const overlay = video.parentElement.querySelector('.video-overlay');
-        
-        // Handle click to play/pause
-        overlay.addEventListener('click', () => {
-            if (video.paused) {
-                video.play();
-                video.muted = false;
-                overlay.style.opacity = '0';
-            } else {
-                video.pause();
-                video.muted = true;
-                overlay.style.opacity = '1';
-            }
-        });
-        
-        // Show overlay when video is paused
-        video.addEventListener('pause', () => {
-            overlay.style.opacity = '1';
-        });
-        
-        // Hide overlay when video is playing
-        video.addEventListener('play', () => {
-            overlay.style.opacity = '0';
-        });
-    });
+    setupVideoInteractions();
     
     // Premium Animations
+    setupPremiumAnimations();
+    
+    // Back to Top Button
+    setupBackToTopButton();
+    
+    // Initialize hover effects
+    setupHoverEffects();
+});
+
+/**
+ * Sets up premium animations for elements
+ */
+function setupPremiumAnimations() {
+    // Animate elements on scroll
     const animateOnScroll = () => {
-        const elements = document.querySelectorAll('.service-card, .section-header, .cta-content');
+        const elements = document.querySelectorAll('.service-card, .section-title, .cta-content, .testimonial-card, .about-image');
         
         elements.forEach(element => {
             const elementTop = element.getBoundingClientRect().top;
             const elementBottom = element.getBoundingClientRect().bottom;
             
-            if (elementTop < window.innerHeight && elementBottom > 0) {
+            if (elementTop < window.innerHeight * 0.85 && elementBottom > 0) {
+                element.classList.add('visible');
                 element.style.opacity = '1';
                 element.style.transform = 'translateY(0)';
             }
@@ -65,167 +52,152 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial check for elements in viewport
     animateOnScroll();
     
-    // Check on scroll
-    window.addEventListener('scroll', animateOnScroll);
+    // Check on scroll with throttling for performance
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+        if (!scrollTimeout) {
+            scrollTimeout = setTimeout(function() {
+                animateOnScroll();
+                scrollTimeout = null;
+            }, 100);
+        }
+    });
     
-    // Smooth Scroll for Navigation
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
+    // Add staggered animation to mobile nav links
+    const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+    mobileLinks.forEach((link, index) => {
+        link.style.setProperty('--item-index', index);
+    });
+}
+
+/**
+ * Sets up hover effects for interactive elements
+ */
+function setupHoverEffects() {
+    // Add subtle hover effects to cards
+    const cards = document.querySelectorAll('.service-card, .testimonial-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+            this.style.boxShadow = 'var(--premium-shadow)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = 'var(--shadow-sm)';
         });
     });
-});
+    
+    // Add hover effect to buttons
+    const buttons = document.querySelectorAll('.btn:not(.nav-btn)');
+    
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+}
 
 /**
  * Sets up the mobile navigation functionality
  */
 function setupMobileNavigation() {
     const mobileMenuBtn = document.getElementById('mobileMenu');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const overlay = document.querySelector('.mobile-nav-overlay');
     
-    if (!mobileMenuBtn) return;
-    
-    // Check if mobile nav already exists, if not create it
-    let mobileNav = document.querySelector('.mobile-nav');
-    
-    // Function to close the mobile menu
-    const closeMobileMenu = () => {
-        mobileNav.classList.remove('active');
-        mobileNav.classList.remove('slide-in');
-        mobileNav.classList.add('slide-out');
-        
-        // Enable body scrolling
-        document.body.classList.remove('menu-active');
-        
-        // Remove the slide-out class after animation completes
-        setTimeout(() => {
-            mobileNav.classList.remove('slide-out');
-        }, 300);
-    };
-    
-    if (!mobileNav) {
-        // Create mobile navigation
-        mobileNav = document.createElement('div');
-        mobileNav.className = 'mobile-nav';
-        
-        // Create mobile navigation header
-        const mobileNavHeader = document.createElement('div');
-        mobileNavHeader.className = 'mobile-nav-header';
-        
-        // Clone logo
-        const logo = document.querySelector('.logo').cloneNode(true);
-        
-        // Create close button
-        const closeBtn = document.createElement('div');
-        closeBtn.className = 'close-menu';
-        closeBtn.innerHTML = '&times;';
-        closeBtn.setAttribute('aria-label', 'Close menu');
-        closeBtn.setAttribute('role', 'button');
-        closeBtn.setAttribute('tabindex', '0');
-        
-        mobileNavHeader.appendChild(logo);
-        mobileNavHeader.appendChild(closeBtn);
-        
-        // Create mobile navigation links
-        const mobileNavLinks = document.createElement('div');
-        mobileNavLinks.className = 'mobile-nav-links';
-        
-        // Clone navigation links
-        const navLinks = document.querySelectorAll('.nav-links a');
-        navLinks.forEach(link => {
-            const newLink = link.cloneNode(true);
-            // Add event listener to close menu when link is clicked
-            newLink.addEventListener('click', closeMobileMenu);
-            mobileNavLinks.appendChild(newLink);
-        });
-        
-        // Clone book appointment button
-        const navBtn = document.querySelector('.nav-btn');
-        if (navBtn) {
-            const mobileNavBtn = navBtn.cloneNode(true);
-            mobileNavBtn.className = 'btn mobile-nav-btn';
-            // Add event listener to close menu when button is clicked
-            mobileNavBtn.addEventListener('click', closeMobileMenu);
-            mobileNavLinks.appendChild(mobileNavBtn);
-        }
-        
-        // Append elements to mobile nav
-        mobileNav.appendChild(mobileNavHeader);
-        mobileNav.appendChild(mobileNavLinks);
-        
-        // Append mobile nav to body
-        document.body.appendChild(mobileNav);
-        
-        // Add event listener to close button
-        closeBtn.addEventListener('click', closeMobileMenu);
-        
-        // Add keyboard support for close button
-        closeBtn.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                closeMobileMenu();
-            }
-        });
-        
-        // Close menu when clicking outside
-        mobileNav.addEventListener('click', (e) => {
-            if (e.target === mobileNav) {
-                closeMobileMenu();
-            }
-        });
-        
-        // Close menu on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
-                closeMobileMenu();
-            }
-        });
+    if (!mobileMenuBtn || !mobileNav || !overlay) {
+        console.error('Mobile navigation elements not found');
+        return;
     }
     
-    // Add event listener to mobile menu button
-    mobileMenuBtn.addEventListener('click', () => {
+    // Function to close the mobile menu
+    const closeMobileMenu = (e) => {
+        if (e && e.target.classList.contains('mobile-nav-overlay')) {
+            e.preventDefault();
+        }
+        mobileNav.classList.remove('active');
+        document.body.classList.remove('menu-active');
+        overlay.style.visibility = 'hidden';
+        overlay.style.opacity = '0';
+    };
+    
+    // Function to open the mobile menu
+    const openMobileMenu = (e) => {
+        if (e) e.preventDefault();
         mobileNav.classList.add('active');
-        mobileNav.classList.add('slide-in');
-        
-        // Disable body scrolling
         document.body.classList.add('menu-active');
-        
-        // Focus on the close button for accessibility
-        setTimeout(() => {
-            mobileNav.querySelector('.close-menu').focus();
-        }, 300);
+        overlay.style.visibility = 'visible';
+        overlay.style.opacity = '1';
+    };
+    
+    // Toggle mobile menu
+    mobileMenuBtn.addEventListener('click', openMobileMenu);
+    
+    // Close menu when clicking overlay
+    overlay.addEventListener('click', closeMobileMenu);
+    
+    // Close menu when clicking navigation links
+    const mobileLinks = mobileNav.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Close the menu but don't prevent navigation
+            mobileNav.classList.remove('active');
+            document.body.classList.remove('menu-active');
+            overlay.style.visibility = 'hidden';
+            overlay.style.opacity = '0';
+        });
     });
     
-    // Add keyboard support for mobile menu button
-    mobileMenuBtn.setAttribute('role', 'button');
-    mobileMenuBtn.setAttribute('tabindex', '0');
-    mobileMenuBtn.setAttribute('aria-label', 'Open menu');
-    
-    mobileMenuBtn.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            mobileMenuBtn.click();
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+            closeMobileMenu();
         }
     });
     
-    // Handle touch events for better mobile experience
-    if ('ontouchstart' in window) {
-        const touchElements = document.querySelectorAll('.btn, .nav-links a, .service-card, .testimonial-card');
+    // Close button in mobile menu
+    const closeBtn = mobileNav.querySelector('.close-menu');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeMobileMenu();
+        });
+    }
+}
+
+/**
+ * Sets up a back to top button
+ */
+function setupBackToTopButton() {
+    // Create back to top button if it doesn't exist
+    if (!document.querySelector('.back-to-top')) {
+        const backToTopBtn = document.createElement('button');
+        backToTopBtn.className = 'back-to-top';
+        backToTopBtn.innerHTML = '&uarr;';
+        backToTopBtn.setAttribute('aria-label', 'Back to top');
+        document.body.appendChild(backToTopBtn);
         
-        touchElements.forEach(element => {
-            element.addEventListener('touchstart', () => {
-                element.classList.add('touch-active');
-            }, { passive: true });
-            
-            element.addEventListener('touchend', () => {
-                element.classList.remove('touch-active');
-            }, { passive: true });
+        // Show/hide button based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        // Scroll to top when clicked
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     }
 }
@@ -234,65 +206,55 @@ function setupMobileNavigation() {
  * Sets up smooth scrolling for anchor links
  */
 function setupSmoothScrolling() {
-    document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                // Close mobile menu if open
-                const mobileNav = document.querySelector('.mobile-nav');
-                if (mobileNav && mobileNav.classList.contains('active')) {
-                    mobileNav.classList.remove('active');
-                    document.body.classList.remove('menu-active');
-                }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
                 
-                // Scroll to target
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-                
-                // Update URL hash without scrolling
-                history.pushState(null, null, targetId);
+                // Add a small delay for mobile menu to close first
+                setTimeout(() => {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }, 100);
             }
         });
     });
 }
 
 /**
- * Sets up sticky header functionality
+ * Sets up sticky header on scroll
  */
 function setupStickyHeader() {
     const header = document.querySelector('header');
+    const isHomePage = document.body.classList.contains('home');
+    
     if (!header) return;
     
-    let lastScrollTop = 0;
-    const scrollThreshold = 50;
+    const handleScroll = () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+            
+            // Only for home page - ensure transparent header at top
+            if (isHomePage && window.scrollY <= 50) {
+                header.style.backgroundColor = 'transparent';
+                header.style.boxShadow = 'none';
+            }
+        }
+    };
     
-    window.addEventListener('scroll', () => {
-        const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        // Add scrolled class when scrolled down
-        if (currentScrollTop > scrollThreshold) {
-            header.classList.add('nav-scrolled');
-        } else {
-            header.classList.remove('nav-scrolled');
-        }
-        
-        // Hide header when scrolling down, show when scrolling up
-        if (currentScrollTop > lastScrollTop && currentScrollTop > 200) {
-            // Scrolling down
-            header.classList.add('nav-hidden');
-        } else {
-            // Scrolling up
-            header.classList.remove('nav-hidden');
-        }
-        
-        lastScrollTop = currentScrollTop;
-    });
+    // Initial check
+    handleScroll();
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
 }
 
 /**
@@ -358,3 +320,36 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.add('touch-device');
     }
 });
+
+function setupVideoInteractions() {
+    const videos = document.querySelectorAll('.service-video');
+    const modalTriggers = document.querySelectorAll('.video-modal-trigger');
+    
+    videos.forEach(video => {
+        const overlay = video.parentElement.querySelector('.video-overlay');
+        if (!overlay) return;
+        
+        // Handle click to play/pause
+        overlay.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                video.muted = false;
+                overlay.style.opacity = '0';
+            } else {
+                video.pause();
+                video.muted = true;
+                overlay.style.opacity = '1';
+            }
+        });
+        
+        // Show overlay when video is paused
+        video.addEventListener('pause', () => {
+            overlay.style.opacity = '1';
+        });
+        
+        // Hide overlay when video is playing
+        video.addEventListener('play', () => {
+            overlay.style.opacity = '0';
+        });
+    });
+}
