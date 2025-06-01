@@ -181,3 +181,60 @@ function addFormStyles() {
     // Append the style element to the head
     document.head.appendChild(style);
 }
+
+/**
+ * Validates a UK phone number
+ * @param {string} phone - The phone number to validate
+ * @returns {boolean} - Whether the phone number is valid
+ */
+function validateUKPhone(phone) {
+    // Remove all spaces, dashes, and parentheses
+    const cleanPhone = phone.replace(/[\s\-\(\)]/g, '');
+    
+    // UK phone number patterns
+    const ukMobileRegex = /^(\+44|0)[7-9]\d{9}$/;
+    const ukLandlineRegex = /^(\+44|0)[1-9]\d{8,9}$/;
+    
+    return ukMobileRegex.test(cleanPhone) || ukLandlineRegex.test(cleanPhone);
+}
+
+/**
+ * Validates password strength
+ * @param {string} password - The password to validate
+ * @returns {object} - Validation result with score and feedback
+ */
+function validatePasswordStrength(password) {
+    let score = 0;
+    const feedback = [];
+    
+    if (password.length >= 8) score++;
+    else feedback.push('At least 8 characters long');
+    
+    if (/[a-z]/.test(password)) score++;
+    else feedback.push('Include lowercase letters');
+    
+    if (/[A-Z]/.test(password)) score++;
+    else feedback.push('Include uppercase letters');
+    
+    if (/\d/.test(password)) score++;
+    else feedback.push('Include numbers');
+    
+    if (/[^a-zA-Z\d]/.test(password)) score++;
+    else feedback.push('Include special characters');
+    
+    return {
+        score,
+        isValid: score >= 3,
+        feedback: feedback
+    };
+}
+
+/**
+ * Validates that passwords match
+ * @param {string} password - The original password
+ * @param {string} confirmPassword - The confirmation password
+ * @returns {boolean} - Whether passwords match
+ */
+function validatePasswordMatch(password, confirmPassword) {
+    return password === confirmPassword && password.length > 0;
+}

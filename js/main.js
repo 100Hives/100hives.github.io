@@ -4,6 +4,15 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Performance optimizations
+    optimizePerformance();
+    
+    // Global error handling
+    setupGlobalErrorHandler();
+    
+    // Network connectivity monitoring
+    setupConnectivityMonitoring();
+    
     // Mobile Navigation Toggle
     setupMobileNavigation();
     
@@ -27,7 +36,101 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize hover effects
     setupHoverEffects();
+    
+    // Toast notification system
+    createToastContainer();
+    
+    // Enhanced form submission handling
+    enhanceFormSubmission();
+    
+    initInstagramVideos();
+    initVideoLazyLoading();
+    
+    // Pause videos when user scrolls away from section
+    const instagramSection = document.querySelector('.instagram-feed');
+    if (instagramSection && 'IntersectionObserver' in window) {
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    pauseAllVideos();
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        sectionObserver.observe(instagramSection);
+    }
 });
+
+/**
+ * Performance optimization functions
+ */
+function optimizePerformance() {
+    // Implement lazy loading for images
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+    
+    // Preload critical resources
+    preloadCriticalResources();
+    
+    // Add error handling for scripts
+    window.addEventListener('error', function(e) {
+        console.warn('Script error caught:', e.error);
+        // Could send to analytics service
+    });
+    
+    // Optimize scroll performance
+    let ticking = false;
+    const optimizedScroll = (callback) => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                callback();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    };
+    
+    // Replace direct scroll listeners with optimized version
+    window.addEventListener('scroll', () => {
+        optimizedScroll(() => {
+            // Scroll-based operations go here
+        });
+    });
+}
+
+/**
+ * Preload critical resources
+ */
+function preloadCriticalResources() {
+    const criticalImages = [
+        'images/logo.png',
+        'images/service-1.jpg'
+    ];
+    
+    criticalImages.forEach(src => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = src;
+        document.head.appendChild(link);
+    });
+}
 
 /**
  * Sets up premium animations for elements
@@ -396,4 +499,459 @@ function setupVideoInteractions() {
             overlay.style.opacity = '0';
         });
     });
+}
+
+/**
+ * Toast notification system for user feedback
+ */
+function createToastContainer() {
+    if (!document.querySelector('.toast-container')) {
+        const container = document.createElement('div');
+        container.className = 'toast-container';
+        document.body.appendChild(container);
+    }
+}
+
+function showToast(message, type = 'success', duration = 5000) {
+    createToastContainer();
+    
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    
+    const icon = type === 'success' ? '✓' : '⚠';
+    
+    toast.innerHTML = `
+        <div class="toast-content">
+            <span class="toast-icon">${icon}</span>
+            <span class="toast-message">${message}</span>
+            <button class="toast-close" aria-label="Close notification">&times;</button>
+        </div>
+    `;
+    
+    const container = document.querySelector('.toast-container');
+    container.appendChild(toast);
+    
+    // Show toast
+    setTimeout(() => toast.classList.add('show'), 100);
+    
+    // Auto hide
+    const autoHide = setTimeout(() => {
+        hideToast(toast);
+    }, duration);
+    
+    // Manual close
+    const closeBtn = toast.querySelector('.toast-close');
+    closeBtn.addEventListener('click', () => {
+        clearTimeout(autoHide);
+        hideToast(toast);
+    });
+}
+
+function hideToast(toast) {
+    toast.classList.remove('show');
+    setTimeout(() => {
+        if (toast.parentNode) {
+            toast.parentNode.removeChild(toast);
+        }
+    }, 300);
+}
+
+/**
+ * Enhanced form submission handling with better error feedback
+ */
+function enhanceFormSubmission() {
+    const forms = document.querySelectorAll('form');
+    
+    forms.forEach(form => {
+        // Add loading state on submit
+        form.addEventListener('submit', function(e) {
+            const submitBtn = form.querySelector('button[type="submit"]');
+            if (submitBtn && !form.classList.contains('no-loading')) {
+                submitBtn.classList.add('loading');
+                submitBtn.disabled = true;
+                
+                // Re-enable after timeout (fallback)
+                setTimeout(() => {
+                    submitBtn.classList.remove('loading');
+                    submitBtn.disabled = false;
+                }, 10000);
+            }
+        });
+        
+        // Add real-time validation
+        const inputs = form.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                validateField(this);
+            });
+            
+            input.addEventListener('input', function() {
+                // Remove error state when user starts typing
+                if (this.classList.contains('error-field')) {
+                    removeFieldError(this);
+                }
+            });
+        });
+    });
+}
+
+/**
+ * Validate individual field
+ */
+function validateField(field) {
+    const fieldType = field.type;
+    const fieldValue = field.value.trim();
+    
+    // Clear previous errors
+    removeFieldError(field);
+    
+    // Required field validation
+    if (field.hasAttribute('required') && !fieldValue) {
+        showFieldError(field, `${getFieldLabel(field)} is required`);
+        return false;
+    }
+    
+    // Type-specific validation
+    switch (fieldType) {
+        case 'email':
+            if (fieldValue && !validateEmail(fieldValue)) {
+                showFieldError(field, 'Please enter a valid email address');
+                return false;
+            }
+            break;
+            
+        case 'tel':
+            if (fieldValue && !validateUKPhone(fieldValue)) {
+                showFieldError(field, 'Please enter a valid UK phone number');
+                return false;
+            }
+            break;
+            
+        case 'password':
+            if (fieldValue) {
+                const validation = validatePasswordStrength(fieldValue);
+                if (!validation.isValid) {
+                    showFieldError(field, `Password must include: ${validation.feedback.join(', ')}`);
+                    return false;
+                }
+            }
+            break;
+    }
+    
+    // Check password confirmation
+    if (field.id === 'confirmPassword') {
+        const passwordField = document.getElementById('registerPassword') || document.getElementById('loginPassword');
+        if (passwordField && !validatePasswordMatch(passwordField.value, fieldValue)) {
+            showFieldError(field, 'Passwords do not match');
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+/**
+ * Show field-specific error
+ */
+function showFieldError(field, message) {
+    field.classList.add('error-field');
+    
+    const formGroup = field.closest('.form-group');
+    if (formGroup) {
+        let errorDiv = formGroup.querySelector('.field-error');
+        if (!errorDiv) {
+            errorDiv = document.createElement('div');
+            errorDiv.className = 'field-error';
+            formGroup.appendChild(errorDiv);
+        }
+        errorDiv.textContent = message;
+        errorDiv.setAttribute('role', 'alert');
+    }
+}
+
+/**
+ * Remove field error
+ */
+function removeFieldError(field) {
+    field.classList.remove('error-field');
+    
+    const formGroup = field.closest('.form-group');
+    if (formGroup) {
+        const errorDiv = formGroup.querySelector('.field-error');
+        if (errorDiv) {
+            errorDiv.remove();
+        }
+    }
+}
+
+/**
+ * Get user-friendly field label
+ */
+function getFieldLabel(field) {
+    const label = field.closest('.form-group')?.querySelector('label');
+    return label ? label.textContent.replace('*', '').trim() : field.name || 'This field';
+}
+
+/**
+ * Validates an email address
+ * @param {string} email - The email address to validate
+ * @returns {boolean} - Whether the email is valid
+ */
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+/**
+ * Validates a UK phone number
+ * @param {string} phone - The phone number to validate
+ * @returns {boolean} - Whether the phone number is valid
+ */
+function validateUKPhone(phone) {
+    // Remove all spaces, dashes, and parentheses
+    const cleanPhone = phone.replace(/[\s\-\(\)]/g, '');
+    
+    // UK phone number patterns
+    const ukMobileRegex = /^(\+44|0)[7-9]\d{9}$/;
+    const ukLandlineRegex = /^(\+44|0)[1-9]\d{8,9}$/;
+    
+    return ukMobileRegex.test(cleanPhone) || ukLandlineRegex.test(cleanPhone);
+}
+
+/**
+ * Validates password strength
+ * @param {string} password - The password to validate
+ * @returns {object} - Validation result with score and feedback
+ */
+function validatePasswordStrength(password) {
+    let score = 0;
+    const feedback = [];
+    
+    if (password.length >= 8) score++;
+    else feedback.push('At least 8 characters long');
+    
+    if (/[a-z]/.test(password)) score++;
+    else feedback.push('Include lowercase letters');
+    
+    if (/[A-Z]/.test(password)) score++;
+    else feedback.push('Include uppercase letters');
+    
+    if (/\d/.test(password)) score++;
+    else feedback.push('Include numbers');
+    
+    if (/[^a-zA-Z\d]/.test(password)) score++;
+    else feedback.push('Include special characters');
+    
+    return {
+        score,
+        isValid: score >= 3,
+        feedback: feedback
+    };
+}
+
+/**
+ * Validates that passwords match
+ * @param {string} password - The original password
+ * @param {string} confirmPassword - The confirmation password
+ * @returns {boolean} - Whether passwords match
+ */
+function validatePasswordMatch(password, confirmPassword) {
+    return password === confirmPassword && password.length > 0;
+}
+
+/**
+ * Global error handler for better user experience
+ */
+function setupGlobalErrorHandler() {
+    // Handle uncaught JavaScript errors
+    window.addEventListener('error', function(e) {
+        console.error('JavaScript error:', e.error);
+        
+        // Check if this is a harmless error we can ignore
+        const errorMessage = e.error?.message || e.message || '';
+        const errorStack = e.error?.stack || '';
+        
+        // Don't show user error for these types of harmless errors
+        const harmlessErrors = [
+            'Non-Error promise rejection captured',
+            'Loading chunk',
+            'Loading CSS chunk',
+            'Network request failed',
+            'Image loading error',
+            'Video loading error',
+            'play() failed',
+            'The play() request was interrupted',
+            'NotAllowedError',
+            'NotSupportedError',
+            'AbortError',
+            'Script error',
+            'ResizeObserver loop limit exceeded'
+        ];
+        
+        const isHarmlessError = harmlessErrors.some(harmless => 
+            errorMessage.toLowerCase().includes(harmless.toLowerCase()) ||
+            errorStack.toLowerCase().includes(harmless.toLowerCase())
+        );
+        
+        // Only show user-facing error for serious errors
+        if (!isHarmlessError && errorMessage && !errorMessage.includes('favicon')) {
+            showToast('Something went wrong. Please try again or contact support if the issue persists.', 'error', 8000);
+        }
+    });
+    
+    // Handle unhandled promise rejections
+    window.addEventListener('unhandledrejection', function(e) {
+        console.error('Unhandled promise rejection:', e.reason);
+        
+        // Check if this is a harmless promise rejection
+        const reason = e.reason?.message || e.reason || '';
+        
+        const harmlessRejections = [
+            'play() failed',
+            'The play() request was interrupted',
+            'NotAllowedError',
+            'NotSupportedError',
+            'AbortError',
+            'Network request failed',
+            'Loading chunk failed',
+            'Image loading error',
+            'Video loading error'
+        ];
+        
+        const isHarmlessRejection = harmlessRejections.some(harmless => 
+            reason.toString().toLowerCase().includes(harmless.toLowerCase())
+        );
+        
+        // Only show user-facing error for serious promise rejections
+        if (!isHarmlessRejection && reason && !reason.toString().includes('favicon')) {
+            showToast('Something went wrong. Please try again or contact support if the issue persists.', 'error', 8000);
+        }
+        
+        // Prevent the browser from logging this to console (optional)
+        // e.preventDefault();
+    });
+}
+
+/**
+ * Network connectivity monitoring
+ */
+function setupConnectivityMonitoring() {
+    let isOnline = navigator.onLine;
+    
+    window.addEventListener('online', function() {
+        if (!isOnline) {
+            showToast('Connection restored! You\'re back online.', 'success', 3000);
+            isOnline = true;
+        }
+    });
+    
+    window.addEventListener('offline', function() {
+        showToast('You\'re currently offline. Some features may not work properly.', 'error', 5000);
+        isOnline = false;
+    });
+}
+
+// Instagram Video Functionality
+function initInstagramVideos() {
+    const videoItems = document.querySelectorAll('.instagram-item.video-item');
+    
+    videoItems.forEach(item => {
+        const video = item.querySelector('video');
+        const overlay = item.querySelector('.instagram-overlay');
+        
+        if (!video) return;
+        
+        // Set initial state
+        video.muted = true;
+        video.loop = true;
+        
+        // Click to play/pause and toggle mute
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            if (video.paused) {
+                // Pause all other videos first
+                pauseAllVideos();
+                
+                // Play this video
+                video.play().then(() => {
+                    item.classList.add('playing');
+                }).catch(err => {
+                    console.log('Video play failed:', err);
+                });
+            } else {
+                video.pause();
+                item.classList.remove('playing');
+            }
+        });
+        
+        // Hover effects
+        item.addEventListener('mouseenter', () => {
+            if (video.paused) {
+                video.currentTime = 0;
+                video.play().catch(err => {
+                    // Fail silently - some browsers require user interaction
+                });
+            }
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            if (!item.classList.contains('playing')) {
+                video.pause();
+                video.currentTime = 0;
+            }
+        });
+        
+        // Handle video end
+        video.addEventListener('ended', () => {
+            item.classList.remove('playing');
+            video.currentTime = 0;
+        });
+        
+        // Handle video errors
+        video.addEventListener('error', (e) => {
+            console.warn('Video loading error:', e);
+            // Could add fallback image here
+        });
+    });
+}
+
+function pauseAllVideos() {
+    const videoItems = document.querySelectorAll('.instagram-item.video-item');
+    videoItems.forEach(item => {
+        const video = item.querySelector('video');
+        if (video && !video.paused) {
+            video.pause();
+            item.classList.remove('playing');
+        }
+    });
+}
+
+// Intersection Observer for lazy loading videos
+function initVideoLazyLoading() {
+    const videoItems = document.querySelectorAll('.instagram-item.video-item');
+    
+    if ('IntersectionObserver' in window) {
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const video = entry.target.querySelector('video');
+                    if (video && !video.src) {
+                        const source = video.querySelector('source');
+                        if (source && source.getAttribute('data-src')) {
+                            source.src = source.getAttribute('data-src');
+                            video.load();
+                        }
+                    }
+                    videoObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            rootMargin: '50px'
+        });
+        
+        videoItems.forEach(item => {
+            videoObserver.observe(item);
+        });
+    }
 }

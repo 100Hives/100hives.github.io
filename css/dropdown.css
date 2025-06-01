@@ -1,0 +1,183 @@
+/* USER DROPDOWN MENU - Dedicated CSS File */
+.user-dropdown {
+    position: absolute !important;
+    top: 100% !important;
+    right: 0 !important;
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+    min-width: 300px !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(-10px) !important;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    z-index: 9999 !important;
+    border: 1px solid #e5e5e5 !important;
+    margin-top: 8px !important;
+    overflow: hidden !important;
+}
+
+.user-dropdown.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+.user-dropdown-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+    padding: 20px !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%) !important;
+}
+
+.user-dropdown-header i {
+    font-size: 2.5rem !important;
+    color: #c9a77c !important;
+    background: rgba(201, 167, 124, 0.1) !important;
+    padding: 12px !important;
+    border-radius: 50% !important;
+    width: 60px !important;
+    height: 60px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.user-dropdown-header .user-info {
+    flex: 1 !important;
+}
+
+.dropdown-user-name {
+    font-weight: 600 !important;
+    color: #3a4a5c !important;
+    font-size: 1.1rem !important;
+    margin-bottom: 4px !important;
+    line-height: 1.3 !important;
+}
+
+.dropdown-user-email {
+    font-size: 0.9rem !important;
+    color: #8a9299 !important;
+    line-height: 1.4 !important;
+}
+
+.dropdown-menu {
+    padding: 8px 0 !important;
+}
+
+.dropdown-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+    padding: 14px 20px !important;
+    color: #2c3e50 !important;
+    text-decoration: none !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    border: none !important;
+    background: none !important;
+    width: 100% !important;
+    text-align: left !important;
+    cursor: pointer !important;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa !important;
+    color: #3a4a5c !important;
+    transform: translateX(2px) !important;
+}
+
+.dropdown-item i {
+    width: 20px !important;
+    height: 20px !important;
+    text-align: center !important;
+    color: #c9a77c !important;
+    font-size: 1.1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.dropdown-item span {
+    flex: 1 !important;
+}
+
+.dropdown-item.logout-item {
+    color: #dc3545 !important;
+}
+
+.dropdown-item.logout-item:hover {
+    background-color: rgba(220, 53, 69, 0.05) !important;
+    color: #dc3545 !important;
+}
+
+.dropdown-item.logout-item i {
+    color: #dc3545 !important;
+}
+
+.dropdown-divider {
+    height: 1px !important;
+    background-color: #f0f0f0 !important;
+    margin: 8px 0 !important;
+}
+
+/* Account Button Styling */
+.account-btn {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    color: #3a4a5c !important;
+    font-weight: 500 !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 3px !important;
+}
+
+.account-btn:hover {
+    color: #c9a77c !important;
+    background-color: rgba(201, 167, 124, 0.1) !important;
+}
+
+.account-btn i {
+    font-size: 1rem !important;
+}
+
+/* Navigation positioning */
+.nav-links {
+    position: relative !important;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .user-dropdown {
+        min-width: 280px !important;
+        right: -10px !important;
+    }
+    
+    .user-dropdown-header {
+        padding: 16px !important;
+    }
+    
+    .user-dropdown-header i {
+        font-size: 2rem !important;
+        width: 50px !important;
+        height: 50px !important;
+        padding: 10px !important;
+    }
+    
+    .dropdown-user-name {
+        font-size: 1rem !important;
+    }
+    
+    .dropdown-user-email {
+        font-size: 0.85rem !important;
+    }
+    
+    .dropdown-item {
+        padding: 12px 16px !important;
+        font-size: 0.9rem !important;
+    }
+} 

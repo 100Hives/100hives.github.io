@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Release Therapies - User Dashboard">
+    <title>My Dashboard - Release Therapies</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Release Therapies Logo" width="180" height="auto">
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#" id="accountBtn" class="account-btn">
+                        <i class="fas fa-user"></i> My Account
+                    </a>
+                </div>
+                <a href="booking.html" class="btn nav-btn">Book Appointment</a>
+                <div class="mobile-menu" id="mobileMenu" role="button" tabindex="0" aria-label="Open menu">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <main class="dashboard">
+        <div class="container">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <div class="welcome-section">
+                    <h1>Welcome back, <span id="userName">User</span>! 👋</h1>
+                    <p>Manage your appointments, track your progress, and stay connected with your therapy journey.</p>
+                </div>
+                <div class="quick-actions">
+                    <a href="booking.html" class="btn btn-primary">
+                        <i class="fas fa-calendar-plus"></i> Book Appointment
+                    </a>
+                    <a href="#" class="btn btn-outline" id="editProfileBtn">
+                        <i class="fas fa-user-edit"></i> Edit Profile
+                    </a>
+                </div>
+            </div>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Account Overview -->
+                <div class="dashboard-card account-overview">
+                    <div class="card-header">
+                        <h3><i class="fas fa-user-circle"></i> Account Overview</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="account-details">
+                            <div class="detail-item">
+                                <span class="label">Name:</span>
+                                <span class="value" id="fullName">John Doe</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Email:</span>
+                                <span class="value" id="userEmail">john.doe@example.com</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Member since:</span>
+                                <span class="value" id="memberSince">January 2024</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Status:</span>
+                                <span class="value status active">Active Client</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Appointments -->
+                <div class="dashboard-card appointments-upcoming">
+                    <div class="card-header">
+                        <h3><i class="fas fa-calendar-alt"></i> Upcoming Appointments</h3>
+                        <a href="booking.html" class="card-action">Book New</a>
+                    </div>
+                    <div class="card-content">
+                        <div class="appointment-list" id="upcomingAppointments">
+                            <!-- Appointments will be loaded here -->
+                            <div class="appointment-item upcoming">
+                                <div class="appointment-date">
+                                    <span class="day">15</span>
+                                    <span class="month">Jan</span>
+                                </div>
+                                <div class="appointment-details">
+                                    <h4>Deep Tissue Massage</h4>
+                                    <p><i class="fas fa-clock"></i> 2:00 PM - 3:00 PM</p>
+                                    <p><i class="fas fa-map-marker-alt"></i> Feltham ASDA Clinic</p>
+                                </div>
+                                <div class="appointment-actions">
+                                    <button class="btn btn-sm btn-outline">Reschedule</button>
+                                </div>
+                            </div>
+                            <div class="appointment-item upcoming">
+                                <div class="appointment-date">
+                                    <span class="day">29</span>
+                                    <span class="month">Jan</span>
+                                </div>
+                                <div class="appointment-details">
+                                    <h4>Sports Rehabilitation</h4>
+                                    <p><i class="fas fa-clock"></i> 10:00 AM - 11:00 AM</p>
+                                    <p><i class="fas fa-home"></i> Mobile Service</p>
+                                </div>
+                                <div class="appointment-actions">
+                                    <button class="btn btn-sm btn-outline">Reschedule</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="no-appointments" style="display: none;">
+                            <i class="fas fa-calendar-times"></i>
+                            <p>No upcoming appointments</p>
+                            <a href="booking.html" class="btn btn-primary">Book Your First Session</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="dashboard-card recent-activity">
+                    <div class="card-header">
+                        <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                        <a href="#" class="card-action">View All</a>
+                    </div>
+                    <div class="card-content">
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon completed">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <h4>Deep Tissue Massage completed</h4>
+                                    <p>January 8, 2024 - Great session focusing on shoulder tension</p>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon booked">
+                                    <i class="fas fa-calendar-plus"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <h4>New appointment booked</h4>
+                                    <p>January 5, 2024 - Sports Rehabilitation session scheduled</p>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon profile">
+                                    <i class="fas fa-user-edit"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <h4>Profile updated</h4>
+                                    <p>December 28, 2023 - Contact information updated</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Treatment Progress -->
+                <div class="dashboard-card treatment-progress">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Treatment Progress</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="progress-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">12</div>
+                                <div class="stat-label">Total Sessions</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">3</div>
+                                <div class="stat-label">This Month</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">85%</div>
+                                <div class="stat-label">Progress Score</div>
+                            </div>
+                        </div>
+                        <div class="progress-note">
+                            <p><strong>Latest Note:</strong> Significant improvement in shoulder mobility. Continue with current treatment plan and exercises.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="dashboard-card quick-links">
+                    <div class="card-header">
+                        <h3><i class="fas fa-link"></i> Quick Links</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="links-grid">
+                            <a href="booking.html" class="quick-link">
+                                <i class="fas fa-calendar-plus"></i>
+                                <span>Book Appointment</span>
+                            </a>
+                            <a href="#" class="quick-link" id="viewHistoryLink">
+                                <i class="fas fa-history"></i>
+                                <span>View History</span>
+                            </a>
+                            <a href="services.html" class="quick-link">
+                                <i class="fas fa-spa"></i>
+                                <span>Our Services</span>
+                            </a>
+                            <a href="contact.html" class="quick-link">
+                                <i class="fas fa-phone"></i>
+                                <span>Contact Us</span>
+                            </a>
+                            <a href="#" class="quick-link" id="downloadReportsLink">
+                                <i class="fas fa-download"></i>
+                                <span>Download Reports</span>
+                            </a>
+                            <a href="#" class="quick-link" id="paymentMethodsLink">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Payment Methods</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications -->
+                <div class="dashboard-card notifications">
+                    <div class="card-header">
+                        <h3><i class="fas fa-bell"></i> Notifications</h3>
+                        <span class="notification-badge">2</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="notification-list">
+                            <div class="notification-item unread">
+                                <div class="notification-icon">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <h4>Appointment Reminder</h4>
+                                    <p>You have an appointment tomorrow at 2:00 PM</p>
+                                    <span class="notification-time">2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="notification-item unread">
+                                <div class="notification-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <h4>Session Feedback</h4>
+                                    <p>Please rate your last session to help us improve</p>
+                                    <span class="notification-time">1 day ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="Release Therapies Logo">
+                    <p>Expert therapy to help you recover, rebuild strength, and find freedom from pain.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="booking.html">Book Now</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li class="address">Feltham ASDA, Tilley Rd<br>Feltham TW13 4BH</li>
+                        <li class="phone"><a href="tel:+447123456789">+44 7123 456789</a></li>
+                        <li class="email"><a href="mailto:info@releasetherapies.co.uk">info@releasetherapies.co.uk</a></li>
+                    </ul>
+                </div>
+                <div class="footer-hours">
+                    <h3>Hours</h3>
+                    <ul class="hours-list">
+                        <li><span>Monday - Friday:</span> 9:00 AM - 7:00 PM</li>
+                        <li><span>Saturday:</span> 10:00 AM - 5:00 PM</li>
+                        <li><span>Sunday:</span> 10:00 AM - 3:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <a href="https://www.facebook.com/" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/release.therapies/" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2025 Release Therapies. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <!-- Main JavaScript -->
+    <script src="js/main.js"></script>
+    <!-- Account System -->
+    <script src="js/account.js"></script>
+    <!-- Dashboard JavaScript -->
+    <script src="js/dashboard.js"></script>
+    <!-- Form Validation -->
+    <script src="js/validation.js"></script>
+</body>
+</html> 
