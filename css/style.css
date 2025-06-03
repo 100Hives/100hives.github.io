@@ -55,6 +55,268 @@
     --premium-shadow: 0 15px 40px rgba(58, 74, 92, 0.12);
 }
 
+/* Dark Mode Variables */
+[data-theme="dark"] {
+    --primary-color: #c9a77c; /* Gold becomes primary in dark mode */
+    --secondary-color: #e8c4a0; /* Lighter gold for secondary */
+    --accent-color: #3a4a5c; /* Navy becomes accent in dark mode */
+    --dark-color: #000000; /* Pure black as requested */
+    --light-color: #0a0a0a; /* Near black for main backgrounds */
+    --text-color: #e8e8e8; /* Light gray text for readability */
+    --gray-color: #a0a0a0; /* Medium gray for secondary text */
+    --light-gray: #1a1a1a; /* Dark gray for cards and sections */
+    --border-color: #333333; /* Dark border */
+    --success-color: #6b9080; /* Keep success color */
+    --error-color: #e74c3c; /* Brighter red for dark mode */
+    --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Stronger shadows for dark mode */
+    
+    /* Dark mode specific shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.3);
+    --premium-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    --premium-gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+}
+
+/* High Contrast Mode Variables */
+[data-theme="contrast"] {
+    --primary-color: #000000; /* Pure black for high contrast */
+    --secondary-color: #333333; /* Dark gray for secondary */
+    --accent-color: #000000; /* Black accent */
+    --dark-color: #000000; /* Pure black */
+    --light-color: #ffffff; /* Pure white backgrounds */
+    --text-color: #000000; /* Black text for maximum contrast */
+    --gray-color: #666666; /* Medium gray for secondary text */
+    --light-gray: #f8f8f8; /* Very light gray for cards */
+    --border-color: #000000; /* Black borders */
+    --success-color: #006600; /* Dark green for success */
+    --error-color: #cc0000; /* Dark red for errors */
+    --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Black shadows */
+    
+    /* High contrast specific shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+    --premium-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    --premium-gradient: linear-gradient(135deg, #000000 0%, #333333 100%);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 1000;
+    background: var(--primary-color);
+    color: var(--light-color);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.theme-toggle:hover {
+    background: var(--secondary-color);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: var(--shadow-lg);
+}
+
+.theme-toggle i {
+    transition: var(--transition-fast);
+}
+
+/* Dark mode specific styles for better contrast */
+[data-theme="dark"] .service-card,
+[data-theme="dark"] .testimonial-card,
+[data-theme="dark"] .facility-card,
+[data-theme="dark"] .treatment-card,
+[data-theme="dark"] .package-card,
+[data-theme="dark"] .tip-card,
+[data-theme="dark"] .dashboard-card {
+    background: var(--light-gray);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] header {
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .footer {
+    background: var(--dark-color);
+}
+
+[data-theme="dark"] .modal-content {
+    background: var(--light-gray);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .form-control {
+    background: var(--dark-color);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(201, 167, 124, 0.25);
+}
+
+[data-theme="dark"] .hero {
+    background: var(--light-color);
+}
+
+[data-theme="dark"] .page-header {
+    background: var(--light-color);
+}
+
+/* Ensure images don't become too dark */
+[data-theme="dark"] img {
+    opacity: 0.9;
+    transition: opacity var(--transition-fast);
+}
+
+[data-theme="dark"] img:hover {
+    opacity: 1;
+}
+
+/* Dark mode mobile adjustments */
+@media (max-width: 768px) {
+    .theme-toggle {
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Additional Dark Mode Styles for Better Coverage */
+[data-theme="dark"] .mobile-nav {
+    background: var(--light-color);
+    border-right: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .mobile-nav-overlay {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="dark"] .btn-outline {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+[data-theme="dark"] .btn-outline:hover {
+    background: var(--primary-color);
+    color: var(--dark-color);
+}
+
+[data-theme="dark"] .btn-primary {
+    background: var(--primary-color);
+    color: var(--dark-color);
+}
+
+[data-theme="dark"] .btn-primary:hover {
+    background: var(--secondary-color);
+}
+
+[data-theme="dark"] .section-title h2:after {
+    background-color: var(--primary-color);
+}
+
+[data-theme="dark"] .instagram-overlay {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(26, 26, 26, 0.9));
+}
+
+[data-theme="dark"] .toast {
+    background: var(--light-gray);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .toast.success {
+    border-left-color: var(--success-color);
+}
+
+[data-theme="dark"] .toast.error {
+    border-left-color: var(--error-color);
+}
+
+[data-theme="dark"] .quote-icon {
+    color: var(--primary-color);
+}
+
+[data-theme="dark"] .value-card,
+[data-theme="dark"] .pillar {
+    background: var(--light-gray);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .mission-image-container {
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .nav-links a:hover:after,
+[data-theme="dark"] .nav-links a.active:after {
+    background-color: var(--primary-color);
+}
+
+[data-theme="dark"] .back-to-top {
+    background: var(--primary-color);
+    color: var(--dark-color);
+}
+
+[data-theme="dark"] .back-to-top:hover {
+    background: var(--secondary-color);
+}
+
+/* Dark mode table styles if any exist */
+[data-theme="dark"] table {
+    background: var(--light-gray);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] th,
+[data-theme="dark"] td {
+    border-color: var(--border-color);
+}
+
+/* Dark mode for any code blocks */
+[data-theme="dark"] pre,
+[data-theme="dark"] code {
+    background: var(--dark-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+/* Smooth transitions for theme switching */
+*,
+*::before,
+*::after {
+    transition: background-color var(--transition-fast), 
+                color var(--transition-fast), 
+                border-color var(--transition-fast),
+                box-shadow var(--transition-fast);
+}
+
+/* Prevent transition on theme toggle button to keep animation smooth */
+.theme-toggle,
+.theme-toggle *,
+.theme-toggle::before,
+.theme-toggle::after {
+    transition: background-color var(--transition-fast), 
+                color var(--transition-fast),
+                transform var(--transition-fast),
+                box-shadow var(--transition-fast);
+}
+
 html {
     font-size: 16px;
     scroll-behavior: smooth;
@@ -5252,4 +5514,99 @@ textarea.form-control {
 
 .account-btn i {
     font-size: 14px;
+}
+
+/* High Contrast Mode Specific Styles */
+[data-theme="contrast"] .service-card,
+[data-theme="contrast"] .testimonial-card,
+[data-theme="contrast"] .facility-card,
+[data-theme="contrast"] .treatment-card,
+[data-theme="contrast"] .package-card,
+[data-theme="contrast"] .tip-card,
+[data-theme="contrast"] .dashboard-card {
+    background: var(--light-color);
+    border: 2px solid var(--border-color);
+}
+
+[data-theme="contrast"] header {
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 2px solid var(--border-color);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="contrast"] .footer {
+    background: var(--dark-color);
+    color: var(--light-color);
+}
+
+[data-theme="contrast"] .modal-content {
+    background: var(--light-color);
+    border: 2px solid var(--border-color);
+}
+
+[data-theme="contrast"] .form-control {
+    background: var(--light-color);
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
+}
+
+[data-theme="contrast"] .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="contrast"] .hero {
+    background: var(--light-color);
+}
+
+[data-theme="contrast"] .page-header {
+    background: var(--light-color);
+}
+
+[data-theme="contrast"] .btn-outline {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+[data-theme="contrast"] .btn-outline:hover {
+    background: var(--primary-color);
+    color: var(--light-color);
+}
+
+[data-theme="contrast"] .btn-primary {
+    background: var(--primary-color);
+    color: var(--light-color);
+    border: 2px solid var(--primary-color);
+    font-weight: 600;
+}
+
+[data-theme="contrast"] .btn-primary:hover {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+[data-theme="contrast"] .section-title h2:after {
+    background-color: var(--primary-color);
+}
+
+[data-theme="contrast"] .mobile-nav {
+    background: var(--light-color);
+    border-right: 2px solid var(--border-color);
+}
+
+[data-theme="contrast"] .nav-links a:hover:after,
+[data-theme="contrast"] .nav-links a.active:after {
+    background-color: var(--primary-color);
+}
+
+[data-theme="contrast"] .back-to-top {
+    background: var(--primary-color);
+    color: var(--light-color);
+    border: 2px solid var(--primary-color);
+}
+
+[data-theme="contrast"] .back-to-top:hover {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
 }

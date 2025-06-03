@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Network connectivity monitoring
     setupConnectivityMonitoring();
     
+    // Initialize Dark Mode
+    initializeDarkMode();
+    
     // Mobile Navigation Toggle
     setupMobileNavigation();
     
@@ -954,4 +957,91 @@ function initVideoLazyLoading() {
             videoObserver.observe(item);
         });
     }
+}
+
+/**
+ * Dark Mode Functionality
+ */
+function initializeDarkMode() {
+    const themeToggle = document.getElementById('themeToggle');
+    if (!themeToggle) return;
+
+    // Check for saved theme preference or default to light mode
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+
+    // Theme toggle event listener - now cycles through three themes
+    themeToggle.addEventListener('click', function() {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        let newTheme;
+        
+        // Cycle through: light → dark → contrast → light
+        switch (currentTheme) {
+            case 'light':
+                newTheme = 'dark';
+                break;
+            case 'dark':
+                newTheme = 'contrast';
+                break;
+            case 'contrast':
+                newTheme = 'light';
+                break;
+            default:
+                newTheme = 'light';
+        }
+        
+        setTheme(newTheme);
+        
+        // Add a nice click animation
+        this.style.transform = 'translateY(-50%) scale(0.9)';
+        setTimeout(() => {
+            this.style.transform = 'translateY(-50%) scale(1)';
+        }, 150);
+    });
+
+    // Listen for system theme changes
+    if (window.matchMedia) {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        mediaQuery.addEventListener('change', function(e) {
+            // Only auto-switch if user hasn't manually set a preference
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+    }
+}
+
+function setTheme(theme) {
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle?.querySelector('i');
+    
+    // Set the theme attribute
+    document.documentElement.setAttribute('data-theme', theme);
+    
+    // Update the toggle button icon and label based on theme
+    if (themeIcon) {
+        switch (theme) {
+            case 'dark':
+                themeIcon.className = 'fas fa-adjust';
+                themeToggle.setAttribute('aria-label', 'Switch to high contrast mode');
+                break;
+            case 'contrast':
+                themeIcon.className = 'fas fa-sun';
+                themeToggle.setAttribute('aria-label', 'Switch to light mode');
+                break;
+            default: // light mode
+                themeIcon.className = 'fas fa-moon';
+                themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+        }
+    }
+    
+    // Save theme preference
+    localStorage.setItem('theme', theme);
+    
+    // Trigger custom event for other scripts that might need to know about theme changes
+    window.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
+}
+
+function getTheme() {
+    return document.documentElement.getAttribute('data-theme') || 'light';
 }

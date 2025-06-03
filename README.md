@@ -2,6 +2,35 @@
 
 This is the complete website for Release Therapies, a professional therapy services business.
 
+## ✨ New Feature: Dark Mode
+
+The website now includes a beautiful dark mode feature with the following capabilities:
+
+### 🌙 Dark Mode Features
+- **Toggle Button**: Floating toggle button on all pages (moon/sun icon)
+- **Pure Black Design**: Uses pure black backgrounds as requested for optimal contrast
+- **Smart Color Inversion**: Gold/navy color scheme inverts intelligently in dark mode
+- **Automatic Persistence**: Theme preference saved in browser localStorage
+- **System Preference Detection**: Respects user's OS dark mode setting
+- **Smooth Transitions**: All elements transition smoothly between themes
+- **Full Coverage**: All website pages support dark mode
+- **Mobile Optimized**: Works perfectly on all screen sizes
+- **Accessibility**: Proper ARIA labels and keyboard navigation support
+
+### 🎨 Color Scheme
+- **Light Mode**: Navy blue primary with gold accents
+- **Dark Mode**: Gold primary with pure black backgrounds and navy accents
+- **Intelligent Contrast**: Text and elements automatically adjust for optimal readability
+
+### 🔧 Technical Implementation
+- CSS custom properties (variables) for seamless theme switching
+- JavaScript localStorage for preference persistence  
+- System theme detection via `prefers-color-scheme` media query
+- Event-driven architecture for theme change notifications
+
+### 📝 Testing
+Visit `dark-mode-demo.html` to see all the dark mode features in action and test the implementation.
+
 ## Logo Implementation Instructions
 
 To implement the provided logo image:
