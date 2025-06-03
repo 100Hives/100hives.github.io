@@ -6,15 +6,30 @@ This is the complete website for Release Therapies, a professional therapy servi
 
 The website now includes a beautiful dark mode feature with the following capabilities:
 
+### 🎨 **Three Theme System:**
+1. **Light Mode** - Original professional navy and gold design
+2. **Dark Mode** - Elegant dark theme with gold accents on black backgrounds  
+3. **High Contrast** - Premium sports brand style with black and white design and vibrant orange accenting
+
+### 🏋️ **Premium Sports Brand Features (High Contrast Mode):**
+- **Athletic Typography**: Bold, uppercase headings with dramatic letter spacing
+- **Sharp Design Elements**: Zero border-radius for modern, geometric aesthetics
+- **Premium Hover Effects**: Sophisticated animations with enhanced shadows and transforms
+- **Gradient Text Effects**: Dynamic gradient backgrounds on hero text
+- **Sports Brand Feel**: Inspired by high-end athletic brands like Gymshark
+- **Enhanced Button Styling**: Shimmer effects and premium hover animations
+- **Professional Color Palette**: Pure black/white with strategic orange accenting
+
 ### 🌙 Dark Mode Features
 - **Toggle Button**: Floating toggle button on all pages (moon/sun icon)
-- **Pure Black Design**: Uses pure black backgrounds as requested for optimal contrast
+- **Three Themes**: Light Mode, Dark Mode, and High Contrast (Black & White with Orange accents)
+- **Orange Accenting**: Vibrant orange (#FF6B35) trimming on the high contrast theme for visual appeal
 - **Smart Color Inversion**: Gold/navy color scheme inverts intelligently in dark mode
 - **Automatic Persistence**: Theme preference saved in browser localStorage
 - **System Preference Detection**: Respects user's OS dark mode setting
 - **Smooth Transitions**: All elements transition smoothly between themes
-- **Full Coverage**: All website pages support dark mode
-- **Mobile Optimized**: Works perfectly on all screen sizes
+- **Full Coverage**: All website pages support all three themes
+- **Mobile Optimized**: Works perfectly on all devices
 - **Accessibility**: Proper ARIA labels and keyboard navigation support
 
 ### 🎨 Color Scheme

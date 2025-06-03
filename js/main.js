@@ -46,6 +46,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Enhanced form submission handling
     enhanceFormSubmission();
     
+    // Initialize statistics counter animation
+    initializeStatsCounter();
+    
+    // Initialize newsletter signup
+    initializeNewsletterSignup();
+    
     initInstagramVideos();
     initVideoLazyLoading();
     
@@ -1045,3 +1051,163 @@ function setTheme(theme) {
 function getTheme() {
     return document.documentElement.getAttribute('data-theme') || 'light';
 }
+
+/**
+ * Initialize Statistics Counter Animation
+ */
+function initializeStatsCounter() {
+    const statNumbers = document.querySelectorAll('.stat-number[data-count]');
+    const statsSection = document.querySelector('.stats-section');
+    
+    if (!statNumbers.length || !statsSection) return;
+    
+    let hasAnimated = false;
+    
+    const animateStats = () => {
+        if (hasAnimated) return;
+        hasAnimated = true;
+        
+        statNumbers.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-count'));
+            const duration = 2000; // 2 seconds
+            const increment = target / (duration / 16); // 60fps
+            let current = 0;
+            
+            stat.classList.add('counting');
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    stat.classList.remove('counting');
+                    clearInterval(timer);
+                }
+                
+                // Format number with commas for large numbers
+                const displayValue = Math.floor(current);
+                if (target >= 1000) {
+                    stat.textContent = displayValue.toLocaleString();
+                } else {
+                    stat.textContent = displayValue;
+                }
+                
+                // Add percentage sign if needed
+                if (stat.textContent.includes('%') || stat.getAttribute('data-count') === '98') {
+                    stat.textContent = Math.floor(current) + '%';
+                }
+            }, 16);
+        });
+    };
+    
+    // Intersection Observer for animation trigger
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !hasAnimated) {
+                animateStats();
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+    
+    observer.observe(statsSection);
+}
+
+/**
+ * Initialize Newsletter Signup
+ */
+function initializeNewsletterSignup() {
+    const newsletterForm = document.getElementById('newsletterForm');
+    
+    if (!newsletterForm) return;
+    
+    newsletterForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        
+        // Show loading state
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+        submitBtn.disabled = true;
+        
+        try {
+            // Simulate API call (replace with actual newsletter service)
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            // Show success message
+            showToast('Successfully subscribed to our newsletter!', 'success');
+            
+            // Reset form
+            this.reset();
+            
+            // Track newsletter signup (if analytics is set up)
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'newsletter_signup', {
+                    event_category: 'engagement',
+                    event_label: 'newsletter'
+                });
+            }
+            
+        } catch (error) {
+            console.error('Newsletter signup error:', error);
+            showToast('Something went wrong. Please try again.', 'error');
+        } finally {
+            // Restore button
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+}
+
+/**
+ * Enhanced Analytics Tracking
+ */
+function trackEvent(eventName, parameters = {}) {
+    // Google Analytics 4
+    if (typeof gtag !== 'undefined') {
+        gtag('event', eventName, parameters);
+    }
+    
+    // Console log for development
+    console.log('Event tracked:', eventName, parameters);
+}
+
+/**
+ * Enhanced Form Validation
+ */
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+function validatePhone(phone) {
+    const re = /^[\+]?[1-9][\d]{0,15}$/;
+    return re.test(phone.replace(/\s/g, ''));
+}
+
+/**
+ * Local Storage Utilities
+ */
+function saveToLocalStorage(key, value) {
+    try {
+        localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+        console.warn('Could not save to localStorage:', error);
+    }
+}
+
+function getFromLocalStorage(key) {
+    try {
+        const item = localStorage.getItem(key);
+        return item ? JSON.parse(item) : null;
+    } catch (error) {
+        console.warn('Could not read from localStorage:', error);
+        return null;
+    }
+}
+
+/**
+ * Performance Optimization
+ */

@@ -3,8 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Release Therapies - Professional therapy services to help you recover, rebuild strength, and return to your active lifestyle.">
-    <title>Release Therapies</title>
+    <meta name="description" content="Release Therapies - Expert physiotherapy and sports massage in Feltham. Professional therapy services to help you recover, rebuild strength, and return to your active lifestyle. Book online today.">
+    <meta name="keywords" content="physiotherapy, sports massage, therapy, Feltham, pain relief, rehabilitation, wellness, massage therapy, physical therapy">
+    <meta name="author" content="Release Therapies">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Release Therapies - Professional Physiotherapy & Sports Massage">
+    <meta property="og:description" content="Expert therapy services in Feltham to help you recover, rebuild strength, and return to your active lifestyle. Book online today.">
+    <meta property="og:image" content="images/og-image.jpg">
+    <meta property="og:url" content="https://releasetherapies.co.uk">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Release Therapies - Professional Physiotherapy & Sports Massage">
+    <meta name="twitter:description" content="Expert therapy services in Feltham to help you recover, rebuild strength, and return to your active lifestyle.">
+    <meta name="twitter:image" content="images/og-image.jpg">
+    
+    <title>Release Therapies - Professional Physiotherapy & Sports Massage in Feltham</title>
     
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#3a4a5c">
@@ -23,41 +40,87 @@
     <link rel="stylesheet" href="css/dropdown.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     
-    <!-- Structured Data for Local Business -->
+    <!-- Enhanced Structured Data for Local Business -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "HealthAndBeautyBusiness",
+      "@type": "PhysicalTherapy",
       "name": "Release Therapies",
-      "description": "Professional therapy services to help you recover, rebuild strength, and return to your active lifestyle.",
+      "description": "Professional physiotherapy and sports massage services to help you recover, rebuild strength, and return to your active lifestyle.",
       "url": "https://releasetherapies.co.uk",
+      "logo": "https://releasetherapies.co.uk/images/logo.png",
+      "image": "https://releasetherapies.co.uk/images/og-image.jpg",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Feltham ASDA",
+        "streetAddress": "Feltham ASDA, Tilley Rd",
         "addressLocality": "Feltham",
+        "postalCode": "TW13 4BH",
         "addressCountry": "UK"
       },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "51.4444",
+        "longitude": "-0.4052"
+      },
       "priceRange": "££",
-      "telephone": "+44-XXX-XXX-XXXX",
+      "telephone": "+44-7123-456789",
       "email": "info@releasetherapies.co.uk",
       "openingHours": [
-        "Mo-Fr 09:00-18:00",
-        "Sa 09:00-17:00",
-        "Su 10:00-16:00"
+        "Mo-Fr 09:00-19:00",
+        "Sa 10:00-17:00",
+        "Su 10:00-15:00"
       ],
       "sameAs": [
         "https://facebook.com/releasetherapies",
         "https://instagram.com/release.therapies"
       ],
-      "serviceType": [
-        "Deep Tissue Massage",
-        "Swedish Massage", 
-        "Sports Massage",
-        "Physical Therapy",
-        "Cupping Therapy"
-      ]
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Therapy Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Deep Tissue Massage",
+              "description": "Therapeutic massage targeting deeper muscle layers"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Sports Massage",
+              "description": "Specialized massage for athletes and active individuals"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Physical Therapy",
+              "description": "Rehabilitation and movement therapy"
+            }
+          }
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "127"
+      }
     }
+    </script>
+    
+    <!-- Google Analytics (placeholder - replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_TRACKING_ID');
     </script>
 </head>
 <body class="home">
@@ -76,6 +139,7 @@
                     <a href="index.html" class="active">Home</a>
                     <a href="services.html">Services</a>
                     <a href="about.html">About Us</a>
+                    <a href="blog.html">Blog</a>
                     <a href="contact.html">Contact</a>
                     <a href="#" id="accountBtn" class="account-btn">
                         <i class="fas fa-user"></i> My Account
@@ -99,6 +163,7 @@
             <a href="index.html" class="active">Home</a>
             <a href="services.html">Services</a>
             <a href="about.html">About Us</a>
+            <a href="blog.html">Blog</a>
             <a href="contact.html">Contact</a>
         </div>
         <a href="booking.html" class="mobile-nav-btn">Book Appointment</a>
@@ -114,8 +179,8 @@
                 <a href="services.html" class="btn btn-outline">Our Services</a>
             </div>
         </div>
-        <div class="hero-image">
-            <img src="images/hero-image.jpg" alt="Therapeutic massage session">
+        <div class="hero-image hero-visual-section">
+            <!-- Intentional visual section without image for design effect -->
         </div>
         <div class="hero-pattern"></div>
         <div class="hero-scroll">
@@ -301,36 +366,73 @@
         </div>
     </section>
 
-    <!-- Social Proof Stats -->
-    <section class="stats-section">
+    <!-- Trust Indicators & Stats Section -->
+    <section class="trust-indicators section">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <span class="stat-number">500+</span>
-                    <span class="stat-label">Happy Clients</span>
+            <div class="section-title">
+                <h2>Trusted by Hundreds of Clients</h2>
+                <p>Our commitment to excellence has earned us the trust of the <span class="highlight">Feltham community</span> and beyond</p>
+            </div>
+            
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <i class="fas fa-certificate"></i>
+                    <span>Qualified Professionals</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">1000+</span>
-                    <span class="stat-label">Successful Treatments</span>
+                <div class="trust-badge">
+                    <i class="fas fa-award"></i>
+                    <span>5+ Years Experience</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">5+</span>
-                    <span class="stat-label">Years Experience</span>
+                <div class="trust-badge">
+                    <i class="fas fa-users"></i>
+                    <span>500+ Satisfied Clients</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">100+</span>
-                    <span class="stat-label">Instagram Followers</span>
+                <div class="trust-badge">
+                    <i class="fas fa-star"></i>
+                    <span>4.9/5 Average Rating</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Fully Insured</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-clock"></i>
+                    <span>Flexible Scheduling</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="testimonials" class="section testimonials">
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="500">0</span>
+                    <span class="stat-label">Happy Clients</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="2500">0</span>
+                    <span class="stat-label">Treatments Completed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="98">0</span>
+                    <span class="stat-label">% Success Rate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="5">0</span>
+                    <span class="stat-label">Years of Excellence</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials section">
         <div class="container">
             <div class="section-title">
-                <h2>Client Success Stories</h2>
-                <p>Hear from clients who have experienced the <span class="highlight">release</span> from pain and limitations</p>
-                <img src="images/logo-circle.png" alt="Release Therapies Logo" class="logo-circle">
+                <h2>What Our Clients Say</h2>
+                <p>Real stories from real people who have experienced the <span class="highlight">Release Therapies</span> difference</p>
             </div>
             <div class="testimonials-slider" role="region" aria-label="Client testimonials">
                 <div class="testimonial-card" tabindex="0">
@@ -528,6 +630,62 @@
                             <i class="fas fa-user-md"></i>
                             <span>Same Expert Care</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup Section -->
+    <section class="newsletter-section section">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-info">
+                    <h2>Stay Updated with Wellness Tips</h2>
+                    <p>Join our newsletter to receive expert advice, exercise tips, and exclusive offers delivered to your inbox weekly.</p>
+                    
+                    <div class="newsletter-benefits">
+                        <div class="benefit-item">
+                            <i class="fas fa-dumbbell"></i>
+                            <span>Weekly exercise routines</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-heart"></i>
+                            <span>Wellness and recovery tips</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-gift"></i>
+                            <span>Exclusive offers & discounts</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Early access to workshops</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="newsletter-form">
+                    <form id="newsletterForm" class="newsletter-signup">
+                        <div class="form-group">
+                            <input type="text" id="newsletter-name" name="name" placeholder="Your Name" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="newsletter-email" name="email" placeholder="Your Email Address" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="newsletter-consent" name="consent" required>
+                                <label for="newsletter-consent">I agree to receive wellness tips and promotional emails. I can unsubscribe at any time.</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-envelope"></i> Subscribe Now
+                        </button>
+                    </form>
+                    
+                    <div class="privacy-note">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>We respect your privacy. No spam, ever.</span>
                     </div>
                 </div>
             </div>

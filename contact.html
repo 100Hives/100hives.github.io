@@ -39,6 +39,7 @@
                     <a href="index.html">Home</a>
                     <a href="services.html">Services</a>
                     <a href="about.html">About Us</a>
+                    <a href="blog.html">Blog</a>
                     <a href="contact.html" class="active">Contact</a>
                     <a href="#" id="accountBtn" class="account-btn">
                         <i class="fas fa-user"></i> My Account
@@ -62,6 +63,7 @@
             <a href="index.html">Home</a>
             <a href="services.html">Services</a>
             <a href="about.html">About Us</a>
+            <a href="blog.html">Blog</a>
             <a href="contact.html" class="active">Contact</a>
             <a href="#" id="mobileAccountBtn" class="mobile-account-btn">
                 <i class="fas fa-user"></i> My Account
@@ -195,6 +197,59 @@
             </div>
         </div>
     </section>
+
+    <!-- FAQ Section for Contact -->
+    <section class="faq-section section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Quick answers to common questions about our <span class="highlight">services and booking</span></p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How quickly can I get an appointment?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We typically have availability within 48-72 hours. For urgent cases or acute injuries, we offer same-day appointments when possible. We recommend booking online or calling us directly to check real-time availability.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you offer mobile services?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We provide mobile therapy services across Feltham and surrounding areas. This includes deep tissue massage, sports massage, dry cupping, and injury rehabilitation in the comfort of your home.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What should I bring to my appointment?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Please bring comfortable clothing you can move in, any relevant medical reports or doctor's notes, and a list of current medications. We'll provide towels and all necessary equipment.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I cancel or reschedule my appointment?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can cancel or reschedule up to 24 hours before your appointment by calling us or using your online account. Late cancellations may incur a fee.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Account Modal -->
     <div id="accountModal" class="modal">
@@ -408,10 +463,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     <!-- Main JavaScript -->
     <script src="js/main.js"></script>
-    <!-- Form Validation -->
-    <script src="js/validation.js"></script>
     <!-- Account System -->
     <script src="js/account.js"></script>
+    <!-- Form Validation -->
+    <script src="js/validation.js"></script>
     
     <script>
         // Check URL parameters for form status messages
@@ -430,6 +485,114 @@
                 statusDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         });
+        
+        // FAQ Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                const icon = item.querySelector('.faq-toggle i');
+                
+                if (question && answer && icon) {
+                    question.addEventListener('click', function() {
+                        const isOpen = answer.style.display === 'block';
+                        
+                        // Close all FAQ items
+                        faqItems.forEach(otherItem => {
+                            const otherAnswer = otherItem.querySelector('.faq-answer');
+                            const otherIcon = otherItem.querySelector('.faq-toggle i');
+                            
+                            if (otherAnswer && otherIcon) {
+                                otherAnswer.style.display = 'none';
+                                otherIcon.classList.remove('fa-minus');
+                                otherIcon.classList.add('fa-plus');
+                            }
+                        });
+                        
+                        // If this item wasn't open, open it
+                        if (!isOpen) {
+                            answer.style.display = 'block';
+                            icon.classList.remove('fa-plus');
+                            icon.classList.add('fa-minus');
+                        }
+                    });
+                }
+            });
+            
+            // Enhanced Contact Form
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(this);
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    const formStatus = document.getElementById('formStatus');
+                    
+                    // Show loading state
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    submitBtn.disabled = true;
+                    
+                    try {
+                        // Simulate form submission (replace with actual endpoint)
+                        await new Promise(resolve => setTimeout(resolve, 2000));
+                        
+                        // Show success message
+                        if (formStatus) {
+                            formStatus.className = 'form-status success';
+                            formStatus.textContent = 'Thank you for your message! We\'ll get back to you within 24 hours.';
+                            formStatus.style.display = 'block';
+                        }
+                        
+                        // Reset form
+                        this.reset();
+                        
+                        // Track form submission
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'contact_form_submit', {
+                                event_category: 'engagement',
+                                event_label: 'contact_page'
+                            });
+                        }
+                        
+                    } catch (error) {
+                        console.error('Contact form error:', error);
+                        
+                        if (formStatus) {
+                            formStatus.className = 'form-status error';
+                            formStatus.textContent = 'Something went wrong. Please try again or call us directly.';
+                            formStatus.style.display = 'block';
+                        }
+                    } finally {
+                        // Restore button
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        
+                        // Hide status message after 5 seconds
+                        if (formStatus) {
+                            setTimeout(() => {
+                                formStatus.style.display = 'none';
+                            }, 5000);
+                        }
+                    }
+                });
+            }
+        });
+        
+        // Global function for profile modal
+        function closeProfileModal() {
+            try {
+                const modal = document.getElementById('profileModal');
+                if (modal) {
+                    modal.classList.remove('show');
+                }
+            } catch (error) {
+                console.log('Profile modal close error:', error);
+            }
+        }
     </script>
 </body>
 </html>

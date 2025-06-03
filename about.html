@@ -3,8 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn about Release Therapies - our mission, values, and expert team dedicated to helping you recover and thrive.">
+    <meta name="description" content="Learn about Release Therapies - our mission, values, and expert team dedicated to helping you recover and thrive through professional physiotherapy and massage services.">
+    <meta name="keywords" content="about release therapies, physiotherapy team, therapy mission, Feltham therapists, professional wellness care">
+    <meta name="author" content="Release Therapies">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="About Us - Release Therapies">
+    <meta property="og:description" content="Learn about our mission, values, and expert team dedicated to helping you recover and thrive through professional therapeutic care.">
+    <meta property="og:image" content="images/og-image.jpg">
+    <meta property="og:url" content="https://releasetherapies.co.uk/about.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About Us - Release Therapies">
+    <meta name="twitter:description" content="Learn about our mission, values, and expert team dedicated to helping you recover and thrive through professional therapeutic care.">
+    <meta name="twitter:image" content="images/og-image.jpg">
+    
     <title>About Us - Release Therapies</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#3a4a5c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Release Therapies">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +39,7 @@
     <link rel="stylesheet" href="css/dropdown.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 </head>
 <body>
     <!-- Dark Mode Toggle Button -->
@@ -32,13 +57,14 @@
                     <a href="index.html">Home</a>
                     <a href="services.html">Services</a>
                     <a href="about.html" class="active">About Us</a>
+                    <a href="blog.html">Blog</a>
                     <a href="contact.html">Contact</a>
                     <a href="#" id="accountBtn" class="account-btn">
                         <i class="fas fa-user"></i> My Account
                     </a>
                 </div>
                 <a href="booking.html" class="btn nav-btn">Book Appointment</a>
-                <div class="mobile-menu" id="mobileMenu">☰</div>
+                <div class="mobile-menu" id="mobileMenu" role="button" tabindex="0" aria-label="Open menu">☰</div>
             </nav>
         </div>
     </header>
@@ -55,10 +81,8 @@
             <a href="index.html">Home</a>
             <a href="services.html">Services</a>
             <a href="about.html" class="active">About Us</a>
+            <a href="blog.html">Blog</a>
             <a href="contact.html">Contact</a>
-            <a href="#" id="mobileAccountBtn" class="mobile-account-btn">
-                <i class="fas fa-user"></i> My Account
-            </a>
         </div>
         <a href="booking.html" class="mobile-nav-btn">Book Appointment</a>
     </div>
@@ -736,6 +760,60 @@
             </form>
         </div>
     </div>
+
+    <!-- Trust Indicators & Credentials Section -->
+    <section class="trust-indicators section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Release Therapies?</h2>
+                <p>Professional qualifications and commitment to excellence in <span class="highlight">therapeutic care</span></p>
+            </div>
+            
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Qualified & Certified</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-award"></i>
+                    <span>5+ Years Experience</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-users"></i>
+                    <span>500+ Clients Helped</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-star"></i>
+                    <span>Excellent Reviews</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Fully Insured</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-handshake"></i>
+                    <span>Personalized Care</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup Section -->
+    <section class="blog-newsletter section">
+        <div class="container">
+            <div class="newsletter-card">
+                <div class="newsletter-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Stay Connected with Our Mission</h3>
+                <p>Join our wellness community and receive updates on our services, success stories, and therapeutic insights.</p>
+                <form class="inline-newsletter">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-primary">Join Our Community</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="container">
