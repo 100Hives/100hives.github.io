@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Demo - Release Therapies</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .demo-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .demo-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border-radius: var(--border-radius-lg);
+            background: var(--light-color);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+        .color-swatch {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            margin: 0.5rem;
+            border-radius: var(--border-radius-md);
+            border: 2px solid var(--border-color);
+        }
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .color-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--light-gray);
+            border-radius: var(--border-radius-md);
+            border: 1px solid var(--border-color);
+        }
+        .instructions {
+            background: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: var(--border-radius-lg);
+            border-left: 4px solid var(--primary-color);
+            margin-bottom: 2rem;
+        }
+        .theme-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .theme-status {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 500;
+            background: var(--primary-color);
+            color: var(--dark-color);
+            border: 1px solid var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Dark Mode Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="demo-container">
+        <h1>🌙 Dark Mode Demo</h1>
+        <p class="subtitle">Release Therapies Website - Dark Mode Implementation</p>
+
+        <div class="instructions">
+            <h3>🎯 How to Test Dark Mode</h3>
+            <p>Click the floating button on the right side of the screen to cycle through the three theme modes. The theme preference will be saved in your browser's local storage.</p>
+            <div style="margin-top: 1rem; padding: 1rem; background: rgba(201, 167, 124, 0.1); border-radius: 8px;">
+                <strong>Theme Cycle:</strong> Light Mode → Dark Mode → High Contrast (Black & White with Orange Accents) → Light Mode
+            </div>
+        </div>
+
+        <div class="theme-info">
+            <span>Current Theme:</span>
+            <span class="theme-status" id="themeStatus">Light Mode</span>
+        </div>
+
+        <div class="demo-section">
+            <h2>🎨 Color Palette</h2>
+            <p>Here's how the color system adapts between the three different modes:</p>
+            
+            <div class="color-grid">
+                <div class="color-item">
+                    <div class="color-swatch" style="background: var(--primary-color);"></div>
+                    <p><strong>Primary Color</strong></p>
+                    <p>var(--primary-color)</p>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: var(--secondary-color);"></div>
+                    <p><strong>Secondary Color</strong></p>
+                    <p>var(--secondary-color)</p>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: var(--accent-color);"></div>
+                    <p><strong>Accent Color</strong></p>
+                    <p>var(--accent-color)</p>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: var(--light-color);"></div>
+                    <p><strong>Background</strong></p>
+                    <p>var(--light-color)</p>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: var(--text-color);"></div>
+                    <p><strong>Text Color</strong></p>
+                    <p>var(--text-color)</p>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: var(--light-gray);"></div>
+                    <p><strong>Card Background</strong></p>
+                    <p>var(--light-gray)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🔘 Interactive Elements</h2>
+            <p>Test how buttons and interactive elements look in both modes:</p>
+            
+            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                <button class="btn btn-primary">Primary Button</button>
+                <button class="btn btn-outline">Outline Button</button>
+                <button class="btn">Default Button</button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>📝 Form Elements</h2>
+            <p>Forms adapt to the theme for better user experience:</p>
+            
+            <div style="margin-top: 1.5rem;">
+                <input type="text" class="form-control" placeholder="Text input example" style="margin-bottom: 1rem; display: block; width: 100%;">
+                <textarea class="form-control" placeholder="Textarea example" rows="3" style="display: block; width: 100%;"></textarea>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>✨ Features</h2>
+            <ul style="list-style-type: none; padding: 0;">
+                <li style="margin-bottom: 0.5rem;">✅ <strong>Three theme modes:</strong> Light, Dark, and High Contrast (Premium Sports Brand Style)</li>
+                <li style="margin-bottom: 0.5rem;">✅ <strong>Premium Sports Brand Aesthetic:</strong> Inspired by high-end athletic brands like Gymshark</li>
+                <li style="margin-bottom: 0.5rem;">✅ <strong>Bold Typography:</strong> Uppercase, athletic font styling with dramatic letter spacing</li>
+                <li style="margin-bottom: 0.5rem;">✅ <strong>Sharp Design Elements:</strong> Zero border-radius for modern, sharp edges</li>
+                <li style="margin-bottom: 0.5rem;">✅ <strong>Premium Hover Effects:</strong> Sophisticated animations and shadows</li>
+                <li style="margin-bottom: 0.5rem;">✅ <strong>Orange accenting:</strong> Vibrant orange trimming on black and white theme</li>
+                <li style="margin-bottom: 0.5rem;">✅ <strong>Automatic persistence:</strong> Your theme choice is saved</li>
+                <li style="margin-bottom: 0.5rem;">✅ <strong>System preference detection:</strong> Respects your OS setting</li>
+                <li style="margin-bottom: 0.5rem;">✅ <strong>Smooth transitions:</strong> All elements transition smoothly</li>
+                <li style="margin-bottom: 0.5rem;">✅ <strong>Accessibility:</strong> Proper ARIA labels and focus states</li>
+                <li style="margin-bottom: 0.5rem;">✅ <strong>Mobile optimized:</strong> Works great on all screen sizes</li>
+                <li style="margin-bottom: 0.5rem;">✅ <strong>Full coverage:</strong> All website pages support all themes</li>
+            </ul>
+        </div>
+
+        <div class="demo-section">
+            <h2>🔗 Navigation</h2>
+            <p>Test the dark mode on all pages:</p>
+            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="index.html" class="btn btn-outline">Home</a>
+                <a href="services.html" class="btn btn-outline">Services</a>
+                <a href="about.html" class="btn btn-outline">About</a>
+                <a href="contact.html" class="btn btn-outline">Contact</a>
+                <a href="booking.html" class="btn btn-outline">Booking</a>
+                <a href="dashboard.html" class="btn btn-outline">Dashboard</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Update theme status display
+        function updateThemeStatus() {
+            const themeStatus = document.getElementById('themeStatus');
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            
+            switch (currentTheme) {
+                case 'dark':
+                    themeStatus.textContent = 'Dark Mode';
+                    break;
+                case 'contrast':
+                    themeStatus.textContent = 'High Contrast (Black & White + Orange)';
+                    break;
+                default:
+                    themeStatus.textContent = 'Light Mode';
+            }
+        }
+
+        // Listen for theme changes
+        window.addEventListener('themechange', updateThemeStatus);
+        
+        // Initial update
+        setTimeout(updateThemeStatus, 100);
+    </script>
+</body>
+</html> 

@@ -1,0 +1,643 @@
+/* 
+ * Release Therapies - Responsive Stylesheet
+ * This stylesheet contains responsive styles for the Release Therapies website
+ */
+
+/* ===== MEDIA QUERIES ===== */
+
+/* Large Devices (Desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .about-grid {
+        gap: var(--spacing-lg);
+    }
+}
+
+/* Medium Devices (Tablets, less than 992px) */
+@media (max-width: 991.98px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    html {
+        font-size: 15px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.25rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.125rem;
+    }
+    
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-image {
+        order: -1;
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .about-image img {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .contact-info {
+        padding-right: 0;
+    }
+    
+    .insurance-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    /* Improved tablet layout for services */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    /* Improved testimonials for tablets */
+    .testimonial-card {
+        padding: var(--spacing-md);
+    }
+}
+
+/* Small Devices (Landscape Phones, less than 768px) */
+@media (max-width: 767.98px) {
+    .container {
+        max-width: 540px;
+    }
+    
+    html {
+        font-size: 14px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    .nav-links, .nav-btn {
+        display: none;
+    }
+    
+    .mobile-menu {
+        display: block;
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        cursor: pointer;
+        transition: var(--transition-normal);
+    }
+    
+    .mobile-menu:hover {
+        color: var(--accent-color);
+    }
+    
+    /* Mobile Navigation */
+    .mobile-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 85%;
+        max-width: 400px;
+        height: 100vh;
+        background-color: var(--light-color);
+        z-index: 1001;
+        display: none; /* Initially hidden */
+        flex-direction: column;
+        box-shadow: var(--shadow-lg);
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                    visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+    
+    .mobile-nav.active {
+        right: 0;
+        visibility: visible;
+    }
+    
+    .mobile-nav-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        display: none; /* Initially hidden */
+        transition: opacity 0.4s ease,
+                    visibility 0.4s ease;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .mobile-nav.active + .mobile-nav-overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .mobile-nav-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--spacing-md);
+        border-bottom: 1px solid var(--border-color);
+        background-color: var(--light-color);
+    }
+    
+    .close-menu {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition-normal);
+    }
+    
+    .close-menu:hover {
+        color: var(--accent-color);
+        transform: rotate(90deg);
+    }
+    
+    .mobile-nav-links {
+        display: flex;
+        flex-direction: column;
+        padding: var(--spacing-md);
+        background-color: var(--light-color);
+    }
+    
+    .mobile-nav-links a {
+        padding: var(--spacing-sm) 0;
+        color: var(--primary-color);
+        font-weight: 500;
+        font-size: 1.1rem;
+        position: relative;
+        transition: var(--transition-normal);
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .mobile-nav-links a:hover, 
+    .mobile-nav-links a.active {
+        color: var(--accent-color);
+        padding-left: var(--spacing-sm);
+    }
+    
+    .mobile-nav-btn {
+        margin: var(--spacing-md);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--spacing-sm) var(--spacing-md);
+        background-color: var(--accent-color);
+        color: var(--light-color);
+        font-weight: 500;
+        border-radius: var(--border-radius-sm);
+        text-decoration: none;
+        transition: var(--transition-normal);
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .mobile-nav-btn:hover {
+        background-color: var(--primary-color);
+    }
+    
+    body.menu-active {
+        overflow: hidden;
+    }
+    
+    /* Other Mobile Styles */
+    .hero-section {
+        padding: 100px 0 60px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+    }
+    
+    .section {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .section-title {
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .services-grid, .testimonials-slider, .team-grid, .packages-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .service-card {
+        margin-bottom: var(--spacing-md);
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .service-card:active {
+        transform: scale(0.98);
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .footer-col {
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .action-buttons .btn {
+        width: 100%;
+    }
+}
+
+/* Extra Small Devices (Portrait Phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .container {
+        width: 100%;
+        padding: 0 var(--spacing-md);
+    }
+    
+    html {
+        font-size: 13px;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.75rem;
+    }
+    
+    /* Improved service images for small phones */
+    .service-image {
+        height: 180px;
+    }
+    
+    .service-image img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+    
+    /* Improved contact methods for small phones */
+    .contact-method {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+        background-color: var(--light-color);
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-sm);
+    }
+    
+    .method-icon {
+        margin-right: 0;
+        margin-bottom: var(--spacing-sm);
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+    }
+    
+    /* Improved grid layouts for small phones */
+    .approach-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .mission-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .thank-you-content {
+        padding: var(--spacing-lg);
+    }
+    
+    /* Improved form inputs for small phones */
+    input, select, textarea {
+        font-size: 16px !important; /* Prevents iOS zoom on focus */
+    }
+    
+    /* Improved buttons for small phones */
+    .btn {
+        padding: var(--spacing-md) var(--spacing-lg);
+        min-height: 44px; /* Minimum touch target size */
+    }
+    
+    /* Improved page headers for small phones */
+    .page-header {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .page-header h1 {
+        font-size: 1.75rem;
+    }
+    
+    /* Touch-friendly navigation */
+    .breadcrumbs a {
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 1;
+    }
+}
+
+.slide-in {
+    animation: none !important;
+}
+
+.slide-out {
+    animation: none !important;
+}
+
+/* Improved mobile navigation animations */
+.mobile-nav-links a {
+    opacity: 1; /* Keep links fully visible */
+    transform: translateX(0);
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.mobile-nav.active .mobile-nav-links a {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.mobile-nav-btn {
+    margin-top: var(--spacing-lg);
+    width: 100%;
+    padding: var(--spacing-md);
+    font-size: 1.1rem;
+    text-align: center;
+    opacity: 1; /* Ensure full opacity */
+    transform: translateY(0); /* Reset any transform that might affect visibility */
+    background-color: var(--secondary-color); /* Ensure button has background color */
+    color: white; /* Ensure text is visible */
+    border-radius: 4px;
+    font-weight: 500;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-nav-btn:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mobile-nav.active .mobile-nav-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Additional responsive styles for services page */
+@media (max-width: 1200px) {
+    .service-video {
+        height: 300px;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .service-benefits {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-benefits li {
+        padding: var(--spacing-md);
+    }
+    
+    .premium-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-video {
+        height: 250px;
+    }
+    
+    .video-overlay {
+        padding: var(--spacing-md);
+    }
+    
+    .play-icon {
+        font-size: 3rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.75rem;
+    }
+    
+    .service-card {
+        margin-bottom: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 576px) {
+    .service-video {
+        height: 200px;
+    }
+    
+    .service-benefits {
+        padding: var(--spacing-md);
+    }
+    
+    .service-cta {
+        flex-direction: column;
+        padding: var(--spacing-md);
+    }
+    
+    .service-cta .btn {
+        width: 100%;
+        margin-top: var(--spacing-sm);
+    }
+}
+
+/* Improved navigation for tablets and mobile */
+@media (max-width: 992px) {
+    .nav-hidden {
+        transform: translateY(-100%);
+    }
+    
+    .nav-scrolled {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: var(--bg-color);
+        box-shadow: var(--shadow-md);
+    }
+}
+
+/* Animation classes */
+.loaded {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Animation preferences */
+@media (prefers-reduced-motion: no-preference) {
+    .service-card {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    
+    .service-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) {
+    /* Styles for touch devices */
+    .btn, .nav-links a, .service-card, .testimonial-card, .team-member, .social-link {
+        transition: transform 0.2s ease;
+    }
+    
+    .btn:active, .nav-links a:active, .service-card:active, .testimonial-card:active, .team-member:active, .social-link:active {
+        transform: scale(0.98);
+    }
+    
+    /* Larger touch targets */
+    .nav-links a, .footer-links a, .social-link {
+        padding: var(--spacing-sm) var(--spacing-md);
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+}
+
+/* Fix for iOS form elements */
+@supports (-webkit-touch-callout: none) {
+    input, select, textarea, button {
+        font-size: 16px !important;
+    }
+    
+    /* Fix for iOS 100vh issue */
+    .mobile-nav {
+        height: -webkit-fill-available;
+    }
+}
+
+/* Mobile navigation initial state */
+.mobile-nav {
+    right: -100%;
+    visibility: hidden;
+    will-change: right, visibility;
+}
+
+.mobile-nav-overlay {
+    opacity: 0;
+    visibility: hidden;
+    will-change: opacity, visibility;
+}
+
+/* When active, ensure mobile nav is displayed */
+.mobile-nav.active {
+    right: 0;
+    visibility: visible;
+}
+
+.mobile-nav.active + .mobile-nav-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* When mobile menu is active, prevent body scrolling */
+body.menu-active {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+}

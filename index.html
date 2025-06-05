@@ -1,20 +1,1021 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Kasuku.ai - Precision sensing, reimagined. Open, modular, precision-grade biosensing and motion tracking for healthcare, sports, education, and research." />
-    <meta name="keywords" content="biosensing, motion tracking, sensors, healthcare, sports, research, IoT, wearables" />
-    <title>Kasuku.ai - Precision Sensing, Reimagined</title>
-    <script type="module" crossorigin src="/assets/index-g5ryZ5_5.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/vendor-Bf-MSPTJ.js">
-    <link rel="modulepreload" crossorigin href="/assets/router-BrD-eQGy.js">
-    <link rel="modulepreload" crossorigin href="/assets/motion-5BbOgTDD.js">
-    <link rel="modulepreload" crossorigin href="/assets/icons-CYwe_Jbb.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-6m0UY4nN.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Release Therapies - Expert physiotherapy and sports massage in Feltham. Professional therapy services to help you recover, rebuild strength, and return to your active lifestyle. Book online today.">
+    <meta name="keywords" content="physiotherapy, sports massage, therapy, Feltham, pain relief, rehabilitation, wellness, massage therapy, physical therapy">
+    <meta name="author" content="Release Therapies">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Release Therapies - Professional Physiotherapy & Sports Massage">
+    <meta property="og:description" content="Expert therapy services in Feltham to help you recover, rebuild strength, and return to your active lifestyle. Book online today.">
+    <meta property="og:image" content="images/og-image.jpg">
+    <meta property="og:url" content="https://releasetherapies.co.uk">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Release Therapies - Professional Physiotherapy & Sports Massage">
+    <meta name="twitter:description" content="Expert therapy services in Feltham to help you recover, rebuild strength, and return to your active lifestyle.">
+    <meta name="twitter:image" content="images/og-image.jpg">
+    
+    <title>Release Therapies - Professional Physiotherapy & Sports Massage in Feltham</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#3a4a5c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Release Therapies">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dropdown.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    
+    <!-- Enhanced Structured Data for Local Business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "PhysicalTherapy",
+      "name": "Release Therapies",
+      "description": "Professional physiotherapy and sports massage services to help you recover, rebuild strength, and return to your active lifestyle.",
+      "url": "https://releasetherapies.co.uk",
+      "logo": "https://releasetherapies.co.uk/images/logo.png",
+      "image": "https://releasetherapies.co.uk/images/og-image.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Feltham ASDA, Tilley Rd",
+        "addressLocality": "Feltham",
+        "postalCode": "TW13 4BH",
+        "addressCountry": "UK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "51.4444",
+        "longitude": "-0.4052"
+      },
+      "priceRange": "££",
+      "telephone": "+44-7123-456789",
+      "email": "info@releasetherapies.co.uk",
+      "openingHours": [
+        "Mo-Fr 09:00-19:00",
+        "Sa 10:00-17:00",
+        "Su 10:00-15:00"
+      ],
+      "sameAs": [
+        "https://facebook.com/releasetherapies",
+        "https://instagram.com/release.therapies"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Therapy Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Deep Tissue Massage",
+              "description": "Therapeutic massage targeting deeper muscle layers"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Sports Massage",
+              "description": "Specialized massage for athletes and active individuals"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Physical Therapy",
+              "description": "Rehabilitation and movement therapy"
+            }
+          }
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "127"
+      }
+    }
+    </script>
+    
+    <!-- Google Analytics (placeholder - replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_TRACKING_ID');
+    </script>
+</head>
+<body class="home">
+    <!-- Dark Mode Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Release Therapies Logo" width="180" height="auto">
+                </a>
+                <div class="nav-links">
+                    <a href="index.html" class="active">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="about.html">About Us</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#" id="accountBtn" class="account-btn">
+                        <i class="fas fa-user"></i> My Account
+                    </a>
+                </div>
+                <a href="booking.html" class="btn nav-btn">Book Appointment</a>
+                <div class="mobile-menu" id="mobileMenu" role="button" tabindex="0" aria-label="Open menu">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-header">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Release Therapies Logo" width="180" height="auto">
+            </a>
+            <button class="close-menu" aria-label="Close menu">&times;</button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About Us</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <a href="booking.html" class="mobile-nav-btn">Book Appointment</a>
+    </div>
+    <div class="mobile-nav-overlay"></div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Experience <span>Natural Healing</span> Through Professional Therapy</h1>
+            <p>Discover a holistic approach to wellness with our expert therapeutic services. We combine traditional techniques with modern practices to help you achieve optimal health and balance.</p>
+            <div class="hero-btns">
+                <a href="contact.html" class="btn btn-primary">Book Appointment</a>
+                <a href="services.html" class="btn btn-outline">Our Services</a>
+            </div>
+        </div>
+        <div class="hero-image hero-visual-section">
+            <!-- Intentional visual section without image for design effect -->
+        </div>
+        <div class="hero-pattern"></div>
+        <div class="hero-scroll">
+            <span>Scroll Down</span>
+            <div class="hero-scroll-icon"></div>
+        </div>
+    </section>
+
+    <section id="services" class="section services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>We offer personalized treatment plans designed to help you <span class="highlight">release tension</span>, <span class="highlight">restore mobility</span>, and <span class="highlight">revitalize your body</span></p>
+                <img src="images/logo-circle.png" alt="Release Therapies Logo" class="logo-circle">
+            </div>
+            <div class="services-grid">
+                <div class="service-card" tabindex="0">
+                    <div class="service-img">
+                        <img src="images/service-sports.jpg" alt="Sports Rehabilitation" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <h3>Sports Rehabilitation</h3>
+                        <p>Specialized therapy for athletes of all levels to recover from injuries, release muscle tension, and improve performance.</p>
+                        <a href="booking.html?service=sports" class="btn btn-outline">Book Now</a>
+                    </div>
+                </div>
+                <div class="service-card" tabindex="0">
+                    <div class="service-img">
+                        <img src="images/service-orthopedic.jpg" alt="Orthopedic Therapy" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <h3>Orthopedic Therapy</h3>
+                        <p>Treatment for muscle, joint, and bone injuries to release pain, restore mobility, and reduce discomfort.</p>
+                        <a href="booking.html?service=orthopedic" class="btn btn-outline">Book Now</a>
+                    </div>
+                </div>
+                <div class="service-card" tabindex="0">
+                    <div class="service-img">
+                        <img src="images/service-recovery.jpg" alt="Post-Surgery Recovery" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <h3>Post-Surgery Recovery</h3>
+                        <p>Comprehensive rehabilitation programs to help you recover safely and release tension after surgical procedures.</p>
+                        <a href="booking.html?service=recovery" class="btn btn-outline">Book Now</a>
+                    </div>
+                </div>
+                <div class="service-card maintenance-card" tabindex="0">
+                    <div class="service-img">
+                        <img src="images/massage-table-room.jpg" alt="Maintenance Massage Programs" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <h3>Maintenance Programs</h3>
+                        <p>Regular fortnightly massages to prevent injuries, improve performance, relieve muscle tension, and boost circulation for optimal recovery.</p>
+                        <div class="service-benefits">
+                            <span class="benefit">Injury Prevention</span>
+                            <span class="benefit">Performance Enhancement</span>
+                            <span class="benefit">Faster Recovery</span>
+                        </div>
+                        <a href="booking.html?service=maintenance" class="btn btn-outline">Start Program</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-50">
+                <a href="services.html" class="btn">View All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wellness Tips & Exercise Library -->
+    <section class="wellness-tips section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Wellness Tips & Exercises</h2>
+                <p>Professional guidance from our qualified physiotherapists to help you maintain <span class="highlight">optimal health</span> between sessions</p>
+            </div>
+            
+            <div class="tips-grid">
+                <div class="tip-card featured">
+                    <div class="tip-header">
+                        <div class="tip-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h3>Desk Worker Relief</h3>
+                        <span class="tip-category">Office Wellness</span>
+                    </div>
+                    <div class="tip-content">
+                        <p>Break up your desk work with these mobility exercises to prevent back pain and improve posture.</p>
+                        <div class="exercise-list">
+                            <div class="exercise-item">
+                                <h4>Thoracic Openers</h4>
+                                <ul>
+                                    <li>Interlock hands behind head</li>
+                                    <li>Round mid-back, bring elbows together</li>
+                                    <li>Hold for 5 seconds, repeat 10 times</li>
+                                    <li>Perfect after every hour of sitting</li>
+                                </ul>
+                            </div>
+                            <div class="exercise-item">
+                                <h4>Dead Bugs</h4>
+                                <ul>
+                                    <li>90-degree hip and knee position</li>
+                                    <li>Lower opposite leg and arm slowly</li>
+                                    <li>Hold 5 seconds, 10 reps each side</li>
+                                    <li>Strengthens core stability</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-header">
+                        <div class="tip-icon">
+                            <i class="fas fa-hand-paper"></i>
+                        </div>
+                        <h3>Wrist Strength & Mobility</h3>
+                        <span class="tip-category">Injury Prevention</span>
+                    </div>
+                    <div class="tip-content">
+                        <p>Essential exercises for wrist rehabilitation and performance enhancement in heavy lifts.</p>
+                        <div class="tip-benefits">
+                            <span class="benefit">Pain-free movement</span>
+                            <span class="benefit">Injury prevention</span>
+                            <span class="benefit">Performance enhancement</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-header">
+                        <div class="tip-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <h3>Shoulder Stability</h3>
+                        <span class="tip-category">Strength Training</span>
+                    </div>
+                    <div class="tip-content">
+                        <p>Professional shoulder exercises tailored for pain-free movement and upper limb stability.</p>
+                        <div class="tip-applications">
+                            <div class="application">✓ Osteoarthritis management</div>
+                            <div class="application">✓ Tendinopathy treatment</div>
+                            <div class="application">✓ Sporting injury recovery</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-50">
+                <p class="professional-note">
+                    <i class="fas fa-user-md"></i>
+                    All exercises can be regressed and progressed by our qualified physiotherapists to suit individual needs
+                </p>
+                <a href="booking.html" class="btn">Get Your Personalized Program</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking-preview" class="section booking-preview">
+        <div class="container">
+            <div class="booking-preview-content">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="booking-text">
+                            <h2>Ready to <span class="highlight">Release</span> Your Pain?</h2>
+                            <p>Take the first step toward recovery and freedom from discomfort. Our expert therapists are ready to help you regain mobility and return to the activities you love.</p>
+                            <ul class="booking-benefits">
+                                <li>Personalized treatment plans</li>
+                                <li>Convenient location at Feltham ASDA</li>
+                                <li>Flexible appointment times</li>
+                                <li>Expert therapists with years of experience</li>
+                            </ul>
+                            <a href="booking.html" class="btn btn-lg">Book Your Session</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="booking-image">
+                            <img src="images/booking-preview.jpg" alt="Book your therapy session" loading="lazy">
+                            <div class="dot-pattern"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators & Stats Section -->
+    <section class="trust-indicators section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Trusted by Hundreds of Clients</h2>
+                <p>Our commitment to excellence has earned us the trust of the <span class="highlight">Feltham community</span> and beyond</p>
+            </div>
+            
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <i class="fas fa-certificate"></i>
+                    <span>Qualified Professionals</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-award"></i>
+                    <span>5+ Years Experience</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-users"></i>
+                    <span>500+ Satisfied Clients</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-star"></i>
+                    <span>4.9/5 Average Rating</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Fully Insured</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-clock"></i>
+                    <span>Flexible Scheduling</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="500">0</span>
+                    <span class="stat-label">Happy Clients</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="2500">0</span>
+                    <span class="stat-label">Treatments Completed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="98">0</span>
+                    <span class="stat-label">% Success Rate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="5">0</span>
+                    <span class="stat-label">Years of Excellence</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials section">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+                <p>Real stories from real people who have experienced the <span class="highlight">Release Therapies</span> difference</p>
+            </div>
+            <div class="testimonials-slider" role="region" aria-label="Client testimonials">
+                <div class="testimonial-card" tabindex="0">
+                    <div class="testimonial-content">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>After months of shoulder pain limiting my tennis game, the team at <strong>Release Therapies</strong> helped me regain full mobility. I'm now back on the court and playing better than ever!</p>
+                        <div class="client-info">
+                            <div class="client-img">
+                                <img src="images/client-1.jpg" alt="Sarah M." loading="lazy">
+                            </div>
+                            <div class="client-details">
+                                <h4>Sarah M.</h4>
+                                <p>Sports Rehabilitation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" tabindex="0">
+                    <div class="testimonial-content">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>Following knee surgery, I was worried about returning to my active lifestyle. The personalized recovery plan from <strong>Release Therapies</strong> helped me build strength and confidence. I'm now pain-free and back to hiking!</p>
+                        <div class="client-info">
+                            <div class="client-img">
+                                <img src="images/client-2.jpg" alt="David K." loading="lazy">
+                            </div>
+                            <div class="client-details">
+                                <h4>David K.</h4>
+                                <p>Post-Surgery Recovery</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" tabindex="0">
+                    <div class="testimonial-content">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>Chronic back pain was affecting every aspect of my life. The therapists at <strong>Release Therapies</strong> identified the root cause and created a treatment plan that has given me back my quality of life. I can't thank them enough!</p>
+                        <div class="client-info">
+                            <div class="client-img">
+                                <img src="images/client-3.jpg" alt="Emma T." loading="lazy">
+                            </div>
+                            <div class="client-details">
+                                <h4>Emma T.</h4>
+                                <p>Orthopedic Therapy</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mobile testimonial navigation -->
+                <div class="testimonial-nav">
+                    <button class="testimonial-nav-btn prev" aria-label="Previous testimonial"><i class="fas fa-chevron-left"></i></button>
+                    <div class="testimonial-dots">
+                        <span class="testimonial-dot active" data-index="0"></span>
+                        <span class="testimonial-dot" data-index="1"></span>
+                        <span class="testimonial-dot" data-index="2"></span>
+                    </div>
+                    <button class="testimonial-nav-btn next" aria-label="Next testimonial"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed Section -->
+    <section class="instagram-feed section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Follow Our Journey</h2>
+                <p>Stay connected with us on <span class="highlight">Instagram</span> for wellness tips, behind-the-scenes content, and client success stories</p>
+            </div>
+            <div class="instagram-grid" id="instagramFeed">
+                <!-- Instagram posts with local videos -->
+                <div class="instagram-grid-local">
+                    <div class="instagram-item video-item">
+                        <div class="instagram-media">
+                            <video muted loop playsinline poster="">
+                                <source src="videos/Video 1.mp4" type="video/mp4">
+                                Your browser does not support video.
+                            </video>
+                        </div>
+                        <div class="instagram-overlay">
+                            <div class="instagram-overlay-content">
+                                <i class="fas fa-play"></i>
+                                <p class="instagram-caption">Therapeutic techniques in action</p>
+                                <span class="view-on-instagram">Tap to play</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="instagram-item video-item">
+                        <div class="instagram-media">
+                            <video muted loop playsinline poster="">
+                                <source src="videos/Video 2.mp4" type="video/mp4">
+                                Your browser does not support video.
+                            </video>
+                        </div>
+                        <div class="instagram-overlay">
+                            <div class="instagram-overlay-content">
+                                <i class="fas fa-play"></i>
+                                <p class="instagram-caption">Professional massage therapy</p>
+                                <span class="view-on-instagram">Tap to play</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="instagram-item video-item">
+                        <div class="instagram-media">
+                            <video muted loop playsinline poster="">
+                                <source src="videos/Video 3.mp4" type="video/mp4">
+                                Your browser does not support video.
+                            </video>
+                        </div>
+                        <div class="instagram-overlay">
+                            <div class="instagram-overlay-content">
+                                <i class="fas fa-play"></i>
+                                <p class="instagram-caption">Relaxation and recovery</p>
+                                <span class="view-on-instagram">Tap to play</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="instagram-item video-item">
+                        <div class="instagram-media">
+                            <video muted loop playsinline poster="">
+                                <source src="videos/Video 4.mp4" type="video/mp4">
+                                Your browser does not support video.
+                            </video>
+                        </div>
+                        <div class="instagram-overlay">
+                            <div class="instagram-overlay-content">
+                                <i class="fas fa-play"></i>
+                                <p class="instagram-caption">Expert therapeutic care</p>
+                                <span class="view-on-instagram">Tap to play</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-50">
+                <a href="https://www.instagram.com/release.therapies/" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i> Follow Us on Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Service Highlight -->
+    <section class="mobile-service section">
+        <div class="container">
+            <div class="mobile-service-content">
+                <div class="mobile-service-text">
+                    <div class="service-badge">
+                        <i class="fas fa-home"></i>
+                        <span>Mobile Service Available</span>
+                    </div>
+                    <h2>Tired of the hassle of traveling to a clinic?</h2>
+                    <p>Let us bring our expert therapists to your doorstep! Experience the convenience of top-notch care in the comfort of your own home.</p>
+                    
+                    <div class="mobile-services-list">
+                        <div class="mobile-service-item">
+                            <i class="fas fa-hands"></i>
+                            <span>Deep Tissue Massage</span>
+                        </div>
+                        <div class="mobile-service-item">
+                            <i class="fas fa-running"></i>
+                            <span>Sports Massage</span>
+                        </div>
+                        <div class="mobile-service-item">
+                            <i class="fas fa-circle"></i>
+                            <span>Dry Cupping</span>
+                        </div>
+                        <div class="mobile-service-item">
+                            <i class="fas fa-heartbeat"></i>
+                            <span>Injury Rehabilitation</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-cta">
+                        <a href="booking.html?service=mobile" class="btn btn-lg">Book Mobile Service</a>
+                        <div class="mobile-note">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Available across Feltham and surrounding areas</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-service-visual">
+                    <div class="mobile-icon-large">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="convenience-points">
+                        <div class="point">
+                            <i class="fas fa-clock"></i>
+                            <span>Save Travel Time</span>
+                        </div>
+                        <div class="point">
+                            <i class="fas fa-couch"></i>
+                            <span>Comfort of Home</span>
+                        </div>
+                        <div class="point">
+                            <i class="fas fa-user-md"></i>
+                            <span>Same Expert Care</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup Section -->
+    <section class="newsletter-section section">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-info">
+                    <h2>Stay Updated with Wellness Tips</h2>
+                    <p>Join our newsletter to receive expert advice, exercise tips, and exclusive offers delivered to your inbox weekly.</p>
+                    
+                    <div class="newsletter-benefits">
+                        <div class="benefit-item">
+                            <i class="fas fa-dumbbell"></i>
+                            <span>Weekly exercise routines</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-heart"></i>
+                            <span>Wellness and recovery tips</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-gift"></i>
+                            <span>Exclusive offers & discounts</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Early access to workshops</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="newsletter-form">
+                    <form id="newsletterForm" class="newsletter-signup">
+                        <div class="form-group">
+                            <input type="text" id="newsletter-name" name="name" placeholder="Your Name" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="newsletter-email" name="email" placeholder="Your Email Address" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="newsletter-consent" name="consent" required>
+                                <label for="newsletter-consent">I agree to receive wellness tips and promotional emails. I can unsubscribe at any time.</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-envelope"></i> Subscribe Now
+                        </button>
+                    </form>
+                    
+                    <div class="privacy-note">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>We respect your privacy. No spam, ever.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="Release Therapies Logo">
+                    <p>Expert therapy to help you recover, rebuild strength, and find freedom from pain.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="booking.html">Book Now</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li class="address">Feltham ASDA, Tilley Rd<br>Feltham TW13 4BH</li>
+                        <li class="phone"><a href="tel:+447123456789">+44 7123 456789</a></li>
+                        <li class="email"><a href="mailto:info@releasetherapies.co.uk">info@releasetherapies.co.uk</a></li>
+                    </ul>
+                </div>
+                <div class="footer-hours">
+                    <h3>Hours</h3>
+                    <ul class="hours-list">
+                        <li><span>Monday - Friday:</span> 9:00 AM - 7:00 PM</li>
+                        <li><span>Saturday:</span> 10:00 AM - 5:00 PM</li>
+                        <li><span>Sunday:</span> 10:00 AM - 3:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <a href="https://www.facebook.com/" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/release.therapies/" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2025 Release Therapies. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-pattern"></div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Account Modal -->
+    <div id="accountModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Welcome Back</h2>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            
+            <!-- Login Form -->
+            <div id="loginForm" class="auth-form active">
+                <form class="account-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address</label>
+                        <input type="email" id="loginEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" class="form-control" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-group">
+                            <input type="checkbox" id="rememberMe">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+                </form>
+                <div class="auth-switch">
+                    <p>Don't have an account? <a href="#" id="showRegister" class="auth-link">Create one</a></p>
+                </div>
+            </div>
+            
+            <!-- Register Form -->
+            <div id="registerForm" class="auth-form">
+                <form class="account-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email Address</label>
+                        <input type="email" id="registerEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-group">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span>I agree to the <a href="#" class="text-link">Terms of Service</a> and <a href="#" class="text-link">Privacy Policy</a></span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+                </form>
+                <div class="auth-switch">
+                    <p>Already have an account? <a href="#" id="showLogin" class="auth-link">Sign in</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Edit Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Profile</h2>
+                <button class="modal-close" id="closeProfileModal">&times;</button>
+            </div>
+            
+            <div class="auth-form active">
+                <form class="account-form" id="profileEditForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editFirstName">First Name</label>
+                            <input type="text" id="editFirstName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editLastName">Last Name</label>
+                            <input type="text" id="editLastName" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="editEmail">Email Address</label>
+                        <input type="email" id="editEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editPhone">Phone Number</label>
+                        <input type="tel" id="editPhone" class="form-control" placeholder="e.g., +44 7123 456789">
+                    </div>
+                    <div class="form-group">
+                        <label for="editAddress">Address</label>
+                        <textarea id="editAddress" class="form-control" rows="3" placeholder="Your full address"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="editDateOfBirth">Date of Birth</label>
+                        <input type="date" id="editDateOfBirth" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="editEmergencyContact">Emergency Contact</label>
+                        <input type="text" id="editEmergencyContact" class="form-control" placeholder="Name and phone number">
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h4>Health Information</h4>
+                        <div class="form-group">
+                            <label for="editMedicalConditions">Medical Conditions</label>
+                            <textarea id="editMedicalConditions" class="form-control" rows="2" placeholder="Any relevant medical conditions or allergies"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="editTreatmentPreferences">Treatment Preferences</label>
+                            <textarea id="editTreatmentPreferences" class="form-control" rows="2" placeholder="Any preferences for your treatments"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h4>Preferences</h4>
+                        <div class="form-group">
+                            <label class="checkbox-group">
+                                <input type="checkbox" id="emailNotifications">
+                                <span>Receive email notifications for appointments</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-group">
+                                <input type="checkbox" id="smsNotifications">
+                                <span>Receive SMS reminders</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-group">
+                                <input type="checkbox" id="marketingEmails">
+                                <span>Receive wellness tips and offers</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelProfileEdit">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <!-- Main JavaScript -->
+    <script src="js/main.js"></script>
+    <!-- Account System -->
+    <script src="js/account.js"></script>
+    <!-- Instagram Feed Integration -->
+    <script src="js/instagram-feed.js"></script>
+    <!-- Form Validation -->
+    <script src="js/validation.js"></script>
+    
+    <!-- Add testimonial slider script for mobile -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Testimonial slider for mobile
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+            const dots = document.querySelectorAll('.testimonial-dot');
+            const prevBtn = document.querySelector('.testimonial-nav-btn.prev');
+            const nextBtn = document.querySelector('.testimonial-nav-btn.next');
+            let currentIndex = 0;
+            
+            // Only initialize on mobile
+            if (window.innerWidth < 768) {
+                // Hide all testimonials except the first one
+                testimonialCards.forEach((card, index) => {
+                    if (index !== 0) {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Show testimonial at current index
+                function showTestimonial(index) {
+                    testimonialCards.forEach(card => card.style.display = 'none');
+                    testimonialCards[index].style.display = 'block';
+                    
+                    // Update dots
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    dots[index].classList.add('active');
+                }
+                
+                // Next testimonial
+                function nextTestimonial() {
+                    currentIndex = (currentIndex + 1) % testimonialCards.length;
+                    showTestimonial(currentIndex);
+                }
+                
+                // Previous testimonial
+                function prevTestimonial() {
+                    currentIndex = (currentIndex - 1 + testimonialCards.length) % testimonialCards.length;
+                    showTestimonial(currentIndex);
+                }
+                
+                // Event listeners
+                if (nextBtn) nextBtn.addEventListener('click', nextTestimonial);
+                if (prevBtn) prevBtn.addEventListener('click', prevTestimonial);
+                
+                // Dot navigation
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        currentIndex = index;
+                        showTestimonial(currentIndex);
+                    });
+                });
+                
+                // Swipe functionality
+                let touchStartX = 0;
+                let touchEndX = 0;
+                
+                const testimonialSlider = document.querySelector('.testimonials-slider');
+                if (testimonialSlider) {
+                    testimonialSlider.addEventListener('touchstart', (e) => {
+                        touchStartX = e.changedTouches[0].screenX;
+                    }, { passive: true });
+                    
+                    testimonialSlider.addEventListener('touchend', (e) => {
+                        touchEndX = e.changedTouches[0].screenX;
+                        handleSwipe();
+                    }, { passive: true });
+                }
+                
+                function handleSwipe() {
+                    const swipeThreshold = 50;
+                    
+                    if (touchEndX < touchStartX - swipeThreshold) {
+                        // Swipe left - next
+                        nextTestimonial();
+                    } else if (touchEndX > touchStartX + swipeThreshold) {
+                        // Swipe right - previous
+                        prevTestimonial();
+                    }
+                }
+            }
+            
+            // Back to top button
+            const backToTopBtn = document.getElementById('backToTop');
+            if (backToTopBtn) {
+                // Show button when scrolled down
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset > 300) {
+                        backToTopBtn.classList.add('visible');
+                    } else {
+                        backToTopBtn.classList.remove('visible');
+                    }
+                });
+                
+                // Scroll to top when clicked
+                backToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
+    </script>
+</body>
 </html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wellness blog by Release Therapies - Expert tips, treatment insights, and recovery advice from qualified physiotherapists in Feltham.">
+    <meta name="keywords" content="wellness blog, physiotherapy tips, sports massage advice, injury prevention, recovery tips, Feltham">
+    <title>Wellness Blog - Release Therapies</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dropdown.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+    <!-- Dark Mode Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Release Therapies Logo" width="180" height="auto">
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="about.html">About Us</a>
+                    <a href="blog.html" class="active">Blog</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#" id="accountBtn" class="account-btn">
+                        <i class="fas fa-user"></i> My Account
+                    </a>
+                </div>
+                <a href="booking.html" class="btn nav-btn">Book Appointment</a>
+                <div class="mobile-menu" id="mobileMenu" role="button" tabindex="0" aria-label="Open menu">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-header">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Release Therapies Logo" width="180" height="auto">
+            </a>
+            <button class="close-menu" aria-label="Close menu">&times;</button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About Us</a>
+            <a href="blog.html" class="active">Blog</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <a href="booking.html" class="mobile-nav-btn">Book Appointment</a>
+    </div>
+    <div class="mobile-nav-overlay"></div>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Wellness Blog</h1>
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a> > Blog
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Introduction -->
+    <section class="blog-intro section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Expert Wellness Insights</h2>
+                <p>Stay informed with the latest <span class="highlight">health tips</span>, treatment insights, and recovery advice from our qualified physiotherapists</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="featured-article section">
+        <div class="container">
+            <div class="featured-post">
+                <div class="featured-image">
+                    <img src="images/blog-featured.jpg" alt="The Science Behind Deep Tissue Massage" loading="lazy">
+                    <div class="featured-badge">Featured Article</div>
+                </div>
+                <div class="featured-content">
+                    <div class="post-meta">
+                        <span class="category">Treatment Insights</span>
+                        <span class="date">January 15, 2025</span>
+                        <span class="read-time">5 min read</span>
+                    </div>
+                    <h2>The Science Behind Deep Tissue Massage: What Your Body Really Needs</h2>
+                    <p>Discover how deep tissue massage works at a cellular level to promote healing, reduce inflammation, and restore optimal muscle function. Learn why this therapeutic technique is essential for long-term wellness.</p>
+                    <a href="blog-post.html?id=deep-tissue-science" class="btn btn-primary">Read Full Article</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Categories -->
+    <section class="blog-categories section">
+        <div class="container">
+            <div class="categories-filter">
+                <button class="filter-btn active" data-category="all">All Articles</button>
+                <button class="filter-btn" data-category="treatment">Treatment Insights</button>
+                <button class="filter-btn" data-category="wellness">Wellness Tips</button>
+                <button class="filter-btn" data-category="recovery">Recovery Guide</button>
+                <button class="filter-btn" data-category="exercise">Exercise & Movement</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Posts Grid -->
+    <section class="blog-posts section">
+        <div class="container">
+            <div class="posts-grid">
+                
+                <!-- Post 1 -->
+                <article class="blog-card" data-category="wellness">
+                    <div class="post-image">
+                        <img src="images/blog-1.jpg" alt="5 Desk Stretches" loading="lazy">
+                        <div class="post-category">Wellness Tips</div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="date">January 12, 2025</span>
+                            <span class="read-time">3 min read</span>
+                        </div>
+                        <h3>5 Simple Desk Stretches to Combat Office Syndrome</h3>
+                        <p>Working from home or in an office? These quick stretches can prevent tension, improve posture, and keep you feeling energized throughout the day.</p>
+                        <div class="post-footer">
+                            <a href="blog-post.html?id=desk-stretches" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                            <div class="post-tags">
+                                <span class="tag">Office Wellness</span>
+                                <span class="tag">Stretching</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 2 -->
+                <article class="blog-card" data-category="recovery">
+                    <div class="post-image">
+                        <img src="images/blog-2.jpg" alt="Sports Injury Recovery" loading="lazy">
+                        <div class="post-category">Recovery Guide</div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="date">January 10, 2025</span>
+                            <span class="read-time">7 min read</span>
+                        </div>
+                        <h3>Complete Guide to Sports Injury Recovery: From Acute to Return-to-Play</h3>
+                        <p>A comprehensive roadmap for athletes recovering from injury, covering the phases of healing and when to seek professional treatment.</p>
+                        <div class="post-footer">
+                            <a href="blog-post.html?id=sports-recovery" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                            <div class="post-tags">
+                                <span class="tag">Sports Medicine</span>
+                                <span class="tag">Recovery</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 3 -->
+                <article class="blog-card" data-category="treatment">
+                    <div class="post-image">
+                        <img src="images/blog-3.jpg" alt="Cupping Therapy Benefits" loading="lazy">
+                        <div class="post-category">Treatment Insights</div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="date">January 8, 2025</span>
+                            <span class="read-time">4 min read</span>
+                        </div>
+                        <h3>Cupping Therapy: Ancient Wisdom Meets Modern Science</h3>
+                        <p>Explore the evidence-based benefits of cupping therapy and how this traditional technique enhances modern physiotherapy treatments.</p>
+                        <div class="post-footer">
+                            <a href="blog-post.html?id=cupping-therapy" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                            <div class="post-tags">
+                                <span class="tag">Cupping</span>
+                                <span class="tag">Alternative Therapy</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 4 -->
+                <article class="blog-card" data-category="exercise">
+                    <div class="post-image">
+                        <img src="images/blog-4.jpg" alt="Lower Back Exercises" loading="lazy">
+                        <div class="post-category">Exercise & Movement</div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="date">January 5, 2025</span>
+                            <span class="read-time">6 min read</span>
+                        </div>
+                        <h3>Strengthen Your Core: Essential Exercises for Lower Back Health</h3>
+                        <p>Learn the most effective exercises to build core strength, improve stability, and prevent lower back pain from recurring.</p>
+                        <div class="post-footer">
+                            <a href="blog-post.html?id=core-exercises" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                            <div class="post-tags">
+                                <span class="tag">Core Strength</span>
+                                <span class="tag">Back Pain</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 5 -->
+                <article class="blog-card" data-category="wellness">
+                    <div class="post-image">
+                        <img src="images/blog-5.jpg" alt="Sleep and Recovery" loading="lazy">
+                        <div class="post-category">Wellness Tips</div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="date">January 3, 2025</span>
+                            <span class="read-time">5 min read</span>
+                        </div>
+                        <h3>The Sleep-Recovery Connection: Optimizing Rest for Healing</h3>
+                        <p>Understand how quality sleep accelerates healing and recovery, plus practical tips to improve your sleep for better therapeutic outcomes.</p>
+                        <div class="post-footer">
+                            <a href="blog-post.html?id=sleep-recovery" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                            <div class="post-tags">
+                                <span class="tag">Sleep</span>
+                                <span class="tag">Recovery</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 6 -->
+                <article class="blog-card" data-category="treatment">
+                    <div class="post-image">
+                        <img src="images/blog-6.jpg" alt="Manual Therapy vs Massage" loading="lazy">
+                        <div class="post-category">Treatment Insights</div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="date">December 30, 2024</span>
+                            <span class="read-time">4 min read</span>
+                        </div>
+                        <h3>Manual Therapy vs. Massage: Understanding the Difference</h3>
+                        <p>Learn when to choose manual therapy over traditional massage therapy and how each approach serves different therapeutic goals.</p>
+                        <div class="post-footer">
+                            <a href="blog-post.html?id=manual-vs-massage" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                            <div class="post-tags">
+                                <span class="tag">Manual Therapy</span>
+                                <span class="tag">Treatment Options</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-section">
+                <button class="btn btn-outline" id="loadMorePosts">Load More Articles</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup (Simplified for Blog) -->
+    <section class="blog-newsletter section">
+        <div class="container">
+            <div class="newsletter-card">
+                <div class="newsletter-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>Never Miss a Wellness Tip</h3>
+                <p>Get the latest articles and health insights delivered straight to your inbox.</p>
+                <form class="inline-newsletter">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="Release Therapies Logo">
+                    <p>Expert therapy to help you recover, rebuild strength, and find freedom from pain.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="booking.html">Book Now</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li class="address">Feltham ASDA, Tilley Rd<br>Feltham TW13 4BH</li>
+                        <li class="phone"><a href="tel:+447123456789">+44 7123 456789</a></li>
+                        <li class="email"><a href="mailto:info@releasetherapies.co.uk">info@releasetherapies.co.uk</a></li>
+                    </ul>
+                </div>
+                <div class="footer-hours">
+                    <h3>Hours</h3>
+                    <ul class="hours-list">
+                        <li><span>Monday - Friday:</span> 9:00 AM - 7:00 PM</li>
+                        <li><span>Saturday:</span> 10:00 AM - 5:00 PM</li>
+                        <li><span>Sunday:</span> 10:00 AM - 3:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <a href="https://www.facebook.com/" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/release.therapies/" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2025 Release Therapies. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script>
+        // Blog-specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Category filtering
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const blogCards = document.querySelectorAll('.blog-card');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Update active button
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter cards
+                    blogCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                            setTimeout(() => card.style.opacity = '1', 50);
+                        } else {
+                            card.style.opacity = '0';
+                            setTimeout(() => card.style.display = 'none', 300);
+                        }
+                    });
+                });
+            });
+            
+            // Load more functionality
+            const loadMoreBtn = document.getElementById('loadMorePosts');
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', function() {
+                    // Simulate loading more posts
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+                    setTimeout(() => {
+                        this.innerHTML = 'Load More Articles';
+                        showToast('More articles loaded!', 'success');
+                    }, 1500);
+                });
+            }
+        });
+    </script>
+</body>
+</html> 
