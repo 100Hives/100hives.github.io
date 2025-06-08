@@ -176,24 +176,21 @@
     .hero {
         grid-template-columns: 1fr;
         text-align: center;
+        min-height: 80vh;
+        padding: var(--spacing-xl) 0;
+        justify-content: center;
     }
 
     .hero-content {
         padding: var(--spacing-xl) var(--spacing-md);
         margin: 0 auto;
-    }
-
-    .hero-image {
-        position: absolute;
-        top: 0;
-        left: 0;
+        max-width: 100%;
         width: 100%;
-        height: 100%;
-        z-index: 1;
     }
 
-    .hero-image::after {
-        background: linear-gradient(0deg, var(--light-color) 0%, rgba(255, 255, 255, 0.8) 100%);
+    /* Hide the visual section on mobile */
+    .hero-visual-section {
+        display: none;
     }
 
     .hero h1, .hero p {
@@ -203,26 +200,143 @@
     .hero-btns {
         justify-content: center;
     }
+
+    .hero-scroll {
+        bottom: 20px;
+    }
 }
 
 @media (max-width: 767.98px) {
+    .hero {
+        min-height: 70vh;
+        padding: var(--spacing-lg) 0;
+    }
+
+    .hero-content {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
     .hero h1 {
         font-size: 2.5rem;
+        margin-bottom: var(--spacing-sm);
+        line-height: 1.1;
+    }
+
+    .hero h1 span {
+        margin-top: var(--spacing-xs);
     }
 
     .hero p {
         font-size: 1.1rem;
+        margin-bottom: var(--spacing-md);
+        line-height: 1.5;
     }
 
     .hero-btns {
         flex-direction: column;
         width: 100%;
-        max-width: 400px;
+        max-width: 320px;
         margin: 0 auto;
+        gap: var(--spacing-sm);
     }
 
     .hero-btns .btn {
         width: 100%;
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .hero-scroll {
+        bottom: 15px;
+        font-size: 0.8rem;
+    }
+
+    .hero-scroll-icon {
+        width: 25px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .hero {
+        min-height: 60vh;
+        padding: var(--spacing-md) 0;
+        margin-top: -60px; /* Adjust for smaller header on mobile */
+    }
+
+    .hero-content {
+        padding: var(--spacing-md) var(--spacing-sm);
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-xs);
+        line-height: 1.15;
+    }
+
+    .hero h1 span {
+        font-size: 1.8rem;
+        margin-top: var(--spacing-xs);
+    }
+
+    .hero p {
+        font-size: 1rem;
+        margin-bottom: var(--spacing-sm);
+        line-height: 1.6;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-btns {
+        max-width: 280px;
+        gap: var(--spacing-xs);
+        margin-top: var(--spacing-md);
+    }
+
+    .hero-btns .btn {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+
+    .hero-scroll {
+        display: none; /* Hide scroll indicator on very small screens */
+    }
+}
+
+/* Extra small screens (iPhone SE, etc.) */
+@media (max-width: 375px) {
+    .hero {
+        min-height: 55vh;
+        padding: var(--spacing-sm) 0;
+    }
+
+    .hero-content {
+        padding: var(--spacing-sm);
+    }
+
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .hero h1 span {
+        font-size: 1.6rem;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+        max-width: 95%;
+    }
+
+    .hero-btns {
+        max-width: 260px;
+    }
+
+    .hero-btns .btn {
+        padding: 0.7rem 1rem;
+        font-size: 0.85rem;
     }
 }
 

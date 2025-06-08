@@ -232,27 +232,7 @@
         overflow: hidden;
     }
     
-    /* Other Mobile Styles */
-    .hero-section {
-        padding: 100px 0 60px;
-    }
-    
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-    
-    .hero-content p {
-        font-size: 1rem;
-    }
-    
-    .hero-buttons {
-        flex-direction: column;
-        gap: var(--spacing-sm);
-    }
-    
-    .hero-buttons .btn {
-        width: 100%;
-    }
+    /* Other Mobile Styles - These are handled in components_hero.css */
     
     .section {
         padding: var(--spacing-lg) 0;
@@ -325,9 +305,7 @@
         font-size: 13px;
     }
     
-    .hero-content h1 {
-        font-size: 1.75rem;
-    }
+    /* Hero styles handled in components_hero.css */
     
     /* Improved service images for small phones */
     .service-image {
