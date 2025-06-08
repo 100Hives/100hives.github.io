@@ -1,0 +1,280 @@
+/* ===== ABOUT SECTION ===== */
+.about-hero {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.about-hero-content h1 span {
+    color: var(--secondary-color);
+}
+
+.about-hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* About Mission Section */
+.about-mission {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+.mission-content {
+    padding: 30px;
+}
+
+.mission-content h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.mission-content h2:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--secondary-color);
+}
+
+.mission-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.mission-list li {
+    padding: 10px 0 10px 30px;
+    position: relative;
+}
+
+.mission-list li:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+}
+
+.mission-image {
+    height: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.mission-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Facilities Section */
+.facilities-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.facility-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--light-color);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.facility-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.facility-image {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.facility-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.facility-card:hover .facility-image img {
+    transform: scale(1.05);
+}
+
+.facility-content {
+    padding: 2rem;
+}
+
+.facility-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.facility-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.facility-features {
+    list-style: none;
+    padding: 0;
+}
+
+.facility-features li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.facility-features li i {
+    color: var(--accent-color);
+    margin-right: 0.5rem;
+}
+
+/* Treatments Showcase */
+.treatments-grid {
+    margin-top: 2rem;
+}
+
+.treatment-card {
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: var(--light-color);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 2rem;
+}
+
+.treatment-content {
+    padding: 2rem;
+}
+
+.treatment-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.treatment-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.treatment-benefits {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.treatment-benefits li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.treatment-benefits li i {
+    color: var(--accent-color);
+    margin-right: 0.5rem;
+}
+
+.treatment-image {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.treatment-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.treatment-card:hover .treatment-image img {
+    transform: scale(1.05);
+}
+
+/* Media queries for facilities and treatments */
+@media (min-width: 768px) {
+    .facilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .facility-card {
+        flex-direction: row;
+        align-items: stretch;
+    }
+    
+    .facility-image {
+        width: 50%;
+        height: auto;
+    }
+    
+    .facility-content {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .treatment-card {
+        flex-direction: row;
+        align-items: stretch;
+    }
+    
+    .treatment-content {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .treatment-image {
+        width: 50%;
+        height: auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .facility-image, .treatment-image {
+        height: 250px;
+    }
+    
+    .facility-content h3, .treatment-content h3 {
+        font-size: 1.3rem;
+    }
+}
+

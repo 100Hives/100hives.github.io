@@ -1,0 +1,70 @@
+/* ===== CONTACT PAGE ===== */
+.contact-section {
+    padding: var(--spacing-xl) 0;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+}
+
+.contact-info {
+    padding-right: var(--spacing-lg);
+}
+
+.contact-methods {
+    margin: var(--spacing-lg) 0;
+}
+
+.contact-method {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-lg);
+}
+
+.method-icon {
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--spacing-md);
+    color: white;
+    font-size: 1.25rem;
+}
+
+.method-details h3 {
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.125rem;
+}
+
+.method-details p {
+    margin-bottom: 0;
+    color: var(--text-light);
+}
+
+.social-contact h3 {
+    margin-bottom: var(--spacing-md);
+}
+
+.contact-form-container {
+    background-color: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.map-section {
+    padding-top: 0;
+}
+
+.map-container {
+    height: 450px;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+

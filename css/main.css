@@ -1,0 +1,46 @@
+/* 
+ * Release Therapies - Main Stylesheet
+ * 
+ * This file imports all modular CSS files in the correct order.
+ * Import order is important for CSS cascade and specificity.
+ * 
+ * Structure:
+ * 1. Variables & Design Tokens
+ * 2. Base styles & Reset
+ * 3. Components (buttons, forms, cards, etc.)
+ * 4. Layout (header, footer, hero, etc.)
+ * 5. Navigation
+ * 6. Themes (dark mode, contrast mode)
+ * 7. Page-specific styles (will be added as separate files)
+ * 8. Utilities & helpers
+ */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+/* 1. CSS Variables and Design Tokens */
+@import 'variables.css';
+
+/* 2. Base Styles and Reset */
+@import 'base.css';
+
+/* 3. Reusable Components */
+@import 'components.css';
+
+/* 4. Layout Components */
+@import 'layout.css';
+
+/* 5. Navigation */
+@import 'navigation.css';
+
+/* 6. Theme Styles */
+@import 'themes.css';
+
+/* 7. Utilities and Helpers */
+@import 'utilities.css';
+
+/* 8. Page-specific styles */
+@import 'pages/services.css';
+
+/* 9. Feature-specific styles */
+@import 'features/testimonials.css'; 

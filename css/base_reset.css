@@ -1,0 +1,56 @@
+/* ===== RESET & BASE STYLES ===== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Updated Color Variables for a more sophisticated palette */
+    --primary-color: #3a4a5c; /* Deeper, more sophisticated navy */
+    --secondary-color: #506478; /* Softer secondary blue */
+    --accent-color: #c9a77c; /* Warm gold accent for luxury feel */
+    --dark-color: #1e2a3a; /* Darker navy for contrast */
+    --light-color: #f8f9fa;
+    --text-color: #2c3e50;
+    --gray-color: #8a9299; /* Softer gray */
+    --light-gray: #eef1f4; /* Slightly warmer light gray */
+    --border-color: #e2e6ea;
+    --success-color: #6b9080; /* Muted green for success */
+    --error-color: #b56576; /* Muted red for errors */
+    --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06); /* Softer shadow */
+    
+    /* Updated Typography */
+    --body-font: 'Montserrat', sans-serif;
+    --heading-font: 'Playfair Display', serif; /* More elegant serif font for headings */
+    
+    /* Spacing - Increased for more breathing room */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 3rem;
+    --spacing-xl: 5rem;
+    
+    /* Border Radius - More refined */
+    --border-radius-sm: 3px;
+    --border-radius-md: 6px;
+    --border-radius-lg: 12px;
+    
+    /* Shadows - More subtle and refined */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+    
+    /* Transitions - Smoother */
+    --transition-fast: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --premium-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 25%, #4a6741 75%, #c9a77c 100%);
+    --premium-shadow: 0 15px 40px rgba(58, 74, 92, 0.12);
+    --tip-header-gradient: linear-gradient(135deg, #1a252f 0%, #2c3e50 30%, #34495e 70%, #4a6741 100%);
+    --elite-gradient: linear-gradient(135deg, #0f1419 0%, #1a252f 25%, #2c3e50 50%, #c9a77c 100%);
+    --gold-accent-gradient: linear-gradient(135deg, #d4af37 0%, #c9a77c 50%, #b8860b 100%);
+    --sport-gradient: linear-gradient(135deg, #1e3a2e 0%, #2c5f2d 30%, #4a6741 70%, #c9a77c 100%);
+}
+

@@ -1,0 +1,232 @@
+/* 
+ * Release Therapies - Testimonials
+ * Testimonials section, slider, and review components
+ */
+
+/* TESTIMONIALS SECTION */
+.testimonials {
+    background: var(--light-gray);
+    padding: var(--spacing-xl) 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonials .section-title h2 {
+    color: var(--text-color);
+}
+
+.testimonials .section-title p {
+    color: var(--gray-color);
+}
+
+.testimonials .section-title h2:after {
+    background: var(--accent-color);
+}
+
+.testimonial-card {
+    background: var(--light-color);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+    position: relative;
+    margin: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+}
+
+.testimonial-card:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 30px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 10px 10px 10px;
+    border-color: transparent transparent var(--light-color) transparent;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.testimonial-card:hover:before {
+    top: -11px;
+}
+
+.quote-icon {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-sm);
+    display: block;
+}
+
+.testimonial-content p {
+    font-style: italic;
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+    font-size: 1.1rem;
+}
+
+.client-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.client-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--accent-color);
+    transition: var(--transition-fast);
+}
+
+.testimonial-card:hover .client-img {
+    transform: scale(1.05);
+}
+
+.client-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.client-details h4 {
+    margin: 0 0 5px 0;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.client-details p {
+    margin: 0;
+    color: var(--gray-color);
+    font-size: 0.9rem;
+}
+
+/* TESTIMONIALS SLIDER */
+.testimonials-slider {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+/* Mobile testimonial navigation */
+.testimonial-nav {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+}
+
+.testimonial-nav-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.testimonial-nav-btn:hover {
+    background: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+.testimonial-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: var(--spacing-md);
+}
+
+.testimonial-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--border-color);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.testimonial-dot.active {
+    background: var(--accent-color);
+    transform: scale(1.2);
+}
+
+/* Touch-friendly styles */
+.touch-device .btn,
+.touch-device .testimonial-card,
+.touch-device .service-card {
+    transform: none;
+    transition: none;
+}
+
+.touch-active {
+    background: var(--light-gray) !important;
+}
+
+/* Improved testimonial cards for touch */
+.testimonial-card {
+    cursor: pointer;
+}
+
+.testimonial-card:hover,
+.testimonial-card:focus {
+    outline: none;
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.testimonial-card:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* RESPONSIVE TESTIMONIALS */
+@media (max-width: 767.98px) {
+    .testimonial-nav {
+        gap: var(--spacing-xs);
+    }
+    
+    .testimonials-slider {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .testimonial-card {
+        margin: var(--spacing-xs);
+        padding: var(--spacing-md);
+    }
+    
+    .testimonial-card:last-child {
+        margin-bottom: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .testimonial-card {
+        margin: 0;
+        padding: var(--spacing-sm);
+    }
+    
+    .client-info {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .client-img {
+        width: 50px;
+        height: 50px;
+    }
+} 

@@ -1,0 +1,91 @@
+/* ===== SERVICES PAGE ===== */
+.category {
+    margin-bottom: var(--spacing-xl);
+}
+
+.category h2 {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--primary-light);
+}
+
+.packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.package-card {
+    background-color: white;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-normal);
+}
+
+.package-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.package-card.featured {
+    border: 2px solid var(--accent-color);
+    transform: scale(1.05);
+}
+
+.package-card.featured:hover {
+    transform: scale(1.05) translateY(-5px);
+}
+
+.package-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: var(--spacing-lg);
+    text-align: center;
+}
+
+.package-header h3 {
+    color: white;
+    margin-bottom: var(--spacing-sm);
+}
+
+.package-price {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.package-content {
+    padding: var(--spacing-lg);
+}
+
+.package-features {
+    list-style-type: none;
+    margin: var(--spacing-md) 0;
+}
+
+.package-features li {
+    padding: var(--spacing-xs) 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.package-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.insurance-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+}
+
+.insurance-list, .payment-list {
+    list-style-type: disc;
+    padding-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+

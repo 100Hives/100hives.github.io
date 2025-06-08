@@ -1,0 +1,29 @@
+/* ===== PAGE HEADER ===== */
+.page-header {
+    background-color: var(--light-gray);
+    padding: var(--spacing-xl) 0 var(--spacing-lg);
+    text-align: center;
+    margin-top: 0;
+    position: relative;
+}
+
+.page-header h1 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+    font-size: 2.5rem;
+}
+
+.breadcrumbs {
+    color: var(--gray-color);
+    font-size: 0.875rem;
+}
+
+.breadcrumbs a {
+    color: var(--accent-color);
+    transition: var(--transition-fast);
+}
+
+.breadcrumbs a:hover {
+    color: var(--primary-color);
+}
+

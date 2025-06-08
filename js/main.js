@@ -976,17 +976,14 @@ function initializeDarkMode() {
     const savedTheme = localStorage.getItem('theme') || 'light';
     setTheme(savedTheme);
 
-    // Theme toggle event listener - now cycles through three themes
+    // Theme toggle event listener - now cycles between two themes
     themeToggle.addEventListener('click', function() {
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
         let newTheme;
         
-        // Cycle through: light → dark → contrast → light
+        // Cycle through: light → contrast → light
         switch (currentTheme) {
             case 'light':
-                newTheme = 'dark';
-                break;
-            case 'dark':
                 newTheme = 'contrast';
                 break;
             case 'contrast':
@@ -1010,8 +1007,9 @@ function initializeDarkMode() {
         const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
         mediaQuery.addEventListener('change', function(e) {
             // Only auto-switch if user hasn't manually set a preference
+            // Since we no longer support dark mode, always use light theme
             if (!localStorage.getItem('theme')) {
-                setTheme(e.matches ? 'dark' : 'light');
+                setTheme('light');
             }
         });
     }
@@ -1027,17 +1025,13 @@ function setTheme(theme) {
     // Update the toggle button icon and label based on theme
     if (themeIcon) {
         switch (theme) {
-            case 'dark':
-                themeIcon.className = 'fas fa-adjust';
-                themeToggle.setAttribute('aria-label', 'Switch to high contrast mode');
-                break;
             case 'contrast':
                 themeIcon.className = 'fas fa-sun';
                 themeToggle.setAttribute('aria-label', 'Switch to light mode');
                 break;
             default: // light mode
-                themeIcon.className = 'fas fa-moon';
-                themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+                themeIcon.className = 'fas fa-adjust';
+                themeToggle.setAttribute('aria-label', 'Switch to high contrast mode');
         }
     }
     

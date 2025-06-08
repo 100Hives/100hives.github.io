@@ -1,0 +1,129 @@
+/* High Contrast Mode Variables */
+[data-theme="contrast"] {
+    --primary-color: #000000; /* Pure black for high contrast */
+    --secondary-color: #000000; /* Pure black for secondary */
+    --accent-color: #000000; /* Pure black for accenting */
+    --dark-color: #000000; /* Pure black */
+    --light-color: #ffffff; /* Pure white backgrounds */
+    --text-color: #000000; /* Black text for maximum contrast */
+    --gray-color: #000000; /* Pure black for secondary text */
+    --light-gray: #f8f8f8; /* Very light gray for cards */
+    --border-color: #000000; /* Black borders */
+    --success-color: #000000; /* Black for success states */
+    --error-color: #cc0000; /* Dark red for errors */
+    --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Black shadows */
+    
+    /* High contrast specific shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+    --premium-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    --premium-gradient: linear-gradient(135deg, #000000 0%, #000000 100%);
+    --tip-header-gradient: #000000; /* Pure black instead of gray gradient */
+    --gold-accent-gradient: #000000; /* Pure black instead of gold gradient */
+    --elite-gradient: #000000; /* Pure black instead of gray/gold gradient */
+    --sport-gradient: #000000; /* Pure black instead of green/gold gradient */
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 1000;
+    background: var(--primary-color);
+    color: var(--light-color);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.theme-toggle:hover {
+    background: var(--secondary-color);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: var(--shadow-lg);
+}
+
+.theme-toggle i {
+    transition: var(--transition-fast);
+}
+
+/* Theme toggle mobile adjustments */
+@media (max-width: 768px) {
+    .theme-toggle {
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Smooth transitions for theme switching */
+*,
+*::before,
+*::after {
+    transition: background-color var(--transition-fast), 
+                color var(--transition-fast), 
+                border-color var(--transition-fast),
+                box-shadow var(--transition-fast);
+}
+
+/* Prevent transition on theme toggle button to keep animation smooth */
+.theme-toggle,
+.theme-toggle *,
+.theme-toggle::before,
+.theme-toggle::after {
+    transition: background-color var(--transition-fast), 
+                color var(--transition-fast),
+                transform var(--transition-fast),
+                box-shadow var(--transition-fast);
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--body-font);
+    color: var(--text-color);
+    line-height: 1.8;
+    background-color: var(--light-color);
+    letter-spacing: 0.01em; /* Slightly increased letter spacing for elegance */
+    padding-top: 80px; /* Adjust based on your header height */
+}
+
+/* For the homepage with transparent header */
+body.home {
+    padding-top: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+ul, ol {
+    list-style-position: inside;
+}
+
