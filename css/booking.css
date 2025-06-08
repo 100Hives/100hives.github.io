@@ -863,93 +863,438 @@
 }
 
 /* Enhance mobile experience */
-@media (max-width: 576px) {
-    .calendar-day {
-        height: 40px;
-        width: 40px;
-        font-size: 14px;
+@media (max-width: 767px) {
+    .booking-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .booking-form-container {
+        order: 1;
+    }
+    
+    .booking-sidebar {
+        order: 2;
+        margin-top: var(--spacing-lg);
+    }
+    
+    .form-section {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+        border-radius: var(--border-radius-lg);
+    }
+    
+    .form-section h3 {
+        font-size: 1.3rem;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .calendar-container {
+        padding: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .calendar-header {
+        padding: var(--spacing-sm);
+        flex-wrap: wrap;
+        gap: var(--spacing-xs);
+    }
+    
+    .calendar-month-text {
+        font-size: 1.1rem;
+        min-width: 140px;
+        text-align: center;
+    }
+    
+    .calendar-nav-btn {
+        width: 44px;
+        height: 44px;
+        min-height: 44px;
+        font-size: 1.2rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 2px;
         border-radius: 50%;
+        background: var(--light-gray);
+        border: 1px solid var(--border-color);
+    }
+    
+    .calendar-days-grid {
+        gap: 4px;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .calendar-day-header {
+        font-size: 0.8rem;
+        padding: var(--spacing-xs);
+        font-weight: 600;
+        text-align: center;
+    }
+    
+    .calendar-day {
+        height: 44px;
+        width: 44px;
+        font-size: 0.9rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
         transition: all 0.2s ease;
+        min-height: 44px;
+        touch-action: manipulation;
     }
     
     .calendar-day:active {
         transform: scale(0.95);
     }
     
+    .calendar-day.selected {
+        transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    }
+    
+    .time-slots-container {
+        margin-top: var(--spacing-md);
+        padding: 0 var(--spacing-xs);
+    }
+    
+    .time-slots-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+    
     .time-slot {
-        padding: 12px 8px;
-        font-size: 14px;
-        margin-bottom: 8px;
-        border-radius: 8px;
+        padding: var(--spacing-sm);
+        font-size: 0.9rem;
+        border-radius: var(--border-radius-md);
+        min-height: 48px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
         transition: all 0.2s ease;
+        touch-action: manipulation;
     }
     
     .time-slot:active {
         transform: scale(0.98);
     }
     
+    .time-slot.selected {
+        transform: scale(1.02);
+        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
+    }
+    
+    .time-slot-time {
+        font-weight: 600;
+        margin-bottom: 2px;
+    }
+    
+    .time-slot-price {
+        font-size: 0.8rem;
+        opacity: 0.8;
+    }
+    
+    .form-control {
+        font-size: 16px !important; /* Prevents iOS zoom */
+        padding: var(--spacing-sm) var(--spacing-md);
+        min-height: 48px;
+        border-radius: var(--border-radius-md);
+        border: 2px solid var(--border-color);
+        transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        outline: none;
+    }
+    
+    .form-group {
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .form-group label {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: var(--spacing-xs);
+        display: block;
+        color: var(--primary-color);
+    }
+    
+    .form-actions {
+        padding: var(--spacing-md) 0;
+        border-top: 1px solid var(--border-color);
+        margin-top: var(--spacing-lg);
+    }
+    
+    .form-actions .btn {
+        width: 100%;
+        padding: var(--spacing-md);
+        font-size: 1.1rem;
+        min-height: 52px;
+        border-radius: var(--border-radius-lg);
+        font-weight: 600;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .sidebar-section {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+        border-radius: var(--border-radius-lg);
+        background: var(--light-color);
+        border: 1px solid var(--border-color);
+    }
+    
+    .sidebar-section h3 {
+        font-size: 1.2rem;
+        margin-bottom: var(--spacing-sm);
+        color: var(--primary-color);
+    }
+    
+    .benefits-list li {
+        padding: var(--spacing-xs) 0;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    .info-item {
+        padding: var(--spacing-sm) 0;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .info-item:last-child {
+        border-bottom: none;
+    }
+    
+    .info-item i {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+        margin-right: var(--spacing-sm);
+    }
+    
+    .info-item h4 {
+        font-size: 1rem;
+        margin-bottom: 4px;
+    }
+    
+    .info-item p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+}
+
+@media (max-width: 576px) {
+    .booking-intro {
+        padding: var(--spacing-md) 0;
+        text-align: center;
+    }
+    
+    .booking-intro h1 {
+        font-size: 1.8rem;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .booking-intro p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .booking-container {
+        padding: 0 var(--spacing-xs);
+    }
+    
+    .form-section {
+        padding: var(--spacing-sm);
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .form-section h3 {
+        font-size: 1.2rem;
+        text-align: center;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .calendar-container {
+        padding: var(--spacing-xs);
+    }
+    
+    .calendar-days-grid {
+        gap: 2px;
+    }
+    
+    .calendar-day {
+        height: 40px;
+        width: 40px;
+        font-size: 0.85rem;
+        min-height: 40px;
+    }
+    
+    .calendar-day-header {
+        font-size: 0.75rem;
+        padding: 4px 2px;
+    }
+    
+    .time-slots-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xs);
+    }
+    
+    .time-slot {
+        padding: var(--spacing-sm);
+        margin-bottom: var(--spacing-xs);
+        min-height: 52px;
+    }
+    
     .form-row {
         flex-direction: column;
+        gap: var(--spacing-sm);
     }
     
     .form-row .form-group {
         width: 100%;
-        margin-bottom: 15px;
+        margin-bottom: var(--spacing-sm);
     }
     
-    /* Improve calendar navigation for touch */
-    .calendar-nav-btn {
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: var(--light-gray);
-        border-radius: 50%;
-    }
-    
-    /* Improve form section spacing */
-    .form-section {
-        padding: 20px 15px;
-        margin-bottom: 20px;
-    }
-    
-    /* Make buttons more touch-friendly */
-    .form-actions .btn {
-        padding: 12px 20px;
-        font-size: 16px;
-        min-height: 48px;
-    }
-    
-    /* Improve calendar header */
-    .calendar-header {
-        padding: 10px;
-    }
-    
-    .calendar-month-text {
-        font-size: 16px;
-    }
-    
-    /* Improve time slots container */
-    .time-slots-container {
-        margin-top: 20px;
-    }
-    
-    /* Improve form inputs */
     .form-control {
-        font-size: 16px;
-        padding: 12px 15px;
-        height: auto;
+        padding: var(--spacing-sm);
+        font-size: 16px !important;
+        min-height: 48px;
     }
     
     /* Improve select dropdowns */
     select.form-control {
-        background-position: right 15px center;
-        padding-right: 40px;
+        background-position: right 12px center;
+        padding-right: 36px;
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6,9 12,15 18,9'></polyline></svg>");
+        background-size: 16px;
+        background-repeat: no-repeat;
+    }
+    
+    .form-actions {
+        padding: var(--spacing-sm) 0;
+        margin-top: var(--spacing-md);
+    }
+    
+    .form-actions .btn {
+        padding: var(--spacing-md) var(--spacing-sm);
+        font-size: 1rem;
+        min-height: 50px;
+    }
+    
+    .sidebar-section {
+        padding: var(--spacing-sm);
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .sidebar-section h3 {
+        font-size: 1.1rem;
+        text-align: center;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .benefits-list {
+        padding-left: var(--spacing-sm);
+    }
+    
+    .benefits-list li {
+        font-size: 0.9rem;
+        padding: 4px 0;
+    }
+    
+    .info-item {
+        padding: var(--spacing-xs) 0;
+        text-align: center;
+    }
+    
+    .info-item i {
+        display: block;
+        margin: 0 auto var(--spacing-xs);
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
+    }
+    
+    .info-item h4 {
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+    }
+    
+    .info-item p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
+    .dynamic-pricing {
+        padding: var(--spacing-sm);
+        margin: var(--spacing-sm) 0;
+    }
+    
+    .dynamic-pricing h3 {
+        font-size: 1rem;
+        text-align: center;
+    }
+    
+    .dynamic-pricing p {
+        font-size: 0.85rem;
+        text-align: center;
+    }
+}
+
+/* Extra small devices (iPhone SE, etc.) */
+@media (max-width: 375px) {
+    .booking-intro h1 {
+        font-size: 1.6rem;
+    }
+    
+    .form-section h3 {
+        font-size: 1.1rem;
+    }
+    
+    .calendar-day {
+        height: 36px;
+        width: 36px;
+        font-size: 0.8rem;
+        min-height: 36px;
+    }
+    
+    .calendar-nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+    
+    .time-slot {
+        padding: var(--spacing-xs);
+        min-height: 48px;
+        font-size: 0.85rem;
+    }
+    
+    .form-control {
+        padding: 12px;
+        min-height: 44px;
+    }
+    
+    .form-actions .btn {
+        padding: 12px;
+        min-height: 48px;
+        font-size: 0.95rem;
+    }
+    
+    .sidebar-section {
+        padding: 12px;
+    }
+    
+    .info-item i {
+        width: 24px;
+        height: 24px;
+        font-size: 0.8rem;
     }
 }
 
