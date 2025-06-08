@@ -179,7 +179,7 @@
         min-height: 80vh;
         padding: var(--spacing-xl) 0;
         justify-content: center;
-        margin-top: -60px; /* Adjust for mobile header */
+        margin-top: 0; /* Remove negative margin */
         padding-top: 120px; /* Add padding to account for fixed header */
     }
 
@@ -212,8 +212,8 @@
     .hero {
         min-height: 70vh;
         padding: var(--spacing-lg) 0;
-        margin-top: -70px; /* Adjust for mobile header */
-        padding-top: 140px; /* Add padding to account for fixed header */
+        margin-top: 0; /* Remove negative margin */
+        padding-top: 100px; /* Adjust padding for mobile header */
     }
 
     .hero-content {
@@ -265,8 +265,8 @@
     .hero {
         min-height: 60vh;
         padding: var(--spacing-md) 0;
-        margin-top: -80px; /* Adjust for smaller header on mobile */
-        padding-top: 140px; /* Add padding to account for fixed header */
+        margin-top: 0; /* Remove negative margin */
+        padding-top: 100px; /* Adjust padding for smaller header on mobile */
     }
 
     .hero-content {
@@ -316,8 +316,8 @@
     .hero {
         min-height: 55vh;
         padding: var(--spacing-sm) 0;
-        margin-top: -90px; /* Adjust for smaller header on mobile */
-        padding-top: 150px; /* Add padding to account for fixed header */
+        margin-top: 0; /* Remove negative margin */
+        padding-top: 100px; /* Adjust padding for smaller header on mobile */
     }
 
     .hero-content {
